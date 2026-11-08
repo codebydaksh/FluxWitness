@@ -15,4 +15,4 @@ Because the archived bytes changed, the public RC2 archive has a **different SHA
 
 The public release's figure-publication ZIP excludes the nested original RC2 ZIP. Its figures and figure generator remain present. This is a distribution-format change, not a new proof claim.
 
-The wider-initialization and nominal-reference supplements are post-RC2 and were not part of the frozen proof release. Their recorded results should not be described as independent clean-machine reproductions.
+The wider-initialization and nominal-reference supplements are post-RC2 and were not part of the frozen proof release. Their archived results originate from local runs using cached dependencies and do not constitute independent clean-machine reproductions.
