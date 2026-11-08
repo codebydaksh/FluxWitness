@@ -1,0 +1,5 @@
+2149c05b81228d25cea0b2d1209c17c830b964e5b3f483c87e3fa4448db2e68e  release-assets/post-rc2/FluxWitness-Heat-Nominal-Reference.zip
+347c25d9105f61806c0371279363f4a6b1afdbce1bf790c628dce3fdaa15cdbd  release-assets/post-rc2/FluxWitness-Heat-Wider-Initialization.zip
+e4d4c60f121f1bb036c8a920dea6d219dec41a1212591b92dfa61fe24b1c1993  release-assets/rc2/FluxWitness-Heat-Conditional-20261108-rc2-public.zip
+1a13f9a251ee0b59cc7cf3ec4d3beae60eabf0a91ca4cd45c7098d0a3179ca70  release-assets/rc2/FluxWitness-Heat-Publication-public.zip
+0488340efc93d5b35633ad46c09e892247fac0758fc49e8dd9f818bf36d3a611  release-assets/rc2/heat-rounding-figure-supplement-20261108.zip

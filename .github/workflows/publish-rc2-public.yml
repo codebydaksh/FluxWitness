@@ -1,0 +1,26 @@
+name: Publish RC2 public distribution
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify distribution checksums
+        run: sha256sum -c docs/RELEASE_ASSET_SHA256SUMS.txt
+      - name: Create a new public-distribution release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag='heat-rc2-20261108-public'
+          if gh release view "$tag" --repo "$REPOSITORY" >/dev/null 2>&1; then echo 'Release exists; refusing to overwrite' >&2; exit 1; fi
+          sed -e "s|__REPOSITORY__|${REPOSITORY}|g" -e "s|__TAG__|${tag}|g" docs/RC2_RELEASE_NOTES.template.md > "$RUNNER_TEMP/release-notes.md"
+          gh release create "$tag" release-assets/rc2/FluxWitness-Heat-Conditional-20261108-rc2-public.zip release-assets/rc2/FluxWitness-Heat-Publication-public.zip release-assets/rc2/heat-rounding-figure-supplement-20261108.zip --repo "$REPOSITORY" --target "$SHA" --title 'FluxWitness Heat: RC2 public distribution' --notes-file "$RUNNER_TEMP/release-notes.md"
