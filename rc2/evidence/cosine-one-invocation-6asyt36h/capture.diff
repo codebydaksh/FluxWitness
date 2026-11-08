@@ -1,0 +1,21 @@
+--- shipped.c
++++ capture.c
+@@ -91,6 +91,8 @@
+     const int    N      = (int)ceil(T_END / dt_max);   /* integer step count */
+     const double dt     = T_END / N;                    /* elapsed time = N*dt, dt a stored double */
+ 
++    double initial_copy[NX];
++    memcpy(initial_copy, u, sizeof(initial_copy));
+     for (int k = 0; k < N; k++) {
+         if (heat_step(u, L, U1, NX, dx, dt) != 0) {
+             fputs("Heat step failed\n", stderr);
+@@ -99,6 +101,9 @@
+         }
+     }
+ 
++    for (int i = 0; i < NX; i++)
++        if (fprintf(stderr, "%a\n", initial_copy[i]) < 0) return EXIT_FAILURE;
++    if (fflush(stderr) != 0) return EXIT_FAILURE;
+     printf("x,u\n");
+     for (int i = 0; i < NX; i++) {
+         double x = X_LEFT + (i + 0.5) * dx;

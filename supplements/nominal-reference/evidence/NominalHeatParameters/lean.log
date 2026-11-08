@@ -1,0 +1,10 @@
+NominalHeatParameters.lean:10:70: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+NominalHeatParameters.lean:10:74: warning: Unused tactic linter: `norm_num` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+NominalHeatParameters.lean:10:74: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'FluxWitnessNominal.phase_and_decay' depends on axioms: [propext, Classical.choice, Quot.sound]

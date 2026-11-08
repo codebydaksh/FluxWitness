@@ -1,0 +1,3 @@
+'heat_rounding.verified_benchmark_binary64_round_nativeHalf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FluxWitness400.coefficient_agrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FluxWitness400.model_benchmark' depends on axioms: [propext, Classical.choice, Quot.sound]

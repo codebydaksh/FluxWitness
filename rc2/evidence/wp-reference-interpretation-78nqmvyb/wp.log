@@ -1,0 +1,52 @@
+[kernel] Parsing probe.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function compare_euler
+[wp] 3 goals scheduled
+[wp] Proved goals:    5 / 5
+  Terminating:       1
+  Unreachable:       1
+  Qed:               1 (2ms-2ms-3ms)
+  Alt-Ergo 2.6.4:    2 (18.1s-21.3s)
+
+Goal Post-condition 'decoded_euler' in 'compare_euler':
+Let r_1 = of_f64(c).
+Let r_2 = of_f64(l).
+Let r_3 = of_f64(r).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(c) /\ is_finite_f64(l) /\ is_finite_f64(r).
+  (* Pre-condition *)
+  Have: (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (r_3 <= 4.0) /\ (-4.0 <= r_1) /\
+      (-4.0 <= r_2) /\ (-4.0 <= r_3).
+}
+Prove: of_f64(L_heat_euler_fp(l, c, r,
+                to_f64((5170051590165233.0/1152921504606846976)),
+                to_f64((4150517416584649.0/18446744073709551616))))
+         = L_c5_e(r_2, r_1, r_3, (5170051590165233.0/1152921504606846976)).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:3ms) (18.1s) (102976)
+
+------------------------------------------------------------
+
+Goal Post-condition 'finite_euler' in 'compare_euler':
+Let r_1 = of_f64(c).
+Let r_2 = of_f64(l).
+Let r_3 = of_f64(r).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(c) /\ is_finite_f64(l) /\ is_finite_f64(r).
+  (* Pre-condition *)
+  Have: (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (r_3 <= 4.0) /\ (-4.0 <= r_1) /\
+      (-4.0 <= r_2) /\ (-4.0 <= r_3).
+}
+Prove: is_finite_f64(L_heat_euler_fp(l, c, r,
+                       to_f64((5170051590165233.0/1152921504606846976)),
+                       to_f64((4150517416584649.0/18446744073709551616)))).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:2ms) (21.3s) (165261)
+
+------------------------------------------------------------
+
+Goal Assigns nothing in 'compare_euler':
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------

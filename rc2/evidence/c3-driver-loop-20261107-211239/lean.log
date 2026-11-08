@@ -1,0 +1,23 @@
+C3DriverLoop.lean:37:2: warning: Unused tactic linter: `run_tac
+  IO.FS.writeFile "progress.txt" "statement elaborated\n"` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+C3DriverLoop.lean:48:2: warning: Unused tactic linter: `run_tac
+  IO.FS.writeFile "progress.txt" "initial range and timestep tactics complete\n"` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+C3DriverLoop.lean:55:2: warning: Unused tactic linter: `run_tac
+  IO.FS.writeFile "progress.txt" "model range tactic complete\n"` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+C3DriverLoop.lean:74:19: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+C3DriverLoop.lean:75:2: warning: Unused tactic linter: `run_tac
+  IO.FS.writeFile "progress.txt" "prefix induction tactic complete\n"` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+C3DriverLoop.lean:74:19: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'FluxWitnessC3.driver223_of_wp' depends on axioms: [propext, Classical.choice, Quot.sound]

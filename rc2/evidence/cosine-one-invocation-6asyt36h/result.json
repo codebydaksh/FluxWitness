@@ -1,0 +1,35 @@
+{
+  "accepted": true,
+  "source_sha256": "193b7cca59ec2c5a6122d8da3580dafe4f7b298ebf65929ece610ac2df3d5405",
+  "capture_sha256": "23bb526537e45d662381f60784a9940941de81fe25774a140cc8899a2cc5b351",
+  "checker_sha256": "3ebcad89dd6cc543ec86d082c045fcc28e68744b0435ed83d1df59c84e94c00d",
+  "build": [
+    "gcc",
+    "-std=c11",
+    "-O0",
+    "-ffp-contract=off",
+    "-DIC_COSINE",
+    "-o",
+    "solver",
+    "capture.c",
+    "-lm"
+  ],
+  "invocation": [
+    "./solver"
+  ],
+  "compiler": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+  "binary_sha256": "e72106d79696b0814ee91c2b8038c356c8b6157036fa5c4453588494dea0f06a",
+  "solver_exit": 0,
+  "final_sha256": "1b83a3cf2c4638b2132c4a077b8c47349e669587e699e6e2709e1af673e6489d",
+  "matches_archived_final_csv": true,
+  "matches_archived_initial_dump": true,
+  "certificate": {
+    "accepted": true,
+    "dump_sha256": "d85763c9d8c12f0d6b0a3941984934b59228f0075416cb1df0eda70dac135e98",
+    "cells": 400,
+    "max_upper_index": 238,
+    "exact_upper": "12426890374746091/50000000000000000000000000000000",
+    "exact_limit": "12427/50000000000000000000",
+    "exact_margin": "109625253909/50000000000000000000000000000000"
+  }
+}

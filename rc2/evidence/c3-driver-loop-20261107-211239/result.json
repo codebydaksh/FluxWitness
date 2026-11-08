@@ -1,0 +1,21 @@
+{
+  "accepted": true,
+  "command": [
+    "C:\\Users\\Infinity\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe",
+    "-j1",
+    "-M2048",
+    "-o",
+    "C3DriverLoop.olean",
+    "C3DriverLoop.lean"
+  ],
+  "timeout_seconds": 900,
+  "exit_code": 0,
+  "source_sha256": "a2ce5d942c3a15c69072f205ac009a9e7e62e622a6147f9301e4661c9d1849fa",
+  "seconds": 16.94,
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "object_sha256": "8e0d55d5e33930415f198e7352d9d4a324bf0bdc6b40b92725f82889262abc4f"
+}

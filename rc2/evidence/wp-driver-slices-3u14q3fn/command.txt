@@ -1,0 +1,1 @@
+timeout 180s frama-c -machdep x86_64 -wp -wp-fct driver_allocate,driver_slices -wp-model Typed+float -wp-rte -wp-par 1 -wp-prover qed,alt-ergo -wp-timeout 15 -wp-print probe.c

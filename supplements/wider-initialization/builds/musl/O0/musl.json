@@ -1,0 +1,9 @@
+{
+  "interpreter": "/lib/ld-musl-x86_64.so.1",
+  "realpath": "/usr/lib/x86_64-linux-musl/libc.so",
+  "sha256": "dd2bad010bb70a62612bc5ecf63d9ab7c0edb65ddcc931d583e5981a1424298a",
+  "needed": [
+    "libc.so"
+  ],
+  "cos_external": true
+}

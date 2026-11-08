@@ -1,0 +1,7 @@
+﻿k= 10  max exact error = 4.8163e-16   bound k*2.71e-15 = 2.7100e-14   within bound: True
+k= 50  max exact error = 8.4042e-16   bound k*2.71e-15 = 1.3550e-13   within bound: True
+k=100  max exact error = 1.0661e-15   bound k*2.71e-15 = 2.7100e-13   within bound: True
+k=150  max exact error = 1.1095e-15   bound k*2.71e-15 = 4.0650e-13   within bound: True
+k=200  max exact error = 1.3408e-15   bound k*2.71e-15 = 5.4200e-13   within bound: True
+k=223  max exact error = 1.7243e-15   bound k*2.71e-15 = 6.0433e-13   within bound: True
+saved plot

@@ -1,0 +1,1 @@
+timeout 360s frama-c -machdep x86_64 -wp -wp-fct heat_step -wp-model Typed+float -wp-rte -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 60 -wp-print input.c

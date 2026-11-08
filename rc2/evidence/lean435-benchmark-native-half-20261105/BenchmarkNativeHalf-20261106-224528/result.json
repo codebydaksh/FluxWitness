@@ -1,0 +1,478 @@
+﻿{
+    "accepted":  true,
+    "scope":  "Lean 4.35 BenchmarkNativeHalf; requested transitive axiom audits; combined benchmark and C execution open",
+    "exit_code":  0,
+    "stop":  null,
+    "seconds":  16.0098229,
+    "peak_private":  4293984256,
+    "phases":  [
+                   {
+                       "exit_code":  0,
+                       "name":  "BenchmarkNativeHalf",
+                       "stop":  null,
+                       "peak_private":  4293984256,
+                       "command":  "C:\\Users\\Infinity\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe -j1 -R . -o BenchmarkNativeHalf.olean BenchmarkNativeHalf.lean",
+                       "seconds":  8.3479676
+                   },
+                   {
+                       "exit_code":  0,
+                       "name":  "Audit",
+                       "stop":  null,
+                       "peak_private":  4293984256,
+                       "command":  "C:\\Users\\Infinity\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe -j1 -R . -o Audit.olean Audit.lean",
+                       "seconds":  15.958539799999999
+                   }
+               ],
+    "audit":  [
+                  {
+                      "Declaration":  "heat_rounding.verified_benchmark_binary64_round_nativeHalf",
+                      "Axioms":  [
+                                     "propext",
+                                     "Classical.choice",
+                                     "Quot.sound"
+                                 ],
+                      "Permitted":  true
+                  },
+                  {
+                      "Declaration":  "FluxWitness400.coefficient_agrees",
+                      "Axioms":  [
+                                     "propext",
+                                     "Classical.choice",
+                                     "Quot.sound"
+                                 ],
+                      "Permitted":  true
+                  },
+                  {
+                      "Declaration":  "FluxWitness400.model_benchmark",
+                      "Axioms":  [
+                                     "propext",
+                                     "Classical.choice",
+                                     "Quot.sound"
+                                 ],
+                      "Permitted":  true
+                  }
+              ],
+    "command":  "C:\\Users\\Infinity\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe -j1 -R . -o \u003cphase\u003e.olean \u003cphase\u003e.lean; phases recorded separately",
+    "hashes":  [
+                   {
+                       "Path":  "C:\\Users\\Infinity\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe",
+                       "Hash":  "EC7A472D1C12A09B0C0C718F7427C2BE527B3F5F07810FDBE076C2507C7A91EA"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\combined-project\\BenchmarkNativeHalf.lean",
+                       "Hash":  "09EF996A652787EF587228927F92A3E2C67C5906D33034D07F3DD035BB42C262"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\BenchmarkNativeHalf.lean",
+                       "Hash":  "09EF996A652787EF587228927F92A3E2C67C5906D33034D07F3DD035BB42C262"
+                   },
+                   {
+                       "Path":  "D:\\LeanWork\\floatlib-workspace\\lake-manifest.json",
+                       "Hash":  "D09FE8D483D2D2DAF2C920D2034435EB76C0B9469C8F38856D0AED94AA971AC6"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\combined-sources.json",
+                       "Hash":  "B536C5D82F65FD4DFDF752DEE7B5AB3373131FC35B33A1A0C51DFA0225D11A55"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-pins.json",
+                       "Hash":  "3E09FA1B6D3F7CAA7358D233BFFF8E94DD7B830DBD909DDC33D3BF68F884856E"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-import-repair-20261106-224043\\combined-sources.json",
+                       "Hash":  "84D05BD0370BECD2ED4E9921A404E869469DEAE9249C262CD64B785A940A27B2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\half-import-repair-20261106-224414\\combined-sources.json",
+                       "Hash":  "F8C82A8ACB2804D357AD9BBA3E70F1817CE0320AADDD0CDF6EA03B741D27E777"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\half-import-repair-20261106-224414\\integration-pins.json",
+                       "Hash":  "0EE6E6DBB386732280CAD13BBFF47EAE360C726983F72ADFCFD691A723D5B281"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\half-import-repair-20261106-224414\\combined-sources.json",
+                       "Hash":  "F8C82A8ACB2804D357AD9BBA3E70F1817CE0320AADDD0CDF6EA03B741D27E777"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\half-import-repair-20261106-224414\\integration-pins.json",
+                       "Hash":  "0EE6E6DBB386732280CAD13BBFF47EAE360C726983F72ADFCFD691A723D5B281"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_spatial_heun.olean",
+                       "Hash":  "54C66ADED92192F9E3E1188243EA7CD69A52B7575A7844E99E9E2B9095EC6A2E"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_spatial_heun-20261106-213453\\result.json",
+                       "Hash":  "CE05B309871A3959DC0E2940EEA5DDAC613CA13637367C65CB7569D245A90A74"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_local_defect.olean",
+                       "Hash":  "FBD4AC0544BFE9BE828EA3E69376393502869DCD1926D171CAA71D23BDBFE384"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_local_defect-20261106-213508\\result.json",
+                       "Hash":  "836B727CC3FE6F396C36E9CF65D8028F7FD0A71841DBEC9AA71B427C466B1DF2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_rounded_benchmark.olean",
+                       "Hash":  "29D2E570B1FDE452A1670B6ACAC6243088D8D0D9504E5043046317A91C40ADDD"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_rounded_benchmark-20261106-222944\\result.json",
+                       "Hash":  "D801CA720D064AF9BD1889459C9605B6B6D4CFF5A0A275314F1B49772B5586BC"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_rounding_composition.olean",
+                       "Hash":  "F10F361D91A6C3DDBD3D44D0288DE7017AA147A9039A5C55C63CCC802CEF9275"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_rounding_composition-20261106-222601\\result.json",
+                       "Hash":  "0F75A851FDE7C528A1645C613EEF9783513706C76DE8D50082B37862EA0F47BA"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_taylor_coefficients.olean",
+                       "Hash":  "3FC188060A46ED7B0A9360584690604C3BF5065595459175943993D8970861BE"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\taylor-coefficients-20261106-175845\\result.json",
+                       "Hash":  "BDC6BC5EC738EB9F23057BE9755F5A8C4E04C8DFDDDDF20AAB002A4AD4782A3D"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_error_accumulation.olean",
+                       "Hash":  "E211A0FB799014C2272D66E88D163429AFD9F91D510BC240D6E569EA65FD8934"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\accumulation-20261106-105045\\result.json",
+                       "Hash":  "2E78CA7B068245BA59DAAB519270CF21191F81AE6B91F0E5A441587950AE9244"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_1d.olean",
+                       "Hash":  "22D10611A6886D73D4F8DEDBE8F1E4096F1EA372E65BED326EC330449B48A1AD"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\run-20261106-052917\\result.json",
+                       "Hash":  "E6FC1EA75727DDE3B3EF0ACC6C72F02ADC47CED0E4C43CD38748D394BC5923CD"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_rounding_operations.olean",
+                       "Hash":  "3487F3FF4E442CF7D61FEAEF1843587C6D749DE9C80E6D94410FF6652B416496"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_rounding_operations-20261106-222611\\result.json",
+                       "Hash":  "0776C7A69C6FB481101D74A93F4DF831C947D1E35F2C0909E0B9F8A4E63D7742"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_bounded_arithmetic.olean",
+                       "Hash":  "42C1AA33FAA2060A44A863E9BE794D0890D3C2D4AD48C2081B3DAB83B17331F9"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_bounded_arithmetic-20261106-222634\\result.json",
+                       "Hash":  "0171D134E84E8881F7C011FF2B0D5A1F02C46B8920D168EE02029589D824B9D8"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_reference_bounds.olean",
+                       "Hash":  "A9AB251BF9241F0B34BB199CCC6A51C881914D0832A6CFBB8C6840694E4D3E81"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\reference-bounds-20261106-175011\\result.json",
+                       "Hash":  "AB1CC8C215F8E4F1D2E745D812E3CB290A0E2313146E75AD47E98185B0BFB0EB"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_range_bootstrap.olean",
+                       "Hash":  "570DA83DE77C340B003747CA3C208ED1855E3863FD5D4FE21CA4F71024AC84E3"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_range_bootstrap-20261106-222913\\result.json",
+                       "Hash":  "7EAC9E6511E18AAD14A18EF321C28A635267254C6534EC6A2E069129A4BD1C4E"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_centered_derivatives.olean",
+                       "Hash":  "E394202E9C5DEF35D00A00BA24E1CC4033973FE8842A1DBD522D742C4CD2F327"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\centered-derivatives-20261106-175439\\result.json",
+                       "Hash":  "11F47CD5BF3443B3A51B24D3EE98D40BE47BD7B86D76D2E6EF82ED7809254976"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_final.olean",
+                       "Hash":  "6485161602568AE233DCA09F3B3780A45ADC9294B59DFF64BA4D39D46014DAF2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_final-20261106-222156\\result.json",
+                       "Hash":  "F499B717907B5FC546346D0FED7A2AE3C2DA721957EFE89073303004C67E20A3"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_consistency_bridge.olean",
+                       "Hash":  "346ABFD17D92F79008B051E4D5A7922E370842FEF2597C0F9A9F61CA612346D1"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_consistency_bridge-20261106-192448\\result.json",
+                       "Hash":  "FBFCE1028A564DA1DEA5D97332BE6D9A25EC15CFEC75894CEF29062DA8E10B37"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_boundary.olean",
+                       "Hash":  "A520FD902CDAB53900B0A688ABED5A7B11B43DBA18DB9EBB77A29EE4443E0297"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\boundary-20261106-171816\\result.json",
+                       "Hash":  "6DE1887E60662365A6A006F9C4C4B5FE4EFD925EC770B2AD8286F789E0D15F28"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\FloatLibWorkspace\\Binary64Interface.olean",
+                       "Hash":  "F86B7B81CAE4DFB82C3BEFDD934952A97BF55888C77DFF0BB0830F865BCDDF31"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\FloatLibWorkspace.Binary64Interface-20261106-224232\\result.json",
+                       "Hash":  "DDCC63EB1077F9569ABE1FBF6DBB5D271500A975F3F2126C5ADA0E0267EBEBD8"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\FloatLibWorkspace\\StoredDiffusivityMinimal.olean",
+                       "Hash":  "3F135BD317A82A65E75B6452EA63F31CAEA7E587A86AD174527280BF20B57755"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\FloatLibWorkspace.StoredDiffusivityMinimal-20261106-224509\\result.json",
+                       "Hash":  "B216DAEE51D04B2BC96F97D3F0A7DF0001AB16E31B38B342B649D7C135D34B56"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_grid_bridge.olean",
+                       "Hash":  "8726C19813F7A76282012870172C5E28DAC242DB9D37E32AAF32985093962B35"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\grid-20261106-173904\\result.json",
+                       "Hash":  "3A3920D57AEC62723891BDDC3F4E3D672C685611946B0E2353A920107D4F8551"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_rounding_evolution.olean",
+                       "Hash":  "FD33493104442A9CC7C667BDCC05C4B1D0BCC3E10302A7F102854A62CD1CB961"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_rounding_evolution-20261106-222927\\result.json",
+                       "Hash":  "A968304FA4C99ACC6254BB895E281728026FBBE5AE25C5FEAB737998CA47EEF7"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\FloatLibWorkspace\\Binary64Law.olean",
+                       "Hash":  "FF5054A3296EE1A7A28BF9F37F9071C671E8A2FCC43E072320C41EAB6CFA72C8"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\FloatLibWorkspace.Binary64Law-20261106-224113\\result.json",
+                       "Hash":  "132E99AEFE981591130B4977DB52AD28318EFE0564A959A00B88E5141F82B504"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_affine.olean",
+                       "Hash":  "D57AB301DE0CF68F52FA0D853CAD879750387FF09CEE7D2D6C6DF983601E1752"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\affine-20261106-175419\\result.json",
+                       "Hash":  "73AF2389838D984FE0A92615FC1A103F2B9AED02B6BAC5C71F827853510F07EA"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_cosine_conditions.olean",
+                       "Hash":  "92D3E7F7824239C54F2A2F5F165CC46480D6E930F7AAD6DCF5E21D0C52CD0973"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_cosine_conditions-20261106-222143\\result.json",
+                       "Hash":  "3165D28F6A57C75DF3D0FE34C7301A0E378CAEA15426D78EB50AC3512BBDBACC"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_reference.olean",
+                       "Hash":  "61A831846C3E961B162AF5BCB70C1F5AC1F47B2B9BEE0C18F522B0DC92F4C054"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\reference-20261106-174518\\result.json",
+                       "Hash":  "D10DCB2AD63DEDD800E1228EFB2F13E5A9C9F1E9E88B1297BD34601963E530D3"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_stored_parameter_bridge.olean",
+                       "Hash":  "6F5A12ACFA4E1072CE5931CDF7EF8A92867D8DC218F9C7DA19D4D07828B7C69F"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_stored_parameter_bridge-20261106-192551\\result.json",
+                       "Hash":  "28B516E3B995AA8979BE3D8FF5EB3DF78E900FA0D163AD9083091899B4F655A5"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\FloatLibWorkspace\\Binary64Half.olean",
+                       "Hash":  "18B4209424A358A4BBDAAF0EBE7F9AA0C5AA2E3EA7B2B48C6BA3C656F4106487"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\FloatLibWorkspace.Binary64Half-20261106-224453\\result.json",
+                       "Hash":  "04A5601F0EA7C8D3D5B0964E27E97CEED007FDE92F097D922EDFA761C31C78F0"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_perturbation.olean",
+                       "Hash":  "240D68B0D091509FC733762714D7AA80816F1AC9055F096E52A1D1F3AA4E5D84"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\perturbation-20261106-175430\\result.json",
+                       "Hash":  "7E8BEFAF901B11E9D7271330FC2C835B211CF766CE1C503631BFC368B294206D"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_rounding_grid_bridge.olean",
+                       "Hash":  "5A9C035B686F6EA8E4FE4B0471A96B1B77A28897E868DDE39FBA7EC1DAB82E5F"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_rounding_grid_bridge-20261106-222858\\result.json",
+                       "Hash":  "69DA603E5FEC37E09277E94C08E2C1D0543824D1BEDF140504C26F9A149E85C5"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_benchmark.olean",
+                       "Hash":  "D3D5651F8C3DFBEB4C644A8FDEC2733F35C6318178785F2CE3B8206CDAB5DF0E"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_benchmark-20261106-222231\\result.json",
+                       "Hash":  "150BE47A9DADC5CA2E3DD60C404BB783657BCF6969F626582C1C15DA43E5C7A6"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_operator_form.olean",
+                       "Hash":  "9CF667354B537293D1CF0D86CFDDA11D6C3FAC0E6D9DB827A25FB0CB67F489F4"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_operator_form-20261106-192543\\result.json",
+                       "Hash":  "FEDBE7125E3144D55A29B0BCF2DDD26EADE38098A45F47C39032341780D2A95B"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_rounding_numeric.olean",
+                       "Hash":  "61270ABDECE358FA12A30AAF83620149B249CB0F6A782C806D45F6A90F2DCEE5"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_rounding_numeric-20261106-222644\\result.json",
+                       "Hash":  "9F58DF6B5EB74F1C43362F52A1A6C053D4F6D6CF7EFA8C8A73D5DD10BE3C1FA4"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_final2.olean",
+                       "Hash":  "5419C001D8651B1D7DF9CE711899029B3F27EFCFDCE1C02856C436C9CA3B5C17"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_final2-20261106-222211\\result.json",
+                       "Hash":  "061AE83DE37E9B3095C2451F20318709AACA37A9F2123CB312188C9CC7D344DC"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_squared_consistency.olean",
+                       "Hash":  "D77EA38721E4224350042E00FDFC4FB18A6C119C908E383922EA90BAF657D033"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_squared_consistency-20261106-213420\\result.json",
+                       "Hash":  "3FF5298B0C41382A03C9D0E251C92C32F7BFDAF9C9113FC3C32D7A9A645DA9AE"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_rounding_certificate.olean",
+                       "Hash":  "632E72839ADF6F38BFD21D857A0BF3BE56E92E7C4E8EEFA8AC0DB9DE5AAA3973"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_rounding_certificate-20261106-222622\\result.json",
+                       "Hash":  "3D9329C04DC49D01F4B1C380F9F2DBF0789DF22DEF26B8B4FE3D68F5982AB4DF"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\Binary64Bridge.olean",
+                       "Hash":  "494A8F5B5EC9C1C10084AD23C3453CBC02DC2F334DC8353918C52DBE5396EE28"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\Binary64Bridge-20261106-223005\\result.json",
+                       "Hash":  "4793D38B72A99A556E5748EE2C36F339EFBE76B13405B0DE05716DD7ACE60CF9"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_stencil_error.olean",
+                       "Hash":  "F80AF570563227CAFD08FD13C779D20151AF2CAA05CB384057F261F374972EAC"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\stencil-error-20261106-175855\\result.json",
+                       "Hash":  "2F607156235F302594F3939BEF9DE4ABA012B2A25FE1A5708D5B79B9EEA605A1"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_convergence.olean",
+                       "Hash":  "A2C468D11274BB3A48B530F5125003730DAC153602B8C2EDC9DA4A051D9CB6B6"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\heat_convergence-20261106-221651\\result.json",
+                       "Hash":  "A5EBCB0A7B1E0CB244243F586DD7174D79DDB83AD67AE9DE69FDAE10A33DD89B"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\proofs\\heat_taylor.olean",
+                       "Hash":  "85E73D82CC004F7B1FB33FAE5BEA982A2953A5B2D8E32B5036DA1F809CA34DA9"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\taylor-20261106-175613\\result.json",
+                       "Hash":  "B1AF079E929471F58552736CE40DE3E3195345B756A0508232C07185111951D0"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\Audit.lean",
+                       "Hash":  "2329EB6E279143E40D7088DB1B0FAB82EF4C2DF1F8E5BDFF90D416DCAB84DEA2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\integration-audits.json",
+                       "Hash":  "7D6CAEB6E4DB24838599F3A875307BA91C1CAB4A5EAEDDAF56AFF8A5DE161CD2"
+                   },
+                   {
+                       "Path":  "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\lean435-benchmark-native-half-20261105\\BenchmarkNativeHalf-20261106-224528\\BenchmarkNativeHalf.olean",
+                       "Hash":  "B68D81D942B049703A7A55D46A96631C5CE879A99600D2D567BCAC74072F6420"
+                   }
+               ]
+}

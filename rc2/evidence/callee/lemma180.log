@@ -1,0 +1,11 @@
+[kernel] Parsing input.c (with preprocessing)
+[kernel:parser:decimal-float] input.c:115: Warning: 
+  Floating-point constant 0.01 is not represented exactly. Will use 0x1.47ae147ae147bp-7.
+  (warn-once: no further messages from category 'parser:decimal-float' will be emitted)
+[wp] Running WP plugin...
+[rte:annot] annotating function compute_L
+[rte:annot] annotating function heat_step
+[wp] 1 goal scheduled
+[wp] Proved goals:    1 / 1
+  Qed:               0 (2ms)
+  Alt-Ergo 2.6.4:    1 (25s)

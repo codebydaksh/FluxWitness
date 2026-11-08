@@ -1,0 +1,17 @@
+{
+  "accepted": true,
+  "targets": "compare_euler",
+  "process_exit": 0,
+  "goals": {
+    "decoded_euler": "Valid",
+    "finite_euler": "Valid"
+  },
+  "totals": [
+    [
+      "5",
+      "5"
+    ]
+  ],
+  "probe_sha256": "d496e05d50e8c6f04304b134e8a613e9934957aa8f81954b20650bd422eac9ef",
+  "log_sha256": "bb49ca6d496627cb8145085c2479b7649aae8f0b744a31978b5c69876421bf94"
+}

@@ -1,0 +1,967 @@
+[kernel] Parsing probe.c (with preprocessing)
+[kernel:parser:decimal-float] probe.c:115: Warning: 
+  Floating-point constant 0.01 is not represented exactly. Will use 0x1.47ae147ae147bp-7.
+  (warn-once: no further messages from category 'parser:decimal-float' will be emitted)
+[wp] Running WP plugin...
+[rte:annot] annotating function first_bound
+[rte:annot] annotating function second_bound
+[rte:annot] annotating function compare_average
+[wp] 45 goals scheduled
+[wp] Proved goals:   47 / 47
+  Terminating:       1
+  Unreachable:       1
+  Qed:              23 (2ms-11ms-73ms)
+  Alt-Ergo 2.6.4:   22 (78ms-548ms-2.1s)
+
+Goal Termination-condition (generated) in 'first_bound':
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Post-condition 'first_range' in 'first_bound':
+Let a = row_0[0].
+Let a_1 = row_0[1].
+Let a_2 = row_0[2].
+Let a_3 = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_4 = to_f64((4150517416584649.0/18446744073709551616)).
+Let r = of_f64(L_heat_euler_fp(a, a_1, a_2, a_3, a_4)).
+Let a_5 = rhs_0[1].
+Let a_6 = mul_f64(a_3, a_5).
+Let a_7 = add_f64(a_1, a_6).
+Let r_1 = of_f64(a_7).
+Let r_2 = of_f64(a_5).
+Let r_3 = of_f64(a).
+Let r_4 = of_f64(a_1).
+Let r_5 = of_f64(a_2).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(a) /\ is_finite_f64(a_1) /\ is_finite_f64(a_2).
+  (* Pre-condition *)
+  Have: (r_3 <= 2.0) /\ (r_4 <= 2.0) /\ (r_5 <= 2.0) /\ (-2.0 <= r_3) /\
+      (-2.0 <= r_4) /\ (-2.0 <= r_5).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_4).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_3).
+  (* Call 'compute_L' *)
+  Have: (((forall i : Z. let r_6 = of_f64(row_0[i]) in ((0 <= i) ->
+           ((i <= 2) -> ((r_6 <= 2.0) /\ (-2.0 <= r_6))))) ->
+         (forall i : Z. let r_6 = of_f64(rhs_0[i]) in ((0 <= i) ->
+          ((i <= 2) -> ((r_6 <= 401.0) /\ (-401.0 <= r_6))))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) -> is_finite_f64(row_0[i])))) /\
+      (forall i : Z. let r_6 = of_f64(row_0[i]) in ((0 <= i) -> ((i <= 2) ->
+       ((r_6 <= 4.0) /\ (-4.0 <= r_6))))) /\
+      (forall i : Z. let a_8 = rhs_0[i] in let r_6 = of_f64(a_8) in
+       ((0 <= i) -> ((i <= 2) ->
+       ((r_6 <= 1601.0) /\ (-1601.0 <= r_6) /\ is_finite_f64(a_8))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) ->
+       (of_f64(L_fw_compute_cell(of_f64(row_0[if (i = 0) then 0 else (i - 1)]),
+                 of_f64(row_0[i]),
+                 of_f64(row_0[if (i = 2) then 2 else (1 + i)]),
+                 (4150517416584649.0/18446744073709551616)))
+          = of_f64(rhs_0[i]))))).
+  (* Assertion 'stencil_range' *)
+  Have: (r_2 <= 401.0) /\ (-401.0 <= r_2).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_6).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'sum_range' *)
+  Have: (r_1 <= 4.0) /\ (-4.0 <= r_1).
+  (* Assertion 'sum_value' *)
+  Have: r = r_1.
+}
+Prove: (r <= 4.0) /\ (-4.0 <= r).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:61ms) (177ms) (283)
+
+------------------------------------------------------------
+
+Goal Exit-condition (generated) in 'first_bound':
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,is_nan_or_infinite' (file probe.c, line 291):
+Let r_1 = of_f64(c).
+Let r_2 = of_f64(l).
+Let r_3 = of_f64(r).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(c) /\ is_finite_f64(l) /\ is_finite_f64(r).
+  (* Pre-condition *)
+  Have: (r_1 <= 2.0) /\ (r_2 <= 2.0) /\ (r_3 <= 2.0) /\ (-2.0 <= r_1) /\
+      (-2.0 <= r_2) /\ (-2.0 <= r_3).
+}
+Prove: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:4ms) (112ms) (249)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,is_nan_or_infinite' (file probe.c, line 292):
+Let r_1 = of_f64(c).
+Let r_2 = of_f64(l).
+Let r_3 = of_f64(r).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(c) /\ is_finite_f64(l) /\ is_finite_f64(r).
+  (* Pre-condition *)
+  Have: (r_1 <= 2.0) /\ (r_2 <= 2.0) /\ (r_3 <= 2.0) /\ (-2.0 <= r_1) /\
+      (-2.0 <= r_2) /\ (-2.0 <= r_3).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+}
+Prove: is_finite_f64(to_f64((5170051590165233.0/1152921504606846976))).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:3ms) (78ms) (253)
+
+------------------------------------------------------------
+
+Goal Assertion 'stencil_range' (file probe.c, line 294):
+Let a = row_0[0].
+Let r = of_f64(a).
+Let a_1 = row_0[1].
+Let r_1 = of_f64(a_1).
+Let a_2 = row_0[2].
+Let r_2 = of_f64(a_2).
+Let r_3 = of_f64(rhs_0[1]).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(a) /\ is_finite_f64(a_1) /\ is_finite_f64(a_2).
+  (* Pre-condition *)
+  Have: (r <= 2.0) /\ (r_1 <= 2.0) /\ (r_2 <= 2.0) /\ (-2.0 <= r) /\
+      (-2.0 <= r_1) /\ (-2.0 <= r_2).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((5170051590165233.0/1152921504606846976))).
+  (* Call 'compute_L' *)
+  Have: (((forall i : Z. let r_4 = of_f64(row_0[i]) in ((0 <= i) ->
+           ((i <= 2) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+         (forall i : Z. let r_4 = of_f64(rhs_0[i]) in ((0 <= i) ->
+          ((i <= 2) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) -> is_finite_f64(row_0[i])))) /\
+      (forall i : Z. let r_4 = of_f64(row_0[i]) in ((0 <= i) -> ((i <= 2) ->
+       ((r_4 <= 4.0) /\ (-4.0 <= r_4))))) /\
+      (forall i : Z. let a_3 = rhs_0[i] in let r_4 = of_f64(a_3) in
+       ((0 <= i) -> ((i <= 2) ->
+       ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_3))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) ->
+       (of_f64(L_fw_compute_cell(of_f64(row_0[if (i = 0) then 0 else (i - 1)]),
+                 of_f64(row_0[i]),
+                 of_f64(row_0[if (i = 2) then 2 else (1 + i)]),
+                 (4150517416584649.0/18446744073709551616)))
+          = of_f64(rhs_0[i]))))).
+}
+Prove: (r_3 <= 401.0) /\ (-401.0 <= r_3).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:18ms) (279ms) (2178)
+
+------------------------------------------------------------
+
+Goal Assertion 'stencil_value' (file probe.c, line 295):
+Prove: true.
+Prover Qed returns Valid (11ms)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,is_nan_or_infinite' (file probe.c, line 296):
+Let a = rhs_0[1].
+Let r = of_f64(a).
+Let a_1 = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_2 = row_0[0].
+Let r_1 = of_f64(a_2).
+Let a_3 = row_0[1].
+Let r_2 = of_f64(a_3).
+Let a_4 = row_0[2].
+Let r_3 = of_f64(a_4).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(a_2) /\ is_finite_f64(a_3) /\ is_finite_f64(a_4).
+  (* Pre-condition *)
+  Have: (r_1 <= 2.0) /\ (r_2 <= 2.0) /\ (r_3 <= 2.0) /\ (-2.0 <= r_1) /\
+      (-2.0 <= r_2) /\ (-2.0 <= r_3).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_1).
+  (* Call 'compute_L' *)
+  Have: (((forall i : Z. let r_4 = of_f64(row_0[i]) in ((0 <= i) ->
+           ((i <= 2) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+         (forall i : Z. let r_4 = of_f64(rhs_0[i]) in ((0 <= i) ->
+          ((i <= 2) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) -> is_finite_f64(row_0[i])))) /\
+      (forall i : Z. let r_4 = of_f64(row_0[i]) in ((0 <= i) -> ((i <= 2) ->
+       ((r_4 <= 4.0) /\ (-4.0 <= r_4))))) /\
+      (forall i : Z. let a_5 = rhs_0[i] in let r_4 = of_f64(a_5) in
+       ((0 <= i) -> ((i <= 2) ->
+       ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_5))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) ->
+       (of_f64(L_fw_compute_cell(of_f64(row_0[if (i = 0) then 0 else (i - 1)]),
+                 of_f64(row_0[i]),
+                 of_f64(row_0[if (i = 2) then 2 else (1 + i)]),
+                 (4150517416584649.0/18446744073709551616)))
+          = of_f64(rhs_0[i]))))).
+  (* Assertion 'stencil_range' *)
+  Have: (r <= 401.0) /\ (-401.0 <= r).
+}
+Prove: is_finite_f64(mul_f64(a_1, a)).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:29ms) (931ms) (4254)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,is_nan_or_infinite' (file probe.c, line 297):
+Let a = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_1 = rhs_0[1].
+Let a_2 = mul_f64(a, a_1).
+Let r = of_f64(a_1).
+Let a_3 = row_0[0].
+Let r_1 = of_f64(a_3).
+Let a_4 = row_0[1].
+Let r_2 = of_f64(a_4).
+Let a_5 = row_0[2].
+Let r_3 = of_f64(a_5).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(a_3) /\ is_finite_f64(a_4) /\ is_finite_f64(a_5).
+  (* Pre-condition *)
+  Have: (r_1 <= 2.0) /\ (r_2 <= 2.0) /\ (r_3 <= 2.0) /\ (-2.0 <= r_1) /\
+      (-2.0 <= r_2) /\ (-2.0 <= r_3).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a).
+  (* Call 'compute_L' *)
+  Have: (((forall i : Z. let r_4 = of_f64(row_0[i]) in ((0 <= i) ->
+           ((i <= 2) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+         (forall i : Z. let r_4 = of_f64(rhs_0[i]) in ((0 <= i) ->
+          ((i <= 2) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) -> is_finite_f64(row_0[i])))) /\
+      (forall i : Z. let r_4 = of_f64(row_0[i]) in ((0 <= i) -> ((i <= 2) ->
+       ((r_4 <= 4.0) /\ (-4.0 <= r_4))))) /\
+      (forall i : Z. let a_6 = rhs_0[i] in let r_4 = of_f64(a_6) in
+       ((0 <= i) -> ((i <= 2) ->
+       ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_6))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) ->
+       (of_f64(L_fw_compute_cell(of_f64(row_0[if (i = 0) then 0 else (i - 1)]),
+                 of_f64(row_0[i]),
+                 of_f64(row_0[if (i = 2) then 2 else (1 + i)]),
+                 (4150517416584649.0/18446744073709551616)))
+          = of_f64(rhs_0[i]))))).
+  (* Assertion 'stencil_range' *)
+  Have: (r <= 401.0) /\ (-401.0 <= r).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_2).
+}
+Prove: is_finite_f64(add_f64(a_4, a_2)).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:73ms) (1.3s) (4571)
+
+------------------------------------------------------------
+
+Goal Assertion 'sum_range' (file probe.c, line 298):
+Let a = row_0[1].
+Let a_1 = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_2 = rhs_0[1].
+Let a_3 = mul_f64(a_1, a_2).
+Let a_4 = add_f64(a, a_3).
+Let r = of_f64(a_2).
+Let a_5 = row_0[0].
+Let r_1 = of_f64(a_5).
+Let r_2 = of_f64(a).
+Let a_6 = row_0[2].
+Let r_3 = of_f64(a_6).
+Let r_4 = of_f64(a_4).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(a_5) /\ is_finite_f64(a) /\ is_finite_f64(a_6).
+  (* Pre-condition *)
+  Have: (r_1 <= 2.0) /\ (r_2 <= 2.0) /\ (r_3 <= 2.0) /\ (-2.0 <= r_1) /\
+      (-2.0 <= r_2) /\ (-2.0 <= r_3).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_1).
+  (* Call 'compute_L' *)
+  Have: (((forall i : Z. let r_5 = of_f64(row_0[i]) in ((0 <= i) ->
+           ((i <= 2) -> ((r_5 <= 2.0) /\ (-2.0 <= r_5))))) ->
+         (forall i : Z. let r_5 = of_f64(rhs_0[i]) in ((0 <= i) ->
+          ((i <= 2) -> ((r_5 <= 401.0) /\ (-401.0 <= r_5))))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) -> is_finite_f64(row_0[i])))) /\
+      (forall i : Z. let r_5 = of_f64(row_0[i]) in ((0 <= i) -> ((i <= 2) ->
+       ((r_5 <= 4.0) /\ (-4.0 <= r_5))))) /\
+      (forall i : Z. let a_7 = rhs_0[i] in let r_5 = of_f64(a_7) in
+       ((0 <= i) -> ((i <= 2) ->
+       ((r_5 <= 1601.0) /\ (-1601.0 <= r_5) /\ is_finite_f64(a_7))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) ->
+       (of_f64(L_fw_compute_cell(of_f64(row_0[if (i = 0) then 0 else (i - 1)]),
+                 of_f64(row_0[i]),
+                 of_f64(row_0[if (i = 2) then 2 else (1 + i)]),
+                 (4150517416584649.0/18446744073709551616)))
+          = of_f64(rhs_0[i]))))).
+  (* Assertion 'stencil_range' *)
+  Have: (r <= 401.0) /\ (-401.0 <= r).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_3).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_4).
+}
+Prove: (r_4 <= 4.0) /\ (-4.0 <= r_4).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:29ms) (591ms) (3902)
+
+------------------------------------------------------------
+
+Goal Assertion 'sum_value' (file probe.c, line 299):
+Let a = row_0[1].
+Let a_1 = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_2 = rhs_0[1].
+Let a_3 = mul_f64(a_1, a_2).
+Let a_4 = add_f64(a, a_3).
+Let r = of_f64(a_4).
+Let r_1 = of_f64(a_2).
+Let a_5 = to_f64((4150517416584649.0/18446744073709551616)).
+Let a_6 = row_0[0].
+Let r_2 = of_f64(a_6).
+Let r_3 = of_f64(a).
+Let a_7 = row_0[2].
+Let r_4 = of_f64(a_7).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(a_6) /\ is_finite_f64(a) /\ is_finite_f64(a_7).
+  (* Pre-condition *)
+  Have: (r_2 <= 2.0) /\ (r_3 <= 2.0) /\ (r_4 <= 2.0) /\ (-2.0 <= r_2) /\
+      (-2.0 <= r_3) /\ (-2.0 <= r_4).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_5).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_1).
+  (* Call 'compute_L' *)
+  Have: (((forall i : Z. let r_5 = of_f64(row_0[i]) in ((0 <= i) ->
+           ((i <= 2) -> ((r_5 <= 2.0) /\ (-2.0 <= r_5))))) ->
+         (forall i : Z. let r_5 = of_f64(rhs_0[i]) in ((0 <= i) ->
+          ((i <= 2) -> ((r_5 <= 401.0) /\ (-401.0 <= r_5))))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) -> is_finite_f64(row_0[i])))) /\
+      (forall i : Z. let r_5 = of_f64(row_0[i]) in ((0 <= i) -> ((i <= 2) ->
+       ((r_5 <= 4.0) /\ (-4.0 <= r_5))))) /\
+      (forall i : Z. let a_8 = rhs_0[i] in let r_5 = of_f64(a_8) in
+       ((0 <= i) -> ((i <= 2) ->
+       ((r_5 <= 1601.0) /\ (-1601.0 <= r_5) /\ is_finite_f64(a_8))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) ->
+       (of_f64(L_fw_compute_cell(of_f64(row_0[if (i = 0) then 0 else (i - 1)]),
+                 of_f64(row_0[i]),
+                 of_f64(row_0[if (i = 2) then 2 else (1 + i)]),
+                 (4150517416584649.0/18446744073709551616)))
+          = of_f64(rhs_0[i]))))).
+  (* Assertion 'stencil_range' *)
+  Have: (r_1 <= 401.0) /\ (-401.0 <= r_1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_3).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_4).
+  (* Assertion 'sum_range' *)
+  Have: (r <= 4.0) /\ (-4.0 <= r).
+}
+Prove: of_f64(L_heat_euler_fp(a_6, a, a_7, a_1, a_5)) = r.
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:49ms) (1.3s) (6119)
+
+------------------------------------------------------------
+
+Goal Assigns nothing in 'first_bound':
+Call Effect at line 293
+Prove: true.
+Prover Qed returns Valid (5ms)
+
+------------------------------------------------------------
+
+Goal Assigns nothing in 'first_bound':
+Call Effect at line 293
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 72) in 'compute_L'' in 'first_bound' at call 'compute_L' (file probe.c, line 293)
+:
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 73) in 'compute_L'' in 'first_bound' at call 'compute_L' (file probe.c, line 293)
+:
+Prove: true.
+Prover Qed returns Valid (2ms)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 74) in 'compute_L'' in 'first_bound' at call 'compute_L' (file probe.c, line 293)
+:
+Prove: true.
+Prover Qed returns Valid (2ms)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 75) in 'compute_L'' in 'first_bound' at call 'compute_L' (file probe.c, line 293)
+:
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 76) in 'compute_L'' in 'first_bound' at call 'compute_L' (file probe.c, line 293)
+:
+Prove: true.
+Prover Qed returns Valid (2ms)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 77) in 'compute_L'' in 'first_bound' at call 'compute_L' (file probe.c, line 293)
+:
+Let a = row_0[0].
+Let r = of_f64(a).
+Let a_1 = row_0[1].
+Let r_1 = of_f64(a_1).
+Let a_2 = row_0[2].
+Let r_2 = of_f64(a_2).
+Assume {
+  (* Goal *)
+  When: (0 <= i) /\ (i <= 2).
+  (* Pre-condition *)
+  Have: is_finite_f64(a) /\ is_finite_f64(a_1) /\ is_finite_f64(a_2).
+  (* Pre-condition *)
+  Have: (r <= 2.0) /\ (r_1 <= 2.0) /\ (r_2 <= 2.0) /\ (-2.0 <= r) /\
+      (-2.0 <= r_1) /\ (-2.0 <= r_2).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((5170051590165233.0/1152921504606846976))).
+}
+Prove: is_finite_f64(row_0[i]).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:8ms) (83ms) (271)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 78) in 'compute_L'' in 'first_bound' at call 'compute_L' (file probe.c, line 293)
+:
+Prove: true.
+Prover Qed returns Valid (3ms)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 79) in 'compute_L'' in 'first_bound' at call 'compute_L' (file probe.c, line 293)
+:
+Let a = row_0[0].
+Let r = of_f64(a).
+Let a_1 = row_0[1].
+Let r_1 = of_f64(a_1).
+Let a_2 = row_0[2].
+Let r_2 = of_f64(a_2).
+Let r_3 = of_f64(row_0[i]).
+Assume {
+  (* Goal *)
+  When: (0 <= i) /\ (i <= 2).
+  (* Pre-condition *)
+  Have: is_finite_f64(a) /\ is_finite_f64(a_1) /\ is_finite_f64(a_2).
+  (* Pre-condition *)
+  Have: (r <= 2.0) /\ (r_1 <= 2.0) /\ (r_2 <= 2.0) /\ (-2.0 <= r) /\
+      (-2.0 <= r_1) /\ (-2.0 <= r_2).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((5170051590165233.0/1152921504606846976))).
+}
+Prove: (r_3 <= 4.0) /\ (-4.0 <= r_3).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:5ms) (97ms) (289)
+
+------------------------------------------------------------
+
+Goal Termination-condition (generated) in 'second_bound':
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Post-condition 'second_range' in 'second_bound':
+Let a = row_0[0].
+Let a_1 = row_0[1].
+Let a_2 = row_0[2].
+Let a_3 = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_4 = to_f64((4150517416584649.0/18446744073709551616)).
+Let r = of_f64(L_heat_euler_fp(a, a_1, a_2, a_3, a_4)).
+Let a_5 = rhs_0[1].
+Let a_6 = mul_f64(a_3, a_5).
+Let a_7 = add_f64(a_1, a_6).
+Let r_1 = of_f64(a_7).
+Let r_2 = of_f64(a_5).
+Let r_3 = of_f64(a).
+Let r_4 = of_f64(a_1).
+Let r_5 = of_f64(a_2).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(a) /\ is_finite_f64(a_1) /\ is_finite_f64(a_2).
+  (* Pre-condition *)
+  Have: (r_3 <= 4.0) /\ (r_4 <= 4.0) /\ (r_5 <= 4.0) /\ (-4.0 <= r_3) /\
+      (-4.0 <= r_4) /\ (-4.0 <= r_5).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_4).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_3).
+  (* Call 'compute_L' *)
+  Have: (((forall i : Z. let r_6 = of_f64(row_0[i]) in ((0 <= i) ->
+           ((i <= 2) -> ((r_6 <= 2.0) /\ (-2.0 <= r_6))))) ->
+         (forall i : Z. let r_6 = of_f64(rhs_0[i]) in ((0 <= i) ->
+          ((i <= 2) -> ((r_6 <= 401.0) /\ (-401.0 <= r_6))))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) -> is_finite_f64(row_0[i])))) /\
+      (forall i : Z. let r_6 = of_f64(row_0[i]) in ((0 <= i) -> ((i <= 2) ->
+       ((r_6 <= 4.0) /\ (-4.0 <= r_6))))) /\
+      (forall i : Z. let a_8 = rhs_0[i] in let r_6 = of_f64(a_8) in
+       ((0 <= i) -> ((i <= 2) ->
+       ((r_6 <= 1601.0) /\ (-1601.0 <= r_6) /\ is_finite_f64(a_8))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) ->
+       (of_f64(L_fw_compute_cell(of_f64(row_0[if (i = 0) then 0 else (i - 1)]),
+                 of_f64(row_0[i]),
+                 of_f64(row_0[if (i = 2) then 2 else (1 + i)]),
+                 (4150517416584649.0/18446744073709551616)))
+          = of_f64(rhs_0[i]))))).
+  (* Assertion 'stencil_range' *)
+  Have: (r_2 <= 1601.0) /\ (-1601.0 <= r_2).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_6).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'sum_range' *)
+  Have: (r_1 <= 12.0) /\ (-12.0 <= r_1).
+  (* Assertion 'sum_value' *)
+  Have: r = r_1.
+}
+Prove: (r <= 12.0) /\ (-12.0 <= r).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:34ms) (92ms) (283)
+
+------------------------------------------------------------
+
+Goal Exit-condition (generated) in 'second_bound':
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,is_nan_or_infinite' (file probe.c, line 311):
+Let r_1 = of_f64(c).
+Let r_2 = of_f64(l).
+Let r_3 = of_f64(r).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(c) /\ is_finite_f64(l) /\ is_finite_f64(r).
+  (* Pre-condition *)
+  Have: (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (r_3 <= 4.0) /\ (-4.0 <= r_1) /\
+      (-4.0 <= r_2) /\ (-4.0 <= r_3).
+}
+Prove: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:3ms) (106ms) (249)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,is_nan_or_infinite' (file probe.c, line 312):
+Let r_1 = of_f64(c).
+Let r_2 = of_f64(l).
+Let r_3 = of_f64(r).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(c) /\ is_finite_f64(l) /\ is_finite_f64(r).
+  (* Pre-condition *)
+  Have: (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (r_3 <= 4.0) /\ (-4.0 <= r_1) /\
+      (-4.0 <= r_2) /\ (-4.0 <= r_3).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+}
+Prove: is_finite_f64(to_f64((5170051590165233.0/1152921504606846976))).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:3ms) (89ms) (253)
+
+------------------------------------------------------------
+
+Goal Assertion 'stencil_range' (file probe.c, line 314):
+Let a = row_0[0].
+Let r = of_f64(a).
+Let a_1 = row_0[1].
+Let r_1 = of_f64(a_1).
+Let a_2 = row_0[2].
+Let r_2 = of_f64(a_2).
+Let r_3 = of_f64(rhs_0[1]).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(a) /\ is_finite_f64(a_1) /\ is_finite_f64(a_2).
+  (* Pre-condition *)
+  Have: (r <= 4.0) /\ (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (-4.0 <= r) /\
+      (-4.0 <= r_1) /\ (-4.0 <= r_2).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((5170051590165233.0/1152921504606846976))).
+  (* Call 'compute_L' *)
+  Have: (((forall i : Z. let r_4 = of_f64(row_0[i]) in ((0 <= i) ->
+           ((i <= 2) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+         (forall i : Z. let r_4 = of_f64(rhs_0[i]) in ((0 <= i) ->
+          ((i <= 2) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) -> is_finite_f64(row_0[i])))) /\
+      (forall i : Z. let r_4 = of_f64(row_0[i]) in ((0 <= i) -> ((i <= 2) ->
+       ((r_4 <= 4.0) /\ (-4.0 <= r_4))))) /\
+      (forall i : Z. let a_3 = rhs_0[i] in let r_4 = of_f64(a_3) in
+       ((0 <= i) -> ((i <= 2) ->
+       ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_3))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) ->
+       (of_f64(L_fw_compute_cell(of_f64(row_0[if (i = 0) then 0 else (i - 1)]),
+                 of_f64(row_0[i]),
+                 of_f64(row_0[if (i = 2) then 2 else (1 + i)]),
+                 (4150517416584649.0/18446744073709551616)))
+          = of_f64(rhs_0[i]))))).
+}
+Prove: (r_3 <= 1601.0) /\ (-1601.0 <= r_3).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:20ms) (229ms) (1526)
+
+------------------------------------------------------------
+
+Goal Assertion 'stencil_value' (file probe.c, line 315):
+Prove: true.
+Prover Qed returns Valid (11ms)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,is_nan_or_infinite' (file probe.c, line 316):
+Let a = rhs_0[1].
+Let r = of_f64(a).
+Let a_1 = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_2 = row_0[0].
+Let r_1 = of_f64(a_2).
+Let a_3 = row_0[1].
+Let r_2 = of_f64(a_3).
+Let a_4 = row_0[2].
+Let r_3 = of_f64(a_4).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(a_2) /\ is_finite_f64(a_3) /\ is_finite_f64(a_4).
+  (* Pre-condition *)
+  Have: (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (r_3 <= 4.0) /\ (-4.0 <= r_1) /\
+      (-4.0 <= r_2) /\ (-4.0 <= r_3).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_1).
+  (* Call 'compute_L' *)
+  Have: (((forall i : Z. let r_4 = of_f64(row_0[i]) in ((0 <= i) ->
+           ((i <= 2) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+         (forall i : Z. let r_4 = of_f64(rhs_0[i]) in ((0 <= i) ->
+          ((i <= 2) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) -> is_finite_f64(row_0[i])))) /\
+      (forall i : Z. let r_4 = of_f64(row_0[i]) in ((0 <= i) -> ((i <= 2) ->
+       ((r_4 <= 4.0) /\ (-4.0 <= r_4))))) /\
+      (forall i : Z. let a_5 = rhs_0[i] in let r_4 = of_f64(a_5) in
+       ((0 <= i) -> ((i <= 2) ->
+       ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_5))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) ->
+       (of_f64(L_fw_compute_cell(of_f64(row_0[if (i = 0) then 0 else (i - 1)]),
+                 of_f64(row_0[i]),
+                 of_f64(row_0[if (i = 2) then 2 else (1 + i)]),
+                 (4150517416584649.0/18446744073709551616)))
+          = of_f64(rhs_0[i]))))).
+  (* Assertion 'stencil_range' *)
+  Have: (r <= 1601.0) /\ (-1601.0 <= r).
+}
+Prove: is_finite_f64(mul_f64(a_1, a)).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:39ms) (672ms) (3924)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,is_nan_or_infinite' (file probe.c, line 317):
+Let a = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_1 = rhs_0[1].
+Let a_2 = mul_f64(a, a_1).
+Let r = of_f64(a_1).
+Let a_3 = row_0[0].
+Let r_1 = of_f64(a_3).
+Let a_4 = row_0[1].
+Let r_2 = of_f64(a_4).
+Let a_5 = row_0[2].
+Let r_3 = of_f64(a_5).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(a_3) /\ is_finite_f64(a_4) /\ is_finite_f64(a_5).
+  (* Pre-condition *)
+  Have: (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (r_3 <= 4.0) /\ (-4.0 <= r_1) /\
+      (-4.0 <= r_2) /\ (-4.0 <= r_3).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a).
+  (* Call 'compute_L' *)
+  Have: (((forall i : Z. let r_4 = of_f64(row_0[i]) in ((0 <= i) ->
+           ((i <= 2) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+         (forall i : Z. let r_4 = of_f64(rhs_0[i]) in ((0 <= i) ->
+          ((i <= 2) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) -> is_finite_f64(row_0[i])))) /\
+      (forall i : Z. let r_4 = of_f64(row_0[i]) in ((0 <= i) -> ((i <= 2) ->
+       ((r_4 <= 4.0) /\ (-4.0 <= r_4))))) /\
+      (forall i : Z. let a_6 = rhs_0[i] in let r_4 = of_f64(a_6) in
+       ((0 <= i) -> ((i <= 2) ->
+       ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_6))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) ->
+       (of_f64(L_fw_compute_cell(of_f64(row_0[if (i = 0) then 0 else (i - 1)]),
+                 of_f64(row_0[i]),
+                 of_f64(row_0[if (i = 2) then 2 else (1 + i)]),
+                 (4150517416584649.0/18446744073709551616)))
+          = of_f64(rhs_0[i]))))).
+  (* Assertion 'stencil_range' *)
+  Have: (r <= 1601.0) /\ (-1601.0 <= r).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_2).
+}
+Prove: is_finite_f64(add_f64(a_4, a_2)).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:45ms) (929ms) (4337)
+
+------------------------------------------------------------
+
+Goal Assertion 'sum_range' (file probe.c, line 318):
+Let a = row_0[1].
+Let a_1 = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_2 = rhs_0[1].
+Let a_3 = mul_f64(a_1, a_2).
+Let a_4 = add_f64(a, a_3).
+Let r = of_f64(a_2).
+Let a_5 = row_0[0].
+Let r_1 = of_f64(a_5).
+Let r_2 = of_f64(a).
+Let a_6 = row_0[2].
+Let r_3 = of_f64(a_6).
+Let r_4 = of_f64(a_4).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(a_5) /\ is_finite_f64(a) /\ is_finite_f64(a_6).
+  (* Pre-condition *)
+  Have: (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (r_3 <= 4.0) /\ (-4.0 <= r_1) /\
+      (-4.0 <= r_2) /\ (-4.0 <= r_3).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_1).
+  (* Call 'compute_L' *)
+  Have: (((forall i : Z. let r_5 = of_f64(row_0[i]) in ((0 <= i) ->
+           ((i <= 2) -> ((r_5 <= 2.0) /\ (-2.0 <= r_5))))) ->
+         (forall i : Z. let r_5 = of_f64(rhs_0[i]) in ((0 <= i) ->
+          ((i <= 2) -> ((r_5 <= 401.0) /\ (-401.0 <= r_5))))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) -> is_finite_f64(row_0[i])))) /\
+      (forall i : Z. let r_5 = of_f64(row_0[i]) in ((0 <= i) -> ((i <= 2) ->
+       ((r_5 <= 4.0) /\ (-4.0 <= r_5))))) /\
+      (forall i : Z. let a_7 = rhs_0[i] in let r_5 = of_f64(a_7) in
+       ((0 <= i) -> ((i <= 2) ->
+       ((r_5 <= 1601.0) /\ (-1601.0 <= r_5) /\ is_finite_f64(a_7))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) ->
+       (of_f64(L_fw_compute_cell(of_f64(row_0[if (i = 0) then 0 else (i - 1)]),
+                 of_f64(row_0[i]),
+                 of_f64(row_0[if (i = 2) then 2 else (1 + i)]),
+                 (4150517416584649.0/18446744073709551616)))
+          = of_f64(rhs_0[i]))))).
+  (* Assertion 'stencil_range' *)
+  Have: (r <= 1601.0) /\ (-1601.0 <= r).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_3).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_4).
+}
+Prove: (r_4 <= 12.0) /\ (-12.0 <= r_4).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:45ms) (763ms) (3869)
+
+------------------------------------------------------------
+
+Goal Assertion 'sum_value' (file probe.c, line 319):
+Let a = row_0[1].
+Let a_1 = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_2 = rhs_0[1].
+Let a_3 = mul_f64(a_1, a_2).
+Let a_4 = add_f64(a, a_3).
+Let r = of_f64(a_4).
+Let r_1 = of_f64(a_2).
+Let a_5 = to_f64((4150517416584649.0/18446744073709551616)).
+Let a_6 = row_0[0].
+Let r_2 = of_f64(a_6).
+Let r_3 = of_f64(a).
+Let a_7 = row_0[2].
+Let r_4 = of_f64(a_7).
+Assume {
+  (* Pre-condition *)
+  Have: is_finite_f64(a_6) /\ is_finite_f64(a) /\ is_finite_f64(a_7).
+  (* Pre-condition *)
+  Have: (r_2 <= 4.0) /\ (r_3 <= 4.0) /\ (r_4 <= 4.0) /\ (-4.0 <= r_2) /\
+      (-4.0 <= r_3) /\ (-4.0 <= r_4).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_5).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_1).
+  (* Call 'compute_L' *)
+  Have: (((forall i : Z. let r_5 = of_f64(row_0[i]) in ((0 <= i) ->
+           ((i <= 2) -> ((r_5 <= 2.0) /\ (-2.0 <= r_5))))) ->
+         (forall i : Z. let r_5 = of_f64(rhs_0[i]) in ((0 <= i) ->
+          ((i <= 2) -> ((r_5 <= 401.0) /\ (-401.0 <= r_5))))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) -> is_finite_f64(row_0[i])))) /\
+      (forall i : Z. let r_5 = of_f64(row_0[i]) in ((0 <= i) -> ((i <= 2) ->
+       ((r_5 <= 4.0) /\ (-4.0 <= r_5))))) /\
+      (forall i : Z. let a_8 = rhs_0[i] in let r_5 = of_f64(a_8) in
+       ((0 <= i) -> ((i <= 2) ->
+       ((r_5 <= 1601.0) /\ (-1601.0 <= r_5) /\ is_finite_f64(a_8))))) /\
+      (forall i : Z. ((0 <= i) -> ((i <= 2) ->
+       (of_f64(L_fw_compute_cell(of_f64(row_0[if (i = 0) then 0 else (i - 1)]),
+                 of_f64(row_0[i]),
+                 of_f64(row_0[if (i = 2) then 2 else (1 + i)]),
+                 (4150517416584649.0/18446744073709551616)))
+          = of_f64(rhs_0[i]))))).
+  (* Assertion 'stencil_range' *)
+  Have: (r_1 <= 1601.0) /\ (-1601.0 <= r_1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_3).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_4).
+  (* Assertion 'sum_range' *)
+  Have: (r <= 12.0) /\ (-12.0 <= r).
+}
+Prove: of_f64(L_heat_euler_fp(a_6, a, a_7, a_1, a_5)) = r.
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:34ms) (1.4s) (6242)
+
+------------------------------------------------------------
+
+Goal Assigns nothing in 'second_bound':
+Call Effect at line 313
+Prove: true.
+Prover Qed returns Valid (5ms)
+
+------------------------------------------------------------
+
+Goal Assigns nothing in 'second_bound':
+Call Effect at line 313
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 72) in 'compute_L'' in 'second_bound' at call 'compute_L' (file probe.c, line 313)
+:
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 73) in 'compute_L'' in 'second_bound' at call 'compute_L' (file probe.c, line 313)
+:
+Prove: true.
+Prover Qed returns Valid (3ms)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 74) in 'compute_L'' in 'second_bound' at call 'compute_L' (file probe.c, line 313)
+:
+Prove: true.
+Prover Qed returns Valid (2ms)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 75) in 'compute_L'' in 'second_bound' at call 'compute_L' (file probe.c, line 313)
+:
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 76) in 'compute_L'' in 'second_bound' at call 'compute_L' (file probe.c, line 313)
+:
+Prove: true.
+Prover Qed returns Valid (2ms)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 77) in 'compute_L'' in 'second_bound' at call 'compute_L' (file probe.c, line 313)
+:
+Let a = row_0[0].
+Let r = of_f64(a).
+Let a_1 = row_0[1].
+Let r_1 = of_f64(a_1).
+Let a_2 = row_0[2].
+Let r_2 = of_f64(a_2).
+Assume {
+  (* Goal *)
+  When: (0 <= i) /\ (i <= 2).
+  (* Pre-condition *)
+  Have: is_finite_f64(a) /\ is_finite_f64(a_1) /\ is_finite_f64(a_2).
+  (* Pre-condition *)
+  Have: (r <= 4.0) /\ (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (-4.0 <= r) /\
+      (-4.0 <= r_1) /\ (-4.0 <= r_2).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((5170051590165233.0/1152921504606846976))).
+}
+Prove: is_finite_f64(row_0[i]).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:4ms) (78ms) (271)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 78) in 'compute_L'' in 'second_bound' at call 'compute_L' (file probe.c, line 313)
+:
+Prove: true.
+Prover Qed returns Valid (2ms)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 79) in 'compute_L'' in 'second_bound' at call 'compute_L' (file probe.c, line 313)
+:
+Let a = row_0[0].
+Let r = of_f64(a).
+Let a_1 = row_0[1].
+Let r_1 = of_f64(a_1).
+Let a_2 = row_0[2].
+Let r_2 = of_f64(a_2).
+Let r_3 = of_f64(row_0[i]).
+Assume {
+  (* Goal *)
+  When: (0 <= i) /\ (i <= 2).
+  (* Pre-condition *)
+  Have: is_finite_f64(a) /\ is_finite_f64(a_1) /\ is_finite_f64(a_2).
+  (* Pre-condition *)
+  Have: (r <= 4.0) /\ (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (-4.0 <= r) /\
+      (-4.0 <= r_1) /\ (-4.0 <= r_2).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((4150517416584649.0/18446744073709551616))).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(to_f64((5170051590165233.0/1152921504606846976))).
+}
+Prove: (r_3 <= 4.0) /\ (-4.0 <= r_3).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:5ms) (80ms) (287)
+
+------------------------------------------------------------
+
+Goal Post-condition 'decoded_average' in 'compare_average':
+Let r = of_f64(c).
+Let r_1 = of_f64(t).
+Assume {
+  (* Pre-condition *)
+  Have: (r <= 2.0) /\ (r_1 <= 12.0) /\ (-2.0 <= r) /\ (-12.0 <= r_1) /\
+      is_finite_f64(c) /\ is_finite_f64(t).
+}
+Prove: L_R(L_R((1.0/2) * r) + L_R((1.0/2) * r_1))
+         = of_f64(L_c5_average(c, t)).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:2ms) (2.1s) (9315)
+
+------------------------------------------------------------
+
+Goal Post-condition 'finite_average' in 'compare_average':
+Let r = of_f64(c).
+Let r_1 = of_f64(t).
+Assume {
+  (* Pre-condition *)
+  Have: (r <= 2.0) /\ (r_1 <= 12.0) /\ (-2.0 <= r) /\ (-12.0 <= r_1) /\
+      is_finite_f64(c) /\ is_finite_f64(t).
+}
+Prove: is_finite_f64(L_c5_average(c, t)).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:2ms) (479ms) (3405)
+
+------------------------------------------------------------
+
+Goal Assigns nothing in 'compare_average':
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------

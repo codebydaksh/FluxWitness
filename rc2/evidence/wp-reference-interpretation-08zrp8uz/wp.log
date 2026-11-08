@@ -1,0 +1,527 @@
+[kernel] Parsing probe.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function compare_update
+[wp] 8 goals scheduled
+[wp] Proved goals:   10 / 10
+  Terminating:       1
+  Unreachable:       1
+  Qed:               1 (11ms-14ms-22ms)
+  Alt-Ergo 2.6.4:    7 (255ms-3.5s-9s)
+
+Goal Post-condition 'decoded_update' in 'compare_update':
+Let x = L_heat_left(j).
+Let a = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_1 = to_f64((4150517416584649.0/18446744073709551616)).
+Let a_2 = L_ref_stage(k, x, a, a_1).
+Let a_3 = L_ref_stage(k, j, a, a_1).
+Let x_1 = L_heat_right(j, 400).
+Let a_4 = L_ref_stage(k, x_1, a, a_1).
+Let a_5 = L_heat_euler_fp(a_2, a_3, a_4, a, a_1).
+Let a_6 = L_c5_average(L_ref_cell(k, j), a_5).
+Let r = L_c5_update(k, j, (5170051590165233.0/1152921504606846976)).
+Let r_1 = of_f64(a_5).
+Let r_2 = L_c5_s(k, x, (5170051590165233.0/1152921504606846976)).
+Let r_3 = L_c5_s(k, j, (5170051590165233.0/1152921504606846976)).
+Let r_4 = L_c5_s(k, x_1, (5170051590165233.0/1152921504606846976)).
+Let r_5 = of_f64(a_4).
+Let r_6 = of_f64(a_3).
+Let r_7 = of_f64(a_2).
+Assume {
+  Type: is_sint32(j) /\ is_sint32(k).
+  (* Pre-condition 'imported_decoded_average' *)
+  Have: forall f_1,f : f64. let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in
+      ((r_8 <= 2.0) -> ((r_9 <= 12.0) -> ((-2.0 <= r_8) -> ((-12.0 <= r_9) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      (L_R(L_R((1.0/2) * r_9) + L_R((1.0/2) * r_8))
+         = of_f64(L_c5_average(f_1, f))))))))).
+  (* Pre-condition 'imported_finite_average' *)
+  Have: forall f_1,f : f64. let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in
+      ((r_8 <= 2.0) -> ((r_9 <= 12.0) -> ((-2.0 <= r_8) -> ((-12.0 <= r_9) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      is_finite_f64(L_c5_average(f_1, f)))))))).
+  (* Pre-condition *)
+  Have: (0 <= j) /\ (0 <= k) /\ (k <= 222) /\ (j <= 399).
+  (* Pre-condition *)
+  Have: forall i : Z. let r_8 = L_c5_u(k, i) in ((0 <= i) -> ((i <= 399) ->
+      ((r_8 <= 2.0) /\ (-2.0 <= r_8) /\ is_finite_f64(L_ref_cell(k, i))))).
+  (* Pre-condition *)
+  Have: (forall f_2,f_1,f : f64. let r_8 = of_f64(f_2) in
+         let r_9 = of_f64(f_1) in let r_10 = of_f64(f) in ((r_8 <= 4.0) ->
+         ((r_9 <= 4.0) -> ((r_10 <= 4.0) -> ((-4.0 <= r_8) ->
+         ((-4.0 <= r_9) -> ((-4.0 <= r_10) -> (is_finite_f64(f_2) ->
+         (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+         is_finite_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_8 = of_f64(f_2) in
+       let r_9 = of_f64(f_1) in let r_10 = of_f64(f) in ((r_8 <= 4.0) ->
+       ((r_9 <= 4.0) -> ((r_10 <= 4.0) -> ((-4.0 <= r_8) -> ((-4.0 <= r_9) ->
+       ((-4.0 <= r_10) -> (is_finite_f64(f_2) -> (is_finite_f64(f_1) ->
+       (is_finite_f64(f) ->
+       (of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1))
+          = L_c5_e(r_8, r_9, r_10, (5170051590165233.0/1152921504606846976))))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_8 = of_f64(f_2) in
+       let r_9 = of_f64(f_1) in let r_10 = of_f64(f) in
+       let r_11 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_8 <= 2.0) -> ((r_9 <= 2.0) -> ((r_10 <= 2.0) -> ((-2.0 <= r_8) ->
+       ((-2.0 <= r_9) -> ((-2.0 <= r_10) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_11 <= 4.0) /\ (-4.0 <= r_11)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_8 = of_f64(f_2) in
+       let r_9 = of_f64(f_1) in let r_10 = of_f64(f) in
+       let r_11 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_8 <= 4.0) -> ((r_9 <= 4.0) -> ((r_10 <= 4.0) -> ((-4.0 <= r_8) ->
+       ((-4.0 <= r_9) -> ((-4.0 <= r_10) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_11 <= 12.0) /\ (-12.0 <= r_11)))))))))))).
+  (* Assertion 'stage_left' *)
+  Have: (r_7 = r_2) /\ (r_7 <= 4.0) /\ (-4.0 <= r_7) /\ is_finite_f64(a_2).
+  (* Assertion 'stage_center' *)
+  Have: (r_6 = r_3) /\ (r_6 <= 4.0) /\ (-4.0 <= r_6) /\ is_finite_f64(a_3).
+  (* Assertion 'stage_right' *)
+  Have: (r_5 = r_4) /\ (r_5 <= 4.0) /\ (-4.0 <= r_5) /\ is_finite_f64(a_4).
+  (* Assertion 'second_stage' *)
+  Have: (r_1
+           = L_c5_e(r_2, r_3, r_4, (5170051590165233.0/1152921504606846976))) /\
+      (r_1 <= 12.0) /\ (-12.0 <= r_1) /\ is_finite_f64(a_5).
+  (* Assertion 'combination' *)
+  Have: (of_f64(a_6) = r) /\ is_finite_f64(a_6).
+}
+Prove: of_f64(L_ref_update(k, j, a, a_1)) = r.
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:22ms) (553ms) (1466)
+
+------------------------------------------------------------
+
+Goal Post-condition 'finite_update' in 'compare_update':
+Let x = L_heat_left(j).
+Let a = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_1 = to_f64((4150517416584649.0/18446744073709551616)).
+Let a_2 = L_ref_stage(k, x, a, a_1).
+Let a_3 = L_ref_stage(k, j, a, a_1).
+Let x_1 = L_heat_right(j, 400).
+Let a_4 = L_ref_stage(k, x_1, a, a_1).
+Let a_5 = L_heat_euler_fp(a_2, a_3, a_4, a, a_1).
+Let a_6 = L_c5_average(L_ref_cell(k, j), a_5).
+Let r = of_f64(a_5).
+Let r_1 = L_c5_s(k, x, (5170051590165233.0/1152921504606846976)).
+Let r_2 = L_c5_s(k, j, (5170051590165233.0/1152921504606846976)).
+Let r_3 = L_c5_s(k, x_1, (5170051590165233.0/1152921504606846976)).
+Let r_4 = of_f64(a_4).
+Let r_5 = of_f64(a_3).
+Let r_6 = of_f64(a_2).
+Assume {
+  Type: is_sint32(j) /\ is_sint32(k).
+  (* Pre-condition 'imported_decoded_average' *)
+  Have: forall f_1,f : f64. let r_7 = of_f64(f_1) in let r_8 = of_f64(f) in
+      ((r_7 <= 2.0) -> ((r_8 <= 12.0) -> ((-2.0 <= r_7) -> ((-12.0 <= r_8) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      (L_R(L_R((1.0/2) * r_8) + L_R((1.0/2) * r_7))
+         = of_f64(L_c5_average(f_1, f))))))))).
+  (* Pre-condition 'imported_finite_average' *)
+  Have: forall f_1,f : f64. let r_7 = of_f64(f_1) in let r_8 = of_f64(f) in
+      ((r_7 <= 2.0) -> ((r_8 <= 12.0) -> ((-2.0 <= r_7) -> ((-12.0 <= r_8) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      is_finite_f64(L_c5_average(f_1, f)))))))).
+  (* Pre-condition *)
+  Have: (0 <= j) /\ (0 <= k) /\ (k <= 222) /\ (j <= 399).
+  (* Pre-condition *)
+  Have: forall i : Z. let r_7 = L_c5_u(k, i) in ((0 <= i) -> ((i <= 399) ->
+      ((r_7 <= 2.0) /\ (-2.0 <= r_7) /\ is_finite_f64(L_ref_cell(k, i))))).
+  (* Pre-condition *)
+  Have: (forall f_2,f_1,f : f64. let r_7 = of_f64(f_2) in
+         let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in ((r_7 <= 4.0) ->
+         ((r_8 <= 4.0) -> ((r_9 <= 4.0) -> ((-4.0 <= r_7) ->
+         ((-4.0 <= r_8) -> ((-4.0 <= r_9) -> (is_finite_f64(f_2) ->
+         (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+         is_finite_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_7 = of_f64(f_2) in
+       let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in ((r_7 <= 4.0) ->
+       ((r_8 <= 4.0) -> ((r_9 <= 4.0) -> ((-4.0 <= r_7) -> ((-4.0 <= r_8) ->
+       ((-4.0 <= r_9) -> (is_finite_f64(f_2) -> (is_finite_f64(f_1) ->
+       (is_finite_f64(f) ->
+       (of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1))
+          = L_c5_e(r_7, r_8, r_9, (5170051590165233.0/1152921504606846976))))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_7 = of_f64(f_2) in
+       let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in
+       let r_10 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_7 <= 2.0) -> ((r_8 <= 2.0) -> ((r_9 <= 2.0) -> ((-2.0 <= r_7) ->
+       ((-2.0 <= r_8) -> ((-2.0 <= r_9) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_10 <= 4.0) /\ (-4.0 <= r_10)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_7 = of_f64(f_2) in
+       let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in
+       let r_10 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_7 <= 4.0) -> ((r_8 <= 4.0) -> ((r_9 <= 4.0) -> ((-4.0 <= r_7) ->
+       ((-4.0 <= r_8) -> ((-4.0 <= r_9) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_10 <= 12.0) /\ (-12.0 <= r_10)))))))))))).
+  (* Assertion 'stage_left' *)
+  Have: (r_6 = r_1) /\ (r_6 <= 4.0) /\ (-4.0 <= r_6) /\ is_finite_f64(a_2).
+  (* Assertion 'stage_center' *)
+  Have: (r_5 = r_2) /\ (r_5 <= 4.0) /\ (-4.0 <= r_5) /\ is_finite_f64(a_3).
+  (* Assertion 'stage_right' *)
+  Have: (r_4 = r_3) /\ (r_4 <= 4.0) /\ (-4.0 <= r_4) /\ is_finite_f64(a_4).
+  (* Assertion 'second_stage' *)
+  Have: (r = L_c5_e(r_1, r_2, r_3, (5170051590165233.0/1152921504606846976))) /\
+      (r <= 12.0) /\ (-12.0 <= r) /\ is_finite_f64(a_5).
+  (* Assertion 'combination' *)
+  Have: (of_f64(a_6)
+           = L_c5_update(k, j, (5170051590165233.0/1152921504606846976))) /\
+      is_finite_f64(a_6).
+}
+Prove: is_finite_f64(L_ref_update(k, j, a, a_1)).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:16ms) (255ms) (1466)
+
+------------------------------------------------------------
+
+Goal Assertion 'stage_left' (file probe.c, line 69):
+Let a = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_1 = to_f64((4150517416584649.0/18446744073709551616)).
+Let x = L_heat_left(j).
+Let a_2 = L_ref_stage(k, x, a, a_1).
+Let r = of_f64(a_2).
+Assume {
+  Type: is_sint32(j) /\ is_sint32(k).
+  (* Pre-condition 'imported_decoded_average' *)
+  Have: forall f_1,f : f64. let r_1 = of_f64(f_1) in let r_2 = of_f64(f) in
+      ((r_1 <= 2.0) -> ((r_2 <= 12.0) -> ((-2.0 <= r_1) -> ((-12.0 <= r_2) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      (L_R(L_R((1.0/2) * r_2) + L_R((1.0/2) * r_1))
+         = of_f64(L_c5_average(f_1, f))))))))).
+  (* Pre-condition 'imported_finite_average' *)
+  Have: forall f_1,f : f64. let r_1 = of_f64(f_1) in let r_2 = of_f64(f) in
+      ((r_1 <= 2.0) -> ((r_2 <= 12.0) -> ((-2.0 <= r_1) -> ((-12.0 <= r_2) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      is_finite_f64(L_c5_average(f_1, f)))))))).
+  (* Pre-condition *)
+  Have: (0 <= j) /\ (0 <= k) /\ (k <= 222) /\ (j <= 399).
+  (* Pre-condition *)
+  Have: forall i : Z. let r_1 = L_c5_u(k, i) in ((0 <= i) -> ((i <= 399) ->
+      ((r_1 <= 2.0) /\ (-2.0 <= r_1) /\ is_finite_f64(L_ref_cell(k, i))))).
+  (* Pre-condition *)
+  Have: (forall f_2,f_1,f : f64. let r_1 = of_f64(f_2) in
+         let r_2 = of_f64(f_1) in let r_3 = of_f64(f) in ((r_1 <= 4.0) ->
+         ((r_2 <= 4.0) -> ((r_3 <= 4.0) -> ((-4.0 <= r_1) ->
+         ((-4.0 <= r_2) -> ((-4.0 <= r_3) -> (is_finite_f64(f_2) ->
+         (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+         is_finite_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_1 = of_f64(f_2) in
+       let r_2 = of_f64(f_1) in let r_3 = of_f64(f) in ((r_1 <= 4.0) ->
+       ((r_2 <= 4.0) -> ((r_3 <= 4.0) -> ((-4.0 <= r_1) -> ((-4.0 <= r_2) ->
+       ((-4.0 <= r_3) -> (is_finite_f64(f_2) -> (is_finite_f64(f_1) ->
+       (is_finite_f64(f) ->
+       (of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1))
+          = L_c5_e(r_1, r_2, r_3, (5170051590165233.0/1152921504606846976))))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_1 = of_f64(f_2) in
+       let r_2 = of_f64(f_1) in let r_3 = of_f64(f) in
+       let r_4 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_1 <= 2.0) -> ((r_2 <= 2.0) -> ((r_3 <= 2.0) -> ((-2.0 <= r_1) ->
+       ((-2.0 <= r_2) -> ((-2.0 <= r_3) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_4 <= 4.0) /\ (-4.0 <= r_4)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_1 = of_f64(f_2) in
+       let r_2 = of_f64(f_1) in let r_3 = of_f64(f) in
+       let r_4 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_1 <= 4.0) -> ((r_2 <= 4.0) -> ((r_3 <= 4.0) -> ((-4.0 <= r_1) ->
+       ((-4.0 <= r_2) -> ((-4.0 <= r_3) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_4 <= 12.0) /\ (-12.0 <= r_4)))))))))))).
+}
+Prove: (r = L_c5_s(k, x, (5170051590165233.0/1152921504606846976))) /\
+    (r <= 4.0) /\ (-4.0 <= r) /\ is_finite_f64(a_2).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:11ms) (8.4s) (56511)
+
+------------------------------------------------------------
+
+Goal Assertion 'stage_center' (file probe.c, line 70):
+Let x = L_heat_left(j).
+Let a = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_1 = to_f64((4150517416584649.0/18446744073709551616)).
+Let a_2 = L_ref_stage(k, x, a, a_1).
+Let r = of_f64(a_2).
+Let a_3 = L_ref_stage(k, j, a, a_1).
+Let r_1 = of_f64(a_3).
+Assume {
+  Type: is_sint32(j) /\ is_sint32(k).
+  (* Pre-condition 'imported_decoded_average' *)
+  Have: forall f_1,f : f64. let r_2 = of_f64(f_1) in let r_3 = of_f64(f) in
+      ((r_2 <= 2.0) -> ((r_3 <= 12.0) -> ((-2.0 <= r_2) -> ((-12.0 <= r_3) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      (L_R(L_R((1.0/2) * r_3) + L_R((1.0/2) * r_2))
+         = of_f64(L_c5_average(f_1, f))))))))).
+  (* Pre-condition 'imported_finite_average' *)
+  Have: forall f_1,f : f64. let r_2 = of_f64(f_1) in let r_3 = of_f64(f) in
+      ((r_2 <= 2.0) -> ((r_3 <= 12.0) -> ((-2.0 <= r_2) -> ((-12.0 <= r_3) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      is_finite_f64(L_c5_average(f_1, f)))))))).
+  (* Pre-condition *)
+  Have: (0 <= j) /\ (0 <= k) /\ (k <= 222) /\ (j <= 399).
+  (* Pre-condition *)
+  Have: forall i : Z. let r_2 = L_c5_u(k, i) in ((0 <= i) -> ((i <= 399) ->
+      ((r_2 <= 2.0) /\ (-2.0 <= r_2) /\ is_finite_f64(L_ref_cell(k, i))))).
+  (* Pre-condition *)
+  Have: (forall f_2,f_1,f : f64. let r_2 = of_f64(f_2) in
+         let r_3 = of_f64(f_1) in let r_4 = of_f64(f) in ((r_2 <= 4.0) ->
+         ((r_3 <= 4.0) -> ((r_4 <= 4.0) -> ((-4.0 <= r_2) ->
+         ((-4.0 <= r_3) -> ((-4.0 <= r_4) -> (is_finite_f64(f_2) ->
+         (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+         is_finite_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_2 = of_f64(f_2) in
+       let r_3 = of_f64(f_1) in let r_4 = of_f64(f) in ((r_2 <= 4.0) ->
+       ((r_3 <= 4.0) -> ((r_4 <= 4.0) -> ((-4.0 <= r_2) -> ((-4.0 <= r_3) ->
+       ((-4.0 <= r_4) -> (is_finite_f64(f_2) -> (is_finite_f64(f_1) ->
+       (is_finite_f64(f) ->
+       (of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1))
+          = L_c5_e(r_2, r_3, r_4, (5170051590165233.0/1152921504606846976))))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_2 = of_f64(f_2) in
+       let r_3 = of_f64(f_1) in let r_4 = of_f64(f) in
+       let r_5 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_2 <= 2.0) -> ((r_3 <= 2.0) -> ((r_4 <= 2.0) -> ((-2.0 <= r_2) ->
+       ((-2.0 <= r_3) -> ((-2.0 <= r_4) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_5 <= 4.0) /\ (-4.0 <= r_5)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_2 = of_f64(f_2) in
+       let r_3 = of_f64(f_1) in let r_4 = of_f64(f) in
+       let r_5 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_2 <= 4.0) -> ((r_3 <= 4.0) -> ((r_4 <= 4.0) -> ((-4.0 <= r_2) ->
+       ((-4.0 <= r_3) -> ((-4.0 <= r_4) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_5 <= 12.0) /\ (-12.0 <= r_5)))))))))))).
+  (* Assertion 'stage_left' *)
+  Have: (r = L_c5_s(k, x, (5170051590165233.0/1152921504606846976))) /\
+      (r <= 4.0) /\ (-4.0 <= r) /\ is_finite_f64(a_2).
+}
+Prove: (r_1 = L_c5_s(k, j, (5170051590165233.0/1152921504606846976))) /\
+    (r_1 <= 4.0) /\ (-4.0 <= r_1) /\ is_finite_f64(a_3).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:13ms) (3.6s) (24017)
+
+------------------------------------------------------------
+
+Goal Assertion 'stage_right' (file probe.c, line 71):
+Let a = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_1 = to_f64((4150517416584649.0/18446744073709551616)).
+Let a_2 = L_ref_stage(k, j, a, a_1).
+Let r = of_f64(a_2).
+Let x = L_heat_left(j).
+Let a_3 = L_ref_stage(k, x, a, a_1).
+Let r_1 = of_f64(a_3).
+Let x_1 = L_heat_right(j, 400).
+Let a_4 = L_ref_stage(k, x_1, a, a_1).
+Let r_2 = of_f64(a_4).
+Assume {
+  Type: is_sint32(j) /\ is_sint32(k).
+  (* Pre-condition 'imported_decoded_average' *)
+  Have: forall f_1,f : f64. let r_3 = of_f64(f_1) in let r_4 = of_f64(f) in
+      ((r_3 <= 2.0) -> ((r_4 <= 12.0) -> ((-2.0 <= r_3) -> ((-12.0 <= r_4) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      (L_R(L_R((1.0/2) * r_4) + L_R((1.0/2) * r_3))
+         = of_f64(L_c5_average(f_1, f))))))))).
+  (* Pre-condition 'imported_finite_average' *)
+  Have: forall f_1,f : f64. let r_3 = of_f64(f_1) in let r_4 = of_f64(f) in
+      ((r_3 <= 2.0) -> ((r_4 <= 12.0) -> ((-2.0 <= r_3) -> ((-12.0 <= r_4) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      is_finite_f64(L_c5_average(f_1, f)))))))).
+  (* Pre-condition *)
+  Have: (0 <= j) /\ (0 <= k) /\ (k <= 222) /\ (j <= 399).
+  (* Pre-condition *)
+  Have: forall i : Z. let r_3 = L_c5_u(k, i) in ((0 <= i) -> ((i <= 399) ->
+      ((r_3 <= 2.0) /\ (-2.0 <= r_3) /\ is_finite_f64(L_ref_cell(k, i))))).
+  (* Pre-condition *)
+  Have: (forall f_2,f_1,f : f64. let r_3 = of_f64(f_2) in
+         let r_4 = of_f64(f_1) in let r_5 = of_f64(f) in ((r_3 <= 4.0) ->
+         ((r_4 <= 4.0) -> ((r_5 <= 4.0) -> ((-4.0 <= r_3) ->
+         ((-4.0 <= r_4) -> ((-4.0 <= r_5) -> (is_finite_f64(f_2) ->
+         (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+         is_finite_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_3 = of_f64(f_2) in
+       let r_4 = of_f64(f_1) in let r_5 = of_f64(f) in ((r_3 <= 4.0) ->
+       ((r_4 <= 4.0) -> ((r_5 <= 4.0) -> ((-4.0 <= r_3) -> ((-4.0 <= r_4) ->
+       ((-4.0 <= r_5) -> (is_finite_f64(f_2) -> (is_finite_f64(f_1) ->
+       (is_finite_f64(f) ->
+       (of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1))
+          = L_c5_e(r_3, r_4, r_5, (5170051590165233.0/1152921504606846976))))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_3 = of_f64(f_2) in
+       let r_4 = of_f64(f_1) in let r_5 = of_f64(f) in
+       let r_6 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_3 <= 2.0) -> ((r_4 <= 2.0) -> ((r_5 <= 2.0) -> ((-2.0 <= r_3) ->
+       ((-2.0 <= r_4) -> ((-2.0 <= r_5) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_6 <= 4.0) /\ (-4.0 <= r_6)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_3 = of_f64(f_2) in
+       let r_4 = of_f64(f_1) in let r_5 = of_f64(f) in
+       let r_6 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_3 <= 4.0) -> ((r_4 <= 4.0) -> ((r_5 <= 4.0) -> ((-4.0 <= r_3) ->
+       ((-4.0 <= r_4) -> ((-4.0 <= r_5) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_6 <= 12.0) /\ (-12.0 <= r_6)))))))))))).
+  (* Assertion 'stage_left' *)
+  Have: (r_1 = L_c5_s(k, x, (5170051590165233.0/1152921504606846976))) /\
+      (r_1 <= 4.0) /\ (-4.0 <= r_1) /\ is_finite_f64(a_3).
+  (* Assertion 'stage_center' *)
+  Have: (r = L_c5_s(k, j, (5170051590165233.0/1152921504606846976))) /\
+      (r <= 4.0) /\ (-4.0 <= r) /\ is_finite_f64(a_2).
+}
+Prove: (r_2 = L_c5_s(k, x_1, (5170051590165233.0/1152921504606846976))) /\
+    (r_2 <= 4.0) /\ (-4.0 <= r_2) /\ is_finite_f64(a_4).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:14ms) (9s) (51392)
+
+------------------------------------------------------------
+
+Goal Assertion 'second_stage' (file probe.c, line 72):
+Let x = L_heat_right(j, 400).
+Let a = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_1 = to_f64((4150517416584649.0/18446744073709551616)).
+Let a_2 = L_ref_stage(k, x, a, a_1).
+Let r = of_f64(a_2).
+Let r_1 = L_c5_s(k, x, (5170051590165233.0/1152921504606846976)).
+Let a_3 = L_ref_stage(k, j, a, a_1).
+Let r_2 = of_f64(a_3).
+Let r_3 = L_c5_s(k, j, (5170051590165233.0/1152921504606846976)).
+Let x_1 = L_heat_left(j).
+Let a_4 = L_ref_stage(k, x_1, a, a_1).
+Let r_4 = of_f64(a_4).
+Let r_5 = L_c5_s(k, x_1, (5170051590165233.0/1152921504606846976)).
+Let a_5 = L_heat_euler_fp(a_4, a_3, a_2, a, a_1).
+Let r_6 = of_f64(a_5).
+Assume {
+  Type: is_sint32(j) /\ is_sint32(k).
+  (* Pre-condition 'imported_decoded_average' *)
+  Have: forall f_1,f : f64. let r_7 = of_f64(f_1) in let r_8 = of_f64(f) in
+      ((r_7 <= 2.0) -> ((r_8 <= 12.0) -> ((-2.0 <= r_7) -> ((-12.0 <= r_8) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      (L_R(L_R((1.0/2) * r_8) + L_R((1.0/2) * r_7))
+         = of_f64(L_c5_average(f_1, f))))))))).
+  (* Pre-condition 'imported_finite_average' *)
+  Have: forall f_1,f : f64. let r_7 = of_f64(f_1) in let r_8 = of_f64(f) in
+      ((r_7 <= 2.0) -> ((r_8 <= 12.0) -> ((-2.0 <= r_7) -> ((-12.0 <= r_8) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      is_finite_f64(L_c5_average(f_1, f)))))))).
+  (* Pre-condition *)
+  Have: (0 <= j) /\ (0 <= k) /\ (k <= 222) /\ (j <= 399).
+  (* Pre-condition *)
+  Have: forall i : Z. let r_7 = L_c5_u(k, i) in ((0 <= i) -> ((i <= 399) ->
+      ((r_7 <= 2.0) /\ (-2.0 <= r_7) /\ is_finite_f64(L_ref_cell(k, i))))).
+  (* Pre-condition *)
+  Have: (forall f_2,f_1,f : f64. let r_7 = of_f64(f_2) in
+         let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in ((r_7 <= 4.0) ->
+         ((r_8 <= 4.0) -> ((r_9 <= 4.0) -> ((-4.0 <= r_7) ->
+         ((-4.0 <= r_8) -> ((-4.0 <= r_9) -> (is_finite_f64(f_2) ->
+         (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+         is_finite_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_7 = of_f64(f_2) in
+       let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in ((r_7 <= 4.0) ->
+       ((r_8 <= 4.0) -> ((r_9 <= 4.0) -> ((-4.0 <= r_7) -> ((-4.0 <= r_8) ->
+       ((-4.0 <= r_9) -> (is_finite_f64(f_2) -> (is_finite_f64(f_1) ->
+       (is_finite_f64(f) ->
+       (of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1))
+          = L_c5_e(r_7, r_8, r_9, (5170051590165233.0/1152921504606846976))))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_7 = of_f64(f_2) in
+       let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in
+       let r_10 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_7 <= 2.0) -> ((r_8 <= 2.0) -> ((r_9 <= 2.0) -> ((-2.0 <= r_7) ->
+       ((-2.0 <= r_8) -> ((-2.0 <= r_9) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_10 <= 4.0) /\ (-4.0 <= r_10)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_7 = of_f64(f_2) in
+       let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in
+       let r_10 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_7 <= 4.0) -> ((r_8 <= 4.0) -> ((r_9 <= 4.0) -> ((-4.0 <= r_7) ->
+       ((-4.0 <= r_8) -> ((-4.0 <= r_9) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_10 <= 12.0) /\ (-12.0 <= r_10)))))))))))).
+  (* Assertion 'stage_left' *)
+  Have: (r_4 = r_5) /\ (r_4 <= 4.0) /\ (-4.0 <= r_4) /\ is_finite_f64(a_4).
+  (* Assertion 'stage_center' *)
+  Have: (r_2 = r_3) /\ (r_2 <= 4.0) /\ (-4.0 <= r_2) /\ is_finite_f64(a_3).
+  (* Assertion 'stage_right' *)
+  Have: (r = r_1) /\ (r <= 4.0) /\ (-4.0 <= r) /\ is_finite_f64(a_2).
+}
+Prove: (r_6 = L_c5_e(r_5, r_3, r_1, (5170051590165233.0/1152921504606846976))) /\
+    (r_6 <= 12.0) /\ (-12.0 <= r_6) /\ is_finite_f64(a_5).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:17ms) (368ms) (2610)
+
+------------------------------------------------------------
+
+Goal Assertion 'combination' (file probe.c, line 73):
+Let x = L_heat_left(j).
+Let a = to_f64((5170051590165233.0/1152921504606846976)).
+Let a_1 = to_f64((4150517416584649.0/18446744073709551616)).
+Let a_2 = L_ref_stage(k, x, a, a_1).
+Let a_3 = L_ref_stage(k, j, a, a_1).
+Let x_1 = L_heat_right(j, 400).
+Let a_4 = L_ref_stage(k, x_1, a, a_1).
+Let a_5 = L_heat_euler_fp(a_2, a_3, a_4, a, a_1).
+Let r = of_f64(a_5).
+Let r_1 = L_c5_s(k, x, (5170051590165233.0/1152921504606846976)).
+Let r_2 = L_c5_s(k, j, (5170051590165233.0/1152921504606846976)).
+Let r_3 = L_c5_s(k, x_1, (5170051590165233.0/1152921504606846976)).
+Let r_4 = of_f64(a_4).
+Let r_5 = of_f64(a_3).
+Let r_6 = of_f64(a_2).
+Let a_6 = L_c5_average(L_ref_cell(k, j), a_5).
+Assume {
+  Type: is_sint32(j) /\ is_sint32(k).
+  (* Pre-condition 'imported_decoded_average' *)
+  Have: forall f_1,f : f64. let r_7 = of_f64(f_1) in let r_8 = of_f64(f) in
+      ((r_7 <= 2.0) -> ((r_8 <= 12.0) -> ((-2.0 <= r_7) -> ((-12.0 <= r_8) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      (L_R(L_R((1.0/2) * r_8) + L_R((1.0/2) * r_7))
+         = of_f64(L_c5_average(f_1, f))))))))).
+  (* Pre-condition 'imported_finite_average' *)
+  Have: forall f_1,f : f64. let r_7 = of_f64(f_1) in let r_8 = of_f64(f) in
+      ((r_7 <= 2.0) -> ((r_8 <= 12.0) -> ((-2.0 <= r_7) -> ((-12.0 <= r_8) ->
+      (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+      is_finite_f64(L_c5_average(f_1, f)))))))).
+  (* Pre-condition *)
+  Have: (0 <= j) /\ (0 <= k) /\ (k <= 222) /\ (j <= 399).
+  (* Pre-condition *)
+  Have: forall i : Z. let r_7 = L_c5_u(k, i) in ((0 <= i) -> ((i <= 399) ->
+      ((r_7 <= 2.0) /\ (-2.0 <= r_7) /\ is_finite_f64(L_ref_cell(k, i))))).
+  (* Pre-condition *)
+  Have: (forall f_2,f_1,f : f64. let r_7 = of_f64(f_2) in
+         let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in ((r_7 <= 4.0) ->
+         ((r_8 <= 4.0) -> ((r_9 <= 4.0) -> ((-4.0 <= r_7) ->
+         ((-4.0 <= r_8) -> ((-4.0 <= r_9) -> (is_finite_f64(f_2) ->
+         (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+         is_finite_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_7 = of_f64(f_2) in
+       let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in ((r_7 <= 4.0) ->
+       ((r_8 <= 4.0) -> ((r_9 <= 4.0) -> ((-4.0 <= r_7) -> ((-4.0 <= r_8) ->
+       ((-4.0 <= r_9) -> (is_finite_f64(f_2) -> (is_finite_f64(f_1) ->
+       (is_finite_f64(f) ->
+       (of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1))
+          = L_c5_e(r_7, r_8, r_9, (5170051590165233.0/1152921504606846976))))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_7 = of_f64(f_2) in
+       let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in
+       let r_10 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_7 <= 2.0) -> ((r_8 <= 2.0) -> ((r_9 <= 2.0) -> ((-2.0 <= r_7) ->
+       ((-2.0 <= r_8) -> ((-2.0 <= r_9) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_10 <= 4.0) /\ (-4.0 <= r_10)))))))))))) /\
+      (forall f_2,f_1,f : f64. let r_7 = of_f64(f_2) in
+       let r_8 = of_f64(f_1) in let r_9 = of_f64(f) in
+       let r_10 = of_f64(L_heat_euler_fp(f_2, f_1, f, a, a_1)) in
+       ((r_7 <= 4.0) -> ((r_8 <= 4.0) -> ((r_9 <= 4.0) -> ((-4.0 <= r_7) ->
+       ((-4.0 <= r_8) -> ((-4.0 <= r_9) -> (is_finite_f64(f_2) ->
+       (is_finite_f64(f_1) -> (is_finite_f64(f) ->
+       ((r_10 <= 12.0) /\ (-12.0 <= r_10)))))))))))).
+  (* Assertion 'stage_left' *)
+  Have: (r_6 = r_1) /\ (r_6 <= 4.0) /\ (-4.0 <= r_6) /\ is_finite_f64(a_2).
+  (* Assertion 'stage_center' *)
+  Have: (r_5 = r_2) /\ (r_5 <= 4.0) /\ (-4.0 <= r_5) /\ is_finite_f64(a_3).
+  (* Assertion 'stage_right' *)
+  Have: (r_4 = r_3) /\ (r_4 <= 4.0) /\ (-4.0 <= r_4) /\ is_finite_f64(a_4).
+  (* Assertion 'second_stage' *)
+  Have: (r = L_c5_e(r_1, r_2, r_3, (5170051590165233.0/1152921504606846976))) /\
+      (r <= 12.0) /\ (-12.0 <= r) /\ is_finite_f64(a_5).
+}
+Prove: (of_f64(a_6)
+          = L_c5_update(k, j, (5170051590165233.0/1152921504606846976))) /\
+    is_finite_f64(a_6).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:17ms) (2s) (9766)
+
+------------------------------------------------------------
+
+Goal Assigns nothing in 'compare_update':
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------

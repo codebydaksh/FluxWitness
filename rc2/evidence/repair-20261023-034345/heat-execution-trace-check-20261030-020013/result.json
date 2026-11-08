@@ -1,0 +1,40 @@
+{
+  "accepted": true,
+  "source_sha256": "86471bca77b362491ca03804b93592e12a4013a42094f5caa9cc84e9dd9dc398",
+  "input_sha256": "48a709244be253a0cf8dfeb3e90bc8a333d33fc838a9cf422afc571a6d3318a4",
+  "build_result_sha256": "b70e357e1dc80809926f1b23bec1d185f361414d5fcd72ccf1be37d7011e57b1",
+  "command": [
+    "C:\\Users\\Infinity\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+    "-j1",
+    "-R",
+    "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\repair-20261023-034345\\heat-execution-trace-check-20261030-020013",
+    "-o",
+    "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\repair-20261023-034345\\heat-execution-trace-check-20261030-020013\\ExecutionTrace.olean",
+    "C:\\Users\\Infinity\\Documents\\[workspace]\\2026-10-23\\go\\outputs\\repair-20261023-034345\\heat-execution-trace-check-20261030-020013\\ExecutionTrace.lean"
+  ],
+  "scope": "Conditional execution-trace induction and transferred range/error; native C/IEEE correspondence remains a premise",
+  "private_limit_bytes": 4294967296,
+  "max_observed_private_bytes": 3654201344,
+  "resource_stop": null,
+  "exit_code": 0,
+  "seconds": 1890.8076927661896,
+  "declaration_count": 2,
+  "records": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "heat_rounding.trace_eq_roundedEvolution_of_bounded_step"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "heat_rounding.trace_error_and_range"
+    }
+  ]
+}

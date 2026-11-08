@@ -1,0 +1,18 @@
+[
+  [
+    "/usr/bin/gcc",
+    "-std=c11",
+    "-O0",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-DIC_COSINE",
+    "../heat.c",
+    "-lm",
+    "-o",
+    "solver"
+  ],
+  [
+    "./solver",
+    "--dump-u0"
+  ]
+]

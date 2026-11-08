@@ -1,0 +1,517 @@
+proofs.heat_rounding_composition
+replay-root/proofs\heat_rounding_composition.lean:1:0: warning: 
+'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
+
+import Mathlib.Basic.Real.Basic
+replay-root/proofs\heat_rounding_composition.lean:17:14: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_rounding_composition.lean:17:14: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_rounding_composition.lean:27:64: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_rounding_composition.lean:27:64: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_rounding_composition.lean:38:64: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_rounding_composition.lean:38:64: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_rounding_composition.lean:62:68: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_rounding_composition.lean:62:68: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+proofs.heat_rounding_operations
+proofs.heat_rounding_certificate
+proofs.heat_rounding_numeric
+proofs.heat_1d
+replay-root/proofs\heat_1d.lean:2:0: warning: 
+'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
+
+import Mathlib.Basic.Real.Basic
+'heat_1d.xDiffFluxOnConstant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.xDiffFluxLinear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.xDiffFluxDownGradient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.discreteLaplacian_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.discreteLaplacian_quadratic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.discrete_max_principle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.discrete_min_principle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.sigmaSq_monotone' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.fourier_mode_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.cfl_pure_diffusion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.FiniteGrid.euler_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.FiniteGrid.heun_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.FiniteGrid.evolve_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.FiniteGrid.heun_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.FiniteGrid.heun_difference_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.FiniteGrid.evolve_error_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_stored_parameter_bridge
+replay-root/proofs\heat_stored_parameter_bridge.lean:24:2: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_stored_parameter_bridge.lean:24:6: warning: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_stored_parameter_bridge.lean:24:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+replay-root/proofs\heat_stored_parameter_bridge.lean:57:2: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_stored_parameter_bridge.lean:57:6: warning: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_stored_parameter_bridge.lean:57:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'heat_1d.FiniteGrid.storedHeun_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.FiniteGrid.effective_CFL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.FiniteGrid.effective_decay_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_rounding_grid_bridge
+proofs.heat_range_bootstrap
+'heat_1d.FiniteGrid.finite_range_bootstrap' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_rounding_evolution
+proofs.heat_operator_form
+'heat_1d.FiniteGrid.heun_operator_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_boundary
+replay-root/proofs\heat_boundary.lean:1:0: warning: 
+'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
+
+import Mathlib.Basic.Real.Basic
+replay-root/proofs\heat_boundary.lean:20:48: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_boundary.lean:24:48: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_boundary.lean:20:48: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_boundary.lean:24:48: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_boundary.lean:33:46: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_boundary.lean:33:46: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'heat_boundary.centered_reflection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_boundary.reflected_half_cell' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_boundary.centered_half_cell' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_grid_bridge
+replay-root/proofs\heat_grid_bridge.lean:39:22: warning: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+replay-root/proofs\heat_grid_bridge.lean:35:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_grid_bridge.lean:42:23: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_grid_bridge.lean:42:35: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_grid_bridge.lean:35:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_grid_bridge.lean:42:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_grid_bridge.lean:42:35: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'heat_grid_bridge.sample_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_grid_bridge.sample_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_grid_bridge.centered_sampling' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_grid_bridge.centered_squared_sampling' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_taylor
+replay-root/proofs\heat_taylor.lean:30:57: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_taylor.lean:30:57: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'heat_taylor.scalar_remainder_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_taylor.quadratic_remainder_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_taylor_coefficients
+replay-root/proofs\heat_taylor_coefficients.lean:21:2: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_taylor_coefficients.lean:21:14: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_taylor_coefficients.lean:21:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_taylor_coefficients.lean:21:14: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_taylor_coefficients.lean:33:2: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_taylor_coefficients.lean:33:14: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_taylor_coefficients.lean:33:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_taylor_coefficients.lean:33:14: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'heat_taylor_coefficients.quadratic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_taylor_coefficients.cubic' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_stencil_error
+replay-root/proofs\heat_stencil_error.lean:1:0: warning: 
+'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
+
+import Mathlib.Basic.Real.Basic
+replay-root/proofs\heat_stencil_error.lean:19:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_stencil_error.lean:19:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'heat_stencil_error.centered_from_cubic_remainders' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_consistency_bridge
+replay-root/proofs\heat_consistency_bridge.lean:30:21: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_consistency_bridge.lean:30:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_consistency_bridge.lean:83:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_consistency_bridge.lean:83:8: warning: Unused tactic linter: `ring_nf` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_consistency_bridge.lean:83:16: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_consistency_bridge.lean:83:20: warning: Unused tactic linter: `simp` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_consistency_bridge.lean:86:21: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_consistency_bridge.lean:83:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+replay-root/proofs\heat_consistency_bridge.lean:83:20: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+replay-root/proofs\heat_consistency_bridge.lean:86:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'heat_consistency_bridge.cubic_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_consistency_bridge.centered_consistency' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_consistency_bridge.time_quadratic_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_consistency_bridge.linear_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_consistency_bridge.centered_curvature_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_centered_derivatives
+replay-root/proofs\heat_centered_derivatives.lean:18:42: warning: This simp argument is unused:
+  Function.comp_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [centered]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+replay-root/proofs\heat_centered_derivatives.lean:18:22: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_centered_derivatives.lean:18:22: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_centered_derivatives.lean:43:56: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_centered_derivatives.lean:43:60: warning: Unused tactic linter: `simp [centered]` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_centered_derivatives.lean:43:60: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'heat_centered_derivatives.hasDerivAt_centered' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_centered_derivatives.differentiable_centered' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_centered_derivatives.deriv_centered' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_centered_derivatives.second_deriv_centered' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_centered_derivatives.contDiff_centered' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_squared_consistency
+'heat_squared_consistency.squared_centered_consistency' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_spatial_heun
+'heat_spatial_heun.heun_sampling' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_spatial_heun.spatial_step_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_local_defect
+'heat_local_defect.heun_local_defect' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_error_accumulation
+'heat_1d.FiniteGrid.polynomial_step_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.FiniteGrid.polynomial_budget_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.FiniteGrid.polynomial_budget_final_time' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_convergence
+replay-root/proofs\heat_convergence.lean:54:22: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_convergence.lean:54:47: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_convergence.lean:54:22: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_convergence.lean:54:47: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'heat_convergence.exact_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_reference
+replay-root/proofs\heat_reference.lean:35:21: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_reference.lean:35:25: warning: Unused tactic linter: `(try funext y)` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_reference.lean:35:40: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_reference.lean:35:85: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_reference.lean:35:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_reference.lean:35:40: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_reference.lean:35:85: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_reference.lean:45:21: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_reference.lean:45:25: warning: Unused tactic linter: `(try funext y)` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_reference.lean:45:40: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_reference.lean:45:104: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_reference.lean:45:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_reference.lean:45:40: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_reference.lean:45:104: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_reference.lean:55:21: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_reference.lean:55:25: warning: Unused tactic linter: `(try funext y)` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_reference.lean:55:40: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_reference.lean:55:104: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_reference.lean:55:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_reference.lean:55:40: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+replay-root/proofs\heat_reference.lean:55:104: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'heat_reference.time_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_reference.space_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_reference.space_second_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_reference.solves_heat_equation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_reference.initial_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_reference.neumann_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_reference.neumann_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_reference.even_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_reference_bounds
+'heat_reference.time_iterated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_reference.space_iterated_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_reference.profile_abs_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_reference.fourth_spatial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_reference.sixth_spatial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_reference.third_time_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_cosine_conditions
+'heat_cosine_conditions.cosine_conditions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_cosine_conditions.cosine_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_perturbation
+'heat_1d.FiniteGrid.perturbed_error_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_affine
+'heat_1d.FiniteGrid.heun_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.FiniteGrid.evolve_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_1d.FiniteGrid.affine_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_final
+replay-root/proofs\heat_final.lean:76:27: warning: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_final.lean:85:35: warning: Unused tactic linter: `field_simp` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_final.lean:101:27: warning: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_final.lean:85:35: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'heat_final.budget_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_final.perturbation_only' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_final.harness_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_final2
+replay-root/proofs\heat_final2.lean:92:49: warning: Unused tactic linter: `(have h0 := Real.exp_le_exp.mpr hneg; simpa using h0)` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_final2.lean:92:49: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+replay-root/proofs\heat_final2.lean:122:27: warning: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_final2.lean:131:35: warning: Unused tactic linter: `field_simp` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_final2.lean:147:27: warning: Unused tactic linter: `ring` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_final2.lean:131:35: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+replay-root/proofs\heat_final2.lean:182:42: warning: Variable name `heps` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _heps
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'heat_final2.perturbed_error_budget_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_final2.perturbation_only_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_final2.elapsed_le_of_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_final2.profile_abs_le_one'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_final2.harness_error_bound_of_pert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_final2.harness_error_bound_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_final2.harness_error_bound_ranged' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_benchmark
+replay-root/proofs\heat_benchmark.lean:52:8: warning: Unused tactic linter: `(have h4 := Real.pi_lt_d4; norm_num at h4 ⊢; linarith)` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_benchmark.lean:53:8: warning: Unused tactic linter: `(have h6 := Real.pi_lt_d6; norm_num at h6 ⊢; linarith)` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/proofs\heat_benchmark.lean:52:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+replay-root/proofs\heat_benchmark.lean:53:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'heat_benchmark.elapsed_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'heat_benchmark.benchmark_n400' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.heat_rounded_benchmark
+proofs.heat_bounded_arithmetic
+replay-root/proofs\heat_bounded_arithmetic.lean:32:28: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+proofs.Binary64Bridge
+'heat_rounding.verified_benchmark' depends on axioms: [propext, Classical.choice, Quot.sound]
+FloatLibWorkspace.StoredDiffusivityMinimal
+'FloatLib.Floats.Formats.BinaryInterchange.Model.fw_toReal_D001' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FloatLib.Floats.Formats.BinaryInterchange.Model.stored_diffusivity_A6' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+FloatLibWorkspace.Binary64Law
+'heat_rounding_b64.binary64_round_error_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+FloatLibWorkspace.Binary64Interface
+'heat_rounding_b64.binary64_bounded_round_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+FloatLibWorkspace.Binary64Half
+replay-root/FloatLibWorkspace\Binary64Half.lean:99:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+replay-root/FloatLibWorkspace\Binary64Half.lean:104:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+'heat_rounding_b64.binary64_half_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+BenchmarkNativeHalf
+'heat_rounding.verified_benchmark_binary64_round_nativeHalf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FluxWitness400.coefficient_agrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FluxWitness400.model_benchmark' depends on axioms: [propext, Classical.choice, Quot.sound]
+proofs.C1EulerAgreement
+proofs.C1RoundedDouble
+proofs.C1HalfSum
+replay-root/proofs\C1HalfSum.lean:11:43: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+proofs.C1StageBounds
+proofs.C1StepAgreement
+C2DecodedStep
+replay-root/C2DecodedStep.lean:18:25: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/C2DecodedStep.lean:18:29: warning: Unused tactic linter: `omega` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/C2DecodedStep.lean:18:29: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+replay-root/C2DecodedStep.lean:49:2: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/C2DecodedStep.lean:49:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'FluxWitnessC2.decoded_step_agrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+C3DriverLoop
+replay-root/C3DriverLoop.lean:37:2: warning: Unused tactic linter: `run_tac
+  IO.FS.writeFile "progress.txt" "statement elaborated\n"` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/C3DriverLoop.lean:48:2: warning: Unused tactic linter: `run_tac
+  IO.FS.writeFile "progress.txt" "initial range and timestep tactics complete\n"` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/C3DriverLoop.lean:55:2: warning: Unused tactic linter: `run_tac
+  IO.FS.writeFile "progress.txt" "model range tactic complete\n"` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/C3DriverLoop.lean:74:19: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/C3DriverLoop.lean:75:2: warning: Unused tactic linter: `run_tac
+  IO.FS.writeFile "progress.txt" "prefix induction tactic complete\n"` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+replay-root/C3DriverLoop.lean:74:19: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'FluxWitnessC3.driver223_of_wp' depends on axioms: [propext, Classical.choice, Quot.sound]
+C4Reference
+'FluxWitnessC4.reference223' depends on axioms: [propext, Classical.choice, Quot.sound]
+C2RoundingConstruction
+'FluxWitnessC2.binary64_floorEvenGrid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FluxWitnessC2.binary64_round_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+ReleaseAudit
+'FluxWitness400.model_benchmark' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FluxWitnessC2.decoded_step_agrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FluxWitnessC3.driver223_of_wp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FluxWitnessC4.reference223' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FluxWitnessC2.binary64_floorEvenGrid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FluxWitnessC2.binary64_round_zero' depends on axioms: [propext, Classical.choice, Quot.sound]

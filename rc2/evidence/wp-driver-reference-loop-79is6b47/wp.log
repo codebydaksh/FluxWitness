@@ -1,0 +1,624 @@
+[kernel] Parsing probe.c (with preprocessing)
+[kernel:parser:decimal-float] probe.c:115: Warning: 
+  Floating-point constant 0.01 is not represented exactly. Will use 0x1.47ae147ae147bp-7.
+  (warn-once: no further messages from category 'parser:decimal-float' will be emitted)
+[wp] Running WP plugin...
+[rte:annot] annotating function driver_reference_loop
+[kernel:annot:missing-spec] FRAMAC_SHARE/libc/stdio.h:322: Warning: 
+  Neither code nor explicit exits and terminates for function fputs,
+   generating default clauses. See -generated-spec-* options for more info
+[kernel:annot:missing-spec] FRAMAC_SHARE/libc/stdlib.h:642: Warning: 
+  Neither code nor explicit exits and terminates for function free,
+   generating default clauses. See -generated-spec-* options for more info
+[wp] probe.c:319: Warning: 
+  Cast with incompatible pointers types (source: float64*) (target: sint8*)
+[wp] FRAMAC_SHARE/libc/stdlib.h:628: Warning: 
+  Allocation, initialization and danglingness not yet implemented
+  (\freeable(p))
+[wp] FRAMAC_SHARE/libc/stdlib.h:634: Warning: 
+  Allocation, initialization and danglingness not yet implemented
+  (freed: \allocable(\at(p,wp:pre)))
+[wp] 38 goals scheduled
+[wp] Proved goals:   38 / 38
+  Qed:              31 (12ms-6ms-87ms)
+  Alt-Ergo 2.6.4:    7 (158ms-923ms-5.3s)
+
+Goal Termination-condition (generated) in 'driver_reference_loop':
+probe.c:319: warning from Typed Model:
+ - Warning: Hide sub-term definition
+   Reason: Cast with incompatible pointers types (source: float64*) (target: sint8*)
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Post-condition 'loop_success' in 'driver_reference_loop':
+FRAMAC_SHARE/libc/stdlib.h:628: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(\freeable(p))
+FRAMAC_SHARE/libc/stdlib.h:634: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(freed: \allocable(\at(p,wp:pre)))
+probe.c:319: warning from Typed Model:
+ - Warning: Hide sub-term definition
+   Reason: Cast with incompatible pointers types (source: float64*) (target: sint8*)
+Prove: true.
+Prover Qed returns Valid (7ms)
+
+------------------------------------------------------------
+
+Goal Post-condition 'final_grid' in 'driver_reference_loop':
+FRAMAC_SHARE/libc/stdlib.h:628: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(\freeable(p))
+FRAMAC_SHARE/libc/stdlib.h:634: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(freed: \allocable(\at(p,wp:pre)))
+probe.c:319: warning from Typed Model:
+ - Warning: Hide sub-term definition
+   Reason: Cast with incompatible pointers types (source: float64*) (target: sint8*)
+Let a = shift_float64(buf_0, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, 1200).
+Let a_2 = a_1[shift_float64(buf_0, i)].
+Assume {
+  Type: is_sint32(k).
+  (* Heap *)
+  Type: (region(buf_0.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (0 <= i) /\ (i <= 399).
+  (* Pre-condition 'backing' *)
+  Have: valid_rw(Malloc_0, a, 1200).
+  (* Pre-condition 'schedule' *)
+  Have: (of_f64(dt_0) = (5170051590165233.0/1152921504606846976)) /\
+      (of_f64(dx_0) = (1080863910568919.0/72057594037927936)) /\
+      is_finite_f64(dt_0) /\ is_finite_f64(dx_0).
+  (* Pre-condition 'entry' *)
+  Have: forall i_1 : Z. let a_3 = Mf64_0[shift_float64(buf_0, i_1)] in
+      ((0 <= i_1) -> ((i_1 <= 399) ->
+      ((of_f64(a_3) = of_f64(L_ref_cell(0, i_1))) /\ is_finite_f64(a_3)))).
+  (* Pre-condition *)
+  Have: (forall i_2,i_1 : Z. ((0 <= i_2) -> ((0 <= i_1) -> ((i_2 <= 222) ->
+         ((i_1 <= 399) ->
+         (of_f64(L_ref_update(i_2, i_1, dt_0,
+                   to_f64((4150517416584649.0/18446744073709551616))))
+            = of_f64(L_ref_cell(1 + i_2, i_1)))))))) /\
+      (forall i_2,i_1 : Z. let a_3 = L_ref_cell(i_2, i_1) in
+       let r = of_f64(a_3) in ((0 <= i_2) -> ((0 <= i_1) -> ((i_2 <= 223) ->
+       ((i_1 <= 399) ->
+       ((r <= 2.0) /\ (-2.0 <= r) /\ is_finite_f64(a_3))))))).
+  (* Invariant 'clock' *)
+  Have: (0 <= k) /\ (k <= 223).
+  (* Invariant 'state_matches' *)
+  Have: forall i_1 : Z. let a_3 = a_1[shift_float64(buf_0, i_1)] in
+      ((0 <= i_1) -> ((i_1 <= 399) ->
+      ((of_f64(a_3) = of_f64(L_ref_cell(k, i_1))) /\ is_finite_f64(a_3)))).
+  Have: 223 <= k.
+}
+Prove: (of_f64(a_2) = of_f64(L_ref_cell(223, i))) /\ is_finite_f64(a_2).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:26ms) (177ms) (1362)
+
+------------------------------------------------------------
+
+Goal Exit-condition (generated) in 'driver_reference_loop':
+FRAMAC_SHARE/libc/stdlib.h:628: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(\freeable(p))
+FRAMAC_SHARE/libc/stdlib.h:634: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(freed: \allocable(\at(p,wp:pre)))
+probe.c:319: warning from Typed Model:
+ - Warning: Hide sub-term definition
+   Reason: Cast with incompatible pointers types (source: float64*) (target: sint8*)
+Prove: true.
+Prover Qed returns Valid (0.99ms)
+
+------------------------------------------------------------
+
+Goal Establishment of Invariant 'clock' (file probe.c, line 309):
+Prove: true.
+Prover Qed returns Valid (5ms)
+
+------------------------------------------------------------
+
+Goal Preservation of Invariant 'clock' (file probe.c, line 309):
+Prove: true.
+Prover Qed returns Valid (78ms)
+
+------------------------------------------------------------
+
+Goal Establishment of Invariant 'state_matches' (file probe.c, line 310):
+Let a = Mf64_0[shift_float64(u, i)].
+Assume {
+  (* Heap *)
+  Type: (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (0 <= i) /\ (i <= 399).
+  (* Pre-condition 'backing' *)
+  Have: valid_rw(Malloc_0, shift_float64(u, 0), 1200).
+  (* Pre-condition 'schedule' *)
+  Have: (of_f64(dt_0) = (5170051590165233.0/1152921504606846976)) /\
+      (of_f64(dx_0) = (1080863910568919.0/72057594037927936)) /\
+      is_finite_f64(dt_0) /\ is_finite_f64(dx_0).
+  (* Pre-condition 'entry' *)
+  Have: forall i_1 : Z. let a_1 = Mf64_0[shift_float64(u, i_1)] in
+      ((0 <= i_1) -> ((i_1 <= 399) ->
+      ((of_f64(a_1) = of_f64(L_ref_cell(0, i_1))) /\ is_finite_f64(a_1)))).
+  (* Pre-condition *)
+  Have: (forall i_2,i_1 : Z. ((0 <= i_2) -> ((0 <= i_1) -> ((i_2 <= 222) ->
+         ((i_1 <= 399) ->
+         (of_f64(L_ref_update(i_2, i_1, dt_0,
+                   to_f64((4150517416584649.0/18446744073709551616))))
+            = of_f64(L_ref_cell(1 + i_2, i_1)))))))) /\
+      (forall i_2,i_1 : Z. let a_1 = L_ref_cell(i_2, i_1) in
+       let r = of_f64(a_1) in ((0 <= i_2) -> ((0 <= i_1) -> ((i_2 <= 223) ->
+       ((i_1 <= 399) ->
+       ((r <= 2.0) /\ (-2.0 <= r) /\ is_finite_f64(a_1))))))).
+}
+Prove: (of_f64(a) = of_f64(L_ref_cell(0, i))) /\ is_finite_f64(a).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:12ms) (158ms) (1339)
+
+------------------------------------------------------------
+
+Goal Preservation of Invariant 'state_matches' (file probe.c, line 310):
+Let a = shift_float64(u, 0).
+Let a_1 = shift_float64(u, 400).
+Let a_2 = shift_float64(u, 800).
+Let a_3 = memcpy(Mf64_0, a, Mf64_undef_0, a, 1200).
+Let a_4 = memcpy(memcpy(memcpy(a_3, a_2, Mf64_undef_1, a_2, 400), a_1,
+                   Mf64_undef_2, a_1, 400), a, Mf64_undef_3, a, 400).
+Let a_5 = to_f64((4150517416584649.0/18446744073709551616)).
+Let x = 1 + k.
+Let a_6 = a_4[shift_float64(u, i)].
+Assume {
+  Type: is_sint32(k) /\ is_sint32(x).
+  (* Heap *)
+  Type: (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (0 <= i) /\ (i <= 399).
+  (* Pre-condition 'backing' *)
+  Have: valid_rw(Malloc_0, a, 1200).
+  (* Pre-condition 'schedule' *)
+  Have: (of_f64(dt_0) = (5170051590165233.0/1152921504606846976)) /\
+      (of_f64(dx_0) = (1080863910568919.0/72057594037927936)) /\
+      is_finite_f64(dt_0) /\ is_finite_f64(dx_0).
+  (* Pre-condition 'entry' *)
+  Have: forall i_1 : Z. let a_7 = Mf64_0[shift_float64(u, i_1)] in
+      ((0 <= i_1) -> ((i_1 <= 399) ->
+      ((of_f64(a_7) = of_f64(L_ref_cell(0, i_1))) /\ is_finite_f64(a_7)))).
+  (* Pre-condition *)
+  Have: (forall i_2,i_1 : Z. ((0 <= i_2) -> ((0 <= i_1) -> ((i_2 <= 222) ->
+         ((i_1 <= 399) ->
+         (of_f64(L_ref_update(i_2, i_1, dt_0, a_5))
+            = of_f64(L_ref_cell(1 + i_2, i_1)))))))) /\
+      (forall i_2,i_1 : Z. let a_7 = L_ref_cell(i_2, i_1) in
+       let r = of_f64(a_7) in ((0 <= i_2) -> ((0 <= i_1) -> ((i_2 <= 223) ->
+       ((i_1 <= 399) ->
+       ((r <= 2.0) /\ (-2.0 <= r) /\ is_finite_f64(a_7))))))).
+  (* Invariant 'clock' *)
+  Have: (0 <= k) /\ (k <= 223).
+  (* Invariant 'state_matches' *)
+  Have: forall i_1 : Z. let a_7 = a_3[shift_float64(u, i_1)] in
+      ((0 <= i_1) -> ((i_1 <= 399) ->
+      ((of_f64(a_7) = of_f64(L_ref_cell(k, i_1))) /\ is_finite_f64(a_7)))).
+  (* Then *)
+  Have: k <= 222.
+  (* Call 'heat_step' *)
+  Have: valid_rw(Malloc_0, a, 400) /\ valid_rw(Malloc_0, a_1, 400) /\
+      valid_rw(Malloc_0, a_2, 400) /\
+      (forall i_1 : Z. let a_7 = a_3[shift_float64(u, i_1)] in
+       let r = of_f64(a_7) in ((0 <= i_1) -> ((i_1 <= 399) ->
+       ((r <= 2.0) /\ (-2.0 <= r) /\ is_finite_f64(a_7))))) /\
+      (forall i_1 : Z. ((0 <= i_1) -> ((i_1 <= 399) ->
+       is_finite_f64(a_4[shift_float64(u, i_1)])))) /\
+      (forall i_1 : Z. ((0 <= i_1) -> ((i_1 <= 399) ->
+       (of_f64(a_4[shift_float64(u, i_1)])
+          = of_f64(L_heat_heun_fp(a_3, u, i_1, 400, dt_0, a_5)))))).
+  (* Assertion 'rte,signed_overflow' *)
+  Have: k <= 2147483646.
+  (* Invariant 'clock' *)
+  Have: (-1) <= k.
+}
+Prove: (of_f64(a_6) = of_f64(L_ref_cell(x, i))) /\ is_finite_f64(a_6).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:87ms) (5.3s) (43753)
+
+------------------------------------------------------------
+
+Goal Assertion 'failed_call_unreachable' (file probe.c, line 317):
+Prove: true.
+Prover Qed returns Valid (3ms)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,signed_overflow' (file probe.c, line 315):
+Prove: true.
+Prover Qed returns Valid (64ms)
+
+------------------------------------------------------------
+
+Goal Loop assigns (file probe.c, line 312) (1/4):
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Loop assigns (file probe.c, line 312) (2/4):
+Effect at line 315
+Prove: true.
+Prover Qed returns Valid (16ms)
+
+------------------------------------------------------------
+
+Goal Loop assigns (file probe.c, line 312) (3/4):
+Call Effect at line 316
+Prove: true.
+Prover Qed returns Valid (14ms)
+
+------------------------------------------------------------
+
+Goal Loop assigns (file probe.c, line 312) (4/4):
+Call Result at line 316
+Prove: true.
+Prover Qed returns Valid (14ms)
+
+------------------------------------------------------------
+
+Goal Assigns (file probe.c, line 301) in 'driver_reference_loop' (1/7):
+Effect at line 315
+Prove: true.
+Prover Qed returns Valid (5ms)
+
+------------------------------------------------------------
+
+Goal Assigns (file probe.c, line 301) in 'driver_reference_loop' (2/7):
+Call Effect at line 316
+Prove: true.
+Prover Qed returns Valid (14ms)
+
+------------------------------------------------------------
+
+Goal Assigns (file probe.c, line 301) in 'driver_reference_loop' (3/7):
+Call Result at line 316
+Prove: true.
+Prover Qed returns Valid (13ms)
+
+------------------------------------------------------------
+
+Goal Assigns (file probe.c, line 301) in 'driver_reference_loop' (4/7):
+Call Effect at line 318
+Prove: true.
+Prover Qed returns Valid (1ms)
+
+------------------------------------------------------------
+
+Goal Assigns (file probe.c, line 301) in 'driver_reference_loop' (5/7):
+Call Effect at line 319
+FRAMAC_SHARE/libc/stdlib.h:628: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(\freeable(p))
+FRAMAC_SHARE/libc/stdlib.h:634: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(freed: \allocable(\at(p,wp:pre)))
+probe.c:319: warning from Typed Model:
+ - Warning: Hide sub-term definition
+   Reason: Cast with incompatible pointers types (source: float64*) (target: sint8*)
+Prove: true.
+Prover Qed returns Valid (0.69ms)
+
+------------------------------------------------------------
+
+Goal Assigns (file probe.c, line 301) in 'driver_reference_loop' (6/7):
+Effect at line 320
+FRAMAC_SHARE/libc/stdlib.h:628: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(\freeable(p))
+FRAMAC_SHARE/libc/stdlib.h:634: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(freed: \allocable(\at(p,wp:pre)))
+probe.c:319: warning from Typed Model:
+ - Warning: Hide sub-term definition
+   Reason: Cast with incompatible pointers types (source: float64*) (target: sint8*)
+Prove: true.
+Prover Qed returns Valid (0.94ms)
+
+------------------------------------------------------------
+
+Goal Assigns (file probe.c, line 301) in 'driver_reference_loop' (7/7):
+Effect at line 323
+Prove: true.
+Prover Qed returns Valid (6ms)
+
+------------------------------------------------------------
+
+Goal Assigns (file probe.c, line 301) in 'driver_reference_loop' (1/5):
+Effect at line 315
+Prove: true.
+Prover Qed returns Valid (5ms)
+
+------------------------------------------------------------
+
+Goal Assigns (file probe.c, line 301) in 'driver_reference_loop' (2/5):
+Call Effect at line 316
+Prove: true.
+Prover Qed returns Valid (14ms)
+
+------------------------------------------------------------
+
+Goal Assigns (file probe.c, line 301) in 'driver_reference_loop' (3/5):
+Call Result at line 316
+Prove: true.
+Prover Qed returns Valid (13ms)
+
+------------------------------------------------------------
+
+Goal Assigns (file probe.c, line 301) in 'driver_reference_loop' (4/5):
+Call Effect at line 318
+Prove: true.
+Prover Qed returns Valid (0.75ms)
+
+------------------------------------------------------------
+
+Goal Assigns (file probe.c, line 301) in 'driver_reference_loop' (5/5):
+Call Effect at line 319
+FRAMAC_SHARE/libc/stdlib.h:628: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(\freeable(p))
+FRAMAC_SHARE/libc/stdlib.h:634: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(freed: \allocable(\at(p,wp:pre)))
+probe.c:319: warning from Typed Model:
+ - Warning: Hide sub-term definition
+   Reason: Cast with incompatible pointers types (source: float64*) (target: sint8*)
+Prove: true.
+Prover Qed returns Valid (0.95ms)
+
+------------------------------------------------------------
+
+Goal Positivity of Loop variant at loop (file probe.c, line 315):
+Prove: true.
+Prover Qed returns Valid (15ms)
+
+------------------------------------------------------------
+
+Goal Decreasing of Loop variant at loop (file probe.c, line 315):
+Prove: true.
+Prover Qed returns Valid (16ms)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 144) in 'heat_step'' in 'driver_reference_loop' at call 'heat_step' (file probe.c, line 316)
+:
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 145) in 'heat_step'' in 'driver_reference_loop' at call 'heat_step' (file probe.c, line 316)
+:
+Prove: true.
+Prover Qed returns Valid (7ms)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 146) in 'heat_step'' in 'driver_reference_loop' at call 'heat_step' (file probe.c, line 316)
+:
+Prove: true.
+Prover Qed returns Valid (6ms)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 147) in 'heat_step'' in 'driver_reference_loop' at call 'heat_step' (file probe.c, line 316)
+:
+Let a = shift_float64(u, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, 1200).
+Assume {
+  Type: is_sint32(k).
+  (* Heap *)
+  Type: (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition 'backing' *)
+  Have: valid_rw(Malloc_0, a, 1200).
+  (* Pre-condition 'schedule' *)
+  Have: (of_f64(dt_0) = (5170051590165233.0/1152921504606846976)) /\
+      (of_f64(dx_0) = (1080863910568919.0/72057594037927936)) /\
+      is_finite_f64(dt_0) /\ is_finite_f64(dx_0).
+  (* Pre-condition 'entry' *)
+  Have: forall i : Z. let a_2 = Mf64_0[shift_float64(u, i)] in ((0 <= i) ->
+      ((i <= 399) ->
+      ((of_f64(a_2) = of_f64(L_ref_cell(0, i))) /\ is_finite_f64(a_2)))).
+  (* Pre-condition *)
+  Have: (forall i_1,i : Z. ((0 <= i_1) -> ((0 <= i) -> ((i_1 <= 222) ->
+         ((i <= 399) ->
+         (of_f64(L_ref_update(i_1, i, dt_0,
+                   to_f64((4150517416584649.0/18446744073709551616))))
+            = of_f64(L_ref_cell(1 + i_1, i)))))))) /\
+      (forall i_1,i : Z. let a_2 = L_ref_cell(i_1, i) in
+       let r = of_f64(a_2) in ((0 <= i_1) -> ((0 <= i) -> ((i_1 <= 223) ->
+       ((i <= 399) -> ((r <= 2.0) /\ (-2.0 <= r) /\ is_finite_f64(a_2))))))).
+  (* Invariant 'clock' *)
+  Have: (0 <= k) /\ (k <= 223).
+  (* Invariant 'state_matches' *)
+  Have: forall i : Z. let a_2 = a_1[shift_float64(u, i)] in ((0 <= i) ->
+      ((i <= 399) ->
+      ((of_f64(a_2) = of_f64(L_ref_cell(k, i))) /\ is_finite_f64(a_2)))).
+  (* Then *)
+  Have: k <= 222.
+}
+Prove: valid_rw(Malloc_0, a, 400).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:19ms) (161ms) (1333)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 148) in 'heat_step'' in 'driver_reference_loop' at call 'heat_step' (file probe.c, line 316)
+:
+Let a = shift_float64(buf_0, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, 1200).
+Assume {
+  Type: is_sint32(k).
+  (* Heap *)
+  Type: (region(buf_0.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition 'backing' *)
+  Have: valid_rw(Malloc_0, a, 1200).
+  (* Pre-condition 'schedule' *)
+  Have: (of_f64(dt_0) = (5170051590165233.0/1152921504606846976)) /\
+      (of_f64(dx_0) = (1080863910568919.0/72057594037927936)) /\
+      is_finite_f64(dt_0) /\ is_finite_f64(dx_0).
+  (* Pre-condition 'entry' *)
+  Have: forall i : Z. let a_2 = Mf64_0[shift_float64(buf_0, i)] in
+      ((0 <= i) -> ((i <= 399) ->
+      ((of_f64(a_2) = of_f64(L_ref_cell(0, i))) /\ is_finite_f64(a_2)))).
+  (* Pre-condition *)
+  Have: (forall i_1,i : Z. ((0 <= i_1) -> ((0 <= i) -> ((i_1 <= 222) ->
+         ((i <= 399) ->
+         (of_f64(L_ref_update(i_1, i, dt_0,
+                   to_f64((4150517416584649.0/18446744073709551616))))
+            = of_f64(L_ref_cell(1 + i_1, i)))))))) /\
+      (forall i_1,i : Z. let a_2 = L_ref_cell(i_1, i) in
+       let r = of_f64(a_2) in ((0 <= i_1) -> ((0 <= i) -> ((i_1 <= 223) ->
+       ((i <= 399) -> ((r <= 2.0) /\ (-2.0 <= r) /\ is_finite_f64(a_2))))))).
+  (* Invariant 'clock' *)
+  Have: (0 <= k) /\ (k <= 223).
+  (* Invariant 'state_matches' *)
+  Have: forall i : Z. let a_2 = a_1[shift_float64(buf_0, i)] in ((0 <= i) ->
+      ((i <= 399) ->
+      ((of_f64(a_2) = of_f64(L_ref_cell(k, i))) /\ is_finite_f64(a_2)))).
+  (* Then *)
+  Have: k <= 222.
+}
+Prove: valid_rw(Malloc_0, shift_float64(buf_0, 400), 400).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:21ms) (171ms) (1451)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 149) in 'heat_step'' in 'driver_reference_loop' at call 'heat_step' (file probe.c, line 316)
+:
+Let a = shift_float64(buf_0, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, 1200).
+Assume {
+  Type: is_sint32(k).
+  (* Heap *)
+  Type: (region(buf_0.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition 'backing' *)
+  Have: valid_rw(Malloc_0, a, 1200).
+  (* Pre-condition 'schedule' *)
+  Have: (of_f64(dt_0) = (5170051590165233.0/1152921504606846976)) /\
+      (of_f64(dx_0) = (1080863910568919.0/72057594037927936)) /\
+      is_finite_f64(dt_0) /\ is_finite_f64(dx_0).
+  (* Pre-condition 'entry' *)
+  Have: forall i : Z. let a_2 = Mf64_0[shift_float64(buf_0, i)] in
+      ((0 <= i) -> ((i <= 399) ->
+      ((of_f64(a_2) = of_f64(L_ref_cell(0, i))) /\ is_finite_f64(a_2)))).
+  (* Pre-condition *)
+  Have: (forall i_1,i : Z. ((0 <= i_1) -> ((0 <= i) -> ((i_1 <= 222) ->
+         ((i <= 399) ->
+         (of_f64(L_ref_update(i_1, i, dt_0,
+                   to_f64((4150517416584649.0/18446744073709551616))))
+            = of_f64(L_ref_cell(1 + i_1, i)))))))) /\
+      (forall i_1,i : Z. let a_2 = L_ref_cell(i_1, i) in
+       let r = of_f64(a_2) in ((0 <= i_1) -> ((0 <= i) -> ((i_1 <= 223) ->
+       ((i <= 399) -> ((r <= 2.0) /\ (-2.0 <= r) /\ is_finite_f64(a_2))))))).
+  (* Invariant 'clock' *)
+  Have: (0 <= k) /\ (k <= 223).
+  (* Invariant 'state_matches' *)
+  Have: forall i : Z. let a_2 = a_1[shift_float64(buf_0, i)] in ((0 <= i) ->
+      ((i <= 399) ->
+      ((of_f64(a_2) = of_f64(L_ref_cell(k, i))) /\ is_finite_f64(a_2)))).
+  (* Then *)
+  Have: k <= 222.
+}
+Prove: valid_rw(Malloc_0, shift_float64(buf_0, 800), 400).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:21ms) (172ms) (1451)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 150) in 'heat_step'' in 'driver_reference_loop' at call 'heat_step' (file probe.c, line 316)
+:
+Prove: true.
+Prover Qed returns Valid (7ms)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition (file probe.c, line 151) in 'heat_step'' in 'driver_reference_loop' at call 'heat_step' (file probe.c, line 316)
+:
+Let a = shift_float64(u, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, 1200).
+Let a_2 = a_1[shift_float64(u, i)].
+Let r = of_f64(a_2).
+Assume {
+  Type: is_sint32(k).
+  (* Heap *)
+  Type: (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (0 <= i) /\ (i <= 399).
+  (* Pre-condition 'backing' *)
+  Have: valid_rw(Malloc_0, a, 1200).
+  (* Pre-condition 'schedule' *)
+  Have: (of_f64(dt_0) = (5170051590165233.0/1152921504606846976)) /\
+      (of_f64(dx_0) = (1080863910568919.0/72057594037927936)) /\
+      is_finite_f64(dt_0) /\ is_finite_f64(dx_0).
+  (* Pre-condition 'entry' *)
+  Have: forall i_1 : Z. let a_3 = Mf64_0[shift_float64(u, i_1)] in
+      ((0 <= i_1) -> ((i_1 <= 399) ->
+      ((of_f64(a_3) = of_f64(L_ref_cell(0, i_1))) /\ is_finite_f64(a_3)))).
+  (* Pre-condition *)
+  Have: (forall i_2,i_1 : Z. ((0 <= i_2) -> ((0 <= i_1) -> ((i_2 <= 222) ->
+         ((i_1 <= 399) ->
+         (of_f64(L_ref_update(i_2, i_1, dt_0,
+                   to_f64((4150517416584649.0/18446744073709551616))))
+            = of_f64(L_ref_cell(1 + i_2, i_1)))))))) /\
+      (forall i_2,i_1 : Z. let a_3 = L_ref_cell(i_2, i_1) in
+       let r_1 = of_f64(a_3) in ((0 <= i_2) -> ((0 <= i_1) ->
+       ((i_2 <= 223) -> ((i_1 <= 399) ->
+       ((r_1 <= 2.0) /\ (-2.0 <= r_1) /\ is_finite_f64(a_3))))))).
+  (* Invariant 'clock' *)
+  Have: (0 <= k) /\ (k <= 223).
+  (* Invariant 'state_matches' *)
+  Have: forall i_1 : Z. let a_3 = a_1[shift_float64(u, i_1)] in
+      ((0 <= i_1) -> ((i_1 <= 399) ->
+      ((of_f64(a_3) = of_f64(L_ref_cell(k, i_1))) /\ is_finite_f64(a_3)))).
+  (* Then *)
+  Have: k <= 222.
+}
+Prove: (r <= 2.0) /\ (-2.0 <= r) /\ is_finite_f64(a_2).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:30ms) (276ms) (2725)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition 'valid_string_s' in 'fputs'' in 'driver_reference_loop' at call 'fputs' (file probe.c, line 318)
+:
+Prove: true.
+Prover Qed returns Valid (1ms)
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition 'freeable' in 'free'' in 'driver_reference_loop' at call 'free' (file probe.c, line 319)
+:
+FRAMAC_SHARE/libc/stdlib.h:628: warning from wp:
+ - Warning: Target turned to False, looking for context inconsistency
+   Reason: Allocation, initialization and danglingness not yet implemented
+(\freeable(p))
+probe.c:319: warning from Typed Model:
+ - Warning: Hide sub-term definition
+   Reason: Cast with incompatible pointers types (source: float64*) (target: sint8*)
+Prove: true.
+Prover Qed returns Valid (1ms)
+
+------------------------------------------------------------
+[wp] probe.c:306: Warning: 
+  Memory model hypotheses for function 'driver_reference_loop':
+  /*@
+     behavior wp_typed:
+       requires \separated(buf + (..), &__fc_stderr);
+       requires \separated(buf + (0 .. 1199), &__fc_stderr);
+     */
+  int driver_reference_loop(double *buf, double dx, double dt, int N);

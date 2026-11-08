@@ -1,3 +1,4 @@
+# Reproducibility artefacts and source ZIPs are deliberately tracked.
 **/.lake/
 **/lake-packages/
 **/__pycache__/

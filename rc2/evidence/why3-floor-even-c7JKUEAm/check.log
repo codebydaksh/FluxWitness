@@ -1,0 +1,117 @@
+/home/infinity/.opam/download-cache/sha256/b7/b7d112edd5bcce6bcce0023d2bc834eb2ae1a1c42d7aea44ffa124d649b50bea: OK
+/mnt/c/Users/Infinity/Documents/[workspace]/2026-10-23/go/work/../outputs/c2-wp-postcondition-export-20261107/run-mUCtyS/model-ieee_float.mlw: OK
+/mnt/c/Users/Infinity/Documents/[workspace]/2026-10-23/go/work/../outputs/c2-rounding-construction-20261107-121623/C2RoundingConstruction.lean: OK
+/usr/bin/coqc
+/usr/bin/coq_makefile
+/usr/bin/coqchk
+/usr/bin/make
+The Coq Proof Assistant, version 8.20.1
+compiled with OCaml 5.4.0
+coq	8.20.1+dfsg-1build4
+libcoq-flocq	4.2.1-1build5
+b1d042ac7c2a485d7f32293fcc3e3514c42b5398bc6432d6127515224d52b92f  Why3FloorEven.v
+47e9b39e6a2c1307fa604bf7ca050942a357305b5d7f85704f0cbbf5906e03dc  ieee_float/Float64.v
+992c737f2c7d95f45be117c48c1100f7776b8a578d6f4626f3b1cd9bbde34d47  ieee_float/GenericFloat.v
+c56ed9471f510675bef2b8750c3328c13e349542bf5364da7ecfd23e0dec83ee  ieee_float/RoundingMode.v
+OCAMLRUNPARAM=d=1; virtual address limit (KiB): 3145728
+The Coq Proof Assistant, version 8.20.1
+compiled with OCaml 5.4.0
+/mnt/c/Users/Infinity/Documents/[workspace]/2026-10-23/go/work/../outputs/why3-floor-even-cS6zwtvb/why3-1.8.2/lib/coq/ieee_float/Float64.vo: OK
+COQDEP VFILES
+COQC ./BuiltIn.v
+COQC ./int/Int.v
+COQC ./real/Real.v
+File "./real/Real.v", line 207, characters 12-27:
+Warning: Notation Rinv_mult_distr is deprecated since 8.16. Use Rinv_mult.
+[deprecated-syntactic-definition-since-8.16,deprecated-since-8.16,deprecated-syntactic-definition,deprecated,default]
+File "./real/Real.v", line 207, characters 12-27:
+Warning: Notation Rinv_mult_distr is deprecated since 8.16. Use Rinv_mult.
+[deprecated-syntactic-definition-since-8.16,deprecated-since-8.16,deprecated-syntactic-definition,deprecated,default]
+File "./real/Real.v", line 207, characters 12-27:
+Warning: Notation Rinv_mult_distr is deprecated since 8.16. Use Rinv_mult.
+[deprecated-syntactic-definition-since-8.16,deprecated-since-8.16,deprecated-syntactic-definition,deprecated,default]
+File "./real/Real.v", line 207, characters 12-27:
+Warning: Notation Rinv_mult_distr is deprecated since 8.16. Use Rinv_mult.
+[deprecated-syntactic-definition-since-8.16,deprecated-since-8.16,deprecated-syntactic-definition,deprecated,default]
+File "./real/Real.v", line 207, characters 12-27:
+Warning: Notation Rinv_mult_distr is deprecated since 8.16. Use Rinv_mult.
+[deprecated-syntactic-definition-since-8.16,deprecated-since-8.16,deprecated-syntactic-definition,deprecated,default]
+COQC ./real/RealInfix.v
+COQC ./real/Abs.v
+COQC ./real/FromInt.v
+COQC ./real/Truncate.v
+COQC ./real/Square.v
+COQC ./bv/Pow2int.v
+COQC ./ieee_float/RoundingMode.v
+COQC ./ieee_float/GenericFloat.v
+File "./ieee_float/GenericFloat.v", line 319, characters 0-15:
+Warning: Adding and removing hints in the core database implicitly is
+deprecated. Please specify a hint database.
+[implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
+File "./ieee_float/GenericFloat.v", line 327, characters 0-15:
+Warning: Adding and removing hints in the core database implicitly is
+deprecated. Please specify a hint database.
+[implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
+File "./ieee_float/GenericFloat.v", line 359, characters 0-15:
+Warning: Adding and removing hints in the core database implicitly is
+deprecated. Please specify a hint database.
+[implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
+File "./ieee_float/GenericFloat.v", line 479, characters 2-40:
+Warning:
+"auto with *" was used through the default "intuition_solver" tactic.
+This will be replaced by just "auto" in the future.
+[intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
+File "./ieee_float/GenericFloat.v", line 479, characters 2-40:
+Warning:
+"auto with *" was used through the default "intuition_solver" tactic.
+This will be replaced by just "auto" in the future.
+[intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
+File "./ieee_float/GenericFloat.v", line 479, characters 2-40:
+Warning:
+"auto with *" was used through the default "intuition_solver" tactic.
+This will be replaced by just "auto" in the future.
+[intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
+File "./ieee_float/GenericFloat.v", line 524, characters 0-24:
+Warning: Adding and removing hints in the core database implicitly is
+deprecated. Please specify a hint database.
+[implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
+File "./ieee_float/GenericFloat.v", line 552, characters 0-24:
+Warning: Adding and removing hints in the core database implicitly is
+deprecated. Please specify a hint database.
+[implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
+File "./ieee_float/GenericFloat.v", line 1350, characters 0-22:
+Warning: Adding and removing hints in the core database implicitly is
+deprecated. Please specify a hint database.
+[implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
+File "./ieee_float/GenericFloat.v", line 1364, characters 0-22:
+Warning: Adding and removing hints in the core database implicitly is
+deprecated. Please specify a hint database.
+[implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
+File "./ieee_float/GenericFloat.v", line 3590, characters 0-19:
+Warning: Adding and removing hints in the core database implicitly is
+deprecated. Please specify a hint database.
+[implicit-core-hint-db,deprecated-since-8.10,deprecated,default]
+COQC ./ieee_float/Float64.v
+COQC ./Why3FloorEven.v
+Axioms:
+ClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}
+ClassicalDedekindReals.sig_forall_dec :
+  forall P : nat -> Prop,
+  (forall n : nat, {P n} + {~ P n}) ->
+  {n : nat | ~ P n} + {forall n : nat, P n}
+FunctionalExtensionality.functional_extensionality_dep :
+  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x),
+  (forall x : A, f x = g x) -> f = g
+Classical_Prop.classic : forall P : Prop, P \/ ~ P
+Axioms:
+ClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}
+ClassicalDedekindReals.sig_forall_dec :
+  forall P : nat -> Prop,
+  (forall n : nat, {P n} + {~ P n}) ->
+  {n : nat | ~ P n} + {forall n : nat, P n}
+FunctionalExtensionality.functional_extensionality_dep :
+  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x),
+  (forall x : A, f x = g x) -> f = g
+Classical_Prop.classic : forall P : Prop, P \/ ~ P
+d236d0970b896a520e160486203c7dfcd3d735693e83304a2e4ae8c1cdec74fa  Why3FloorEven.vo
+KERNEL_CHECKED; review Print Assumptions in check.log

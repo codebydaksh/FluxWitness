@@ -1,0 +1,18 @@
+[
+    {
+        "exit_code":  0,
+        "name":  "BenchmarkNativeHalf",
+        "stop":  null,
+        "peak_private":  4293984256,
+        "command":  "C:\\Users\\Infinity\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe -j1 -R . -o BenchmarkNativeHalf.olean BenchmarkNativeHalf.lean",
+        "seconds":  8.3479676
+    },
+    {
+        "exit_code":  0,
+        "name":  "Audit",
+        "stop":  null,
+        "peak_private":  4293984256,
+        "command":  "C:\\Users\\Infinity\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe -j1 -R . -o Audit.olean Audit.lean",
+        "seconds":  15.958539799999999
+    }
+]

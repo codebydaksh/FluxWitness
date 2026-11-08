@@ -1,0 +1,2818 @@
+[kernel] Parsing input.c (with preprocessing)
+[kernel:parser:decimal-float] input.c:115: Warning: 
+  Floating-point constant 0.01 is not represented exactly. Will use 0x1.47ae147ae147bp-7.
+  (warn-once: no further messages from category 'parser:decimal-float' will be emitted)
+[wp] Running WP plugin...
+[rte:annot] annotating function compute_L
+[wp] 48 goals scheduled
+[wp] Proved goals:   50 / 50
+  Terminating:       1
+  Unreachable:       1
+  Qed:              23 (8ms-71ms-355ms)
+  Alt-Ergo 2.6.4:   25 (138ms-10.5s-1'28s)
+
+Goal Post-condition (file input.c, line 81) in 'compute_L':
+Let r = of_f64(dx2_0).
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(u, 0).
+Let a_3 = memcpy(Mf64_0, a, Mf64_undef_0, a, i)[shift_float64(L, i_1)].
+Let r_1 = of_f64(a_3).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(n).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (0 <= i_1) /\ (i_1 < n).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_2, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_2, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_2)]))).
+  (* Pre-condition *)
+  Have: (r <= 1.0) /\ ((1.0/10000) <= r).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. let r_2 = of_f64(Mf64_0[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_2 <= 4.0) /\ (-4.0 <= r_2)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_2)]))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let r_2 = of_f64(a_1[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_2 <= 4.0) /\ (-4.0 <= r_2)))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let x = 1 + i_2 in ((0 <= i_2) -> ((i_2 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_1[shift_float64(u, i_2)]),
+                of_f64(a_1[shift_float64(u, if (x = n) then (n - 1) else x)]),
+                r)) = of_f64(a_1[shift_float64(L, i_2)])))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let a_4 = a_1[shift_float64(L, i_2)] in
+      let r_2 = of_f64(a_4) in ((0 <= i_2) -> ((i_2 < i) ->
+      ((r_2 <= 1601.0) /\ (-1601.0 <= r_2) /\ is_finite_f64(a_4)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r) ->
+      ((forall i_2 : Z. let r_2 = of_f64(a_1[shift_float64(u, i_2)]) in
+        ((0 <= i_2) -> ((i_2 < n) -> ((r_2 <= 2.0) /\ (-2.0 <= r_2))))) ->
+      (forall i_2 : Z. let r_2 = of_f64(a_1[shift_float64(L, i_2)]) in
+       ((0 <= i_2) -> ((i_2 < i) -> ((r_2 <= 401.0) /\ (-401.0 <= r_2))))))).
+  (* Else *)
+  Have: n <= i.
+}
+Prove: (r_1 <= 1601.0) /\ (-1601.0 <= r_1) /\ is_finite_f64(a_3).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:38ms) (336ms) (2304)
+
+------------------------------------------------------------
+
+Goal Post-condition (file input.c, line 82) in 'compute_L':
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let r = of_f64(dx2_0).
+Let a_2 = shift_float64(u, 0).
+Let r_1 = of_f64(memcpy(Mf64_0, a, Mf64_undef_0, a, i)[shift_float64(L, i_1)]).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(n).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (0 <= i_1) /\ (i_1 < n) /\ ((1.0/5000) <= r) /\
+      (forall i_2 : Z. let r_2 = of_f64(a_1[shift_float64(u, i_2)]) in
+       ((0 <= i_2) -> ((i_2 < n) -> ((r_2 <= 2.0) /\ (-2.0 <= r_2))))).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_2, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_2, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_2)]))).
+  (* Pre-condition *)
+  Have: (r <= 1.0) /\ ((1.0/10000) <= r).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. let r_2 = of_f64(Mf64_0[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_2 <= 4.0) /\ (-4.0 <= r_2)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_2)]))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let r_2 = of_f64(a_1[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_2 <= 4.0) /\ (-4.0 <= r_2)))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let x = 1 + i_2 in ((0 <= i_2) -> ((i_2 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_1[shift_float64(u, i_2)]),
+                of_f64(a_1[shift_float64(u, if (x = n) then (n - 1) else x)]),
+                r)) = of_f64(a_1[shift_float64(L, i_2)])))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let a_3 = a_1[shift_float64(L, i_2)] in
+      let r_2 = of_f64(a_3) in ((0 <= i_2) -> ((i_2 < i) ->
+      ((r_2 <= 1601.0) /\ (-1601.0 <= r_2) /\ is_finite_f64(a_3)))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let r_2 = of_f64(a_1[shift_float64(L, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < i) -> ((r_2 <= 401.0) /\ (-401.0 <= r_2)))).
+  (* Else *)
+  Have: n <= i.
+}
+Prove: (r_1 <= 401.0) /\ (-401.0 <= r_1).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:38ms) (293ms) (1604)
+
+------------------------------------------------------------
+
+Goal Post-condition (file input.c, line 84) in 'compute_L':
+Let r = of_f64(dx2_0).
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(u, 0).
+Let a_3 = shift_float64(u, i_1).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(n).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (0 <= i_1) /\ (i_1 < n).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_2, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_2, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_2)]))).
+  (* Pre-condition *)
+  Have: (r <= 1.0) /\ ((1.0/10000) <= r).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. let r_1 = of_f64(Mf64_0[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_1 <= 4.0) /\ (-4.0 <= r_1)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_2)]))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let r_1 = of_f64(a_1[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_1 <= 4.0) /\ (-4.0 <= r_1)))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let x = 1 + i_2 in ((0 <= i_2) -> ((i_2 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_1[shift_float64(u, i_2)]),
+                of_f64(a_1[shift_float64(u, if (x = n) then (n - 1) else x)]),
+                r)) = of_f64(a_1[shift_float64(L, i_2)])))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let a_4 = a_1[shift_float64(L, i_2)] in
+      let r_1 = of_f64(a_4) in ((0 <= i_2) -> ((i_2 < i) ->
+      ((r_1 <= 1601.0) /\ (-1601.0 <= r_1) /\ is_finite_f64(a_4)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r) ->
+      ((forall i_2 : Z. let r_1 = of_f64(a_1[shift_float64(u, i_2)]) in
+        ((0 <= i_2) -> ((i_2 < n) -> ((r_1 <= 2.0) /\ (-2.0 <= r_1))))) ->
+      (forall i_2 : Z. let r_1 = of_f64(a_1[shift_float64(L, i_2)]) in
+       ((0 <= i_2) -> ((i_2 < i) -> ((r_1 <= 401.0) /\ (-401.0 <= r_1))))))).
+  (* Else *)
+  Have: n <= i.
+}
+Prove: of_f64(memcpy(Mf64_0, a, Mf64_undef_0, a, i)[a_3])
+         = of_f64(Mf64_0[a_3]).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:54ms) (436ms) (3024)
+
+------------------------------------------------------------
+
+Goal Post-condition (file input.c, line 85) in 'compute_L':
+Let r = of_f64(dx2_0).
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(u, 0).
+Let x = 1 + i.
+Assume {
+  Type: is_sint32(i_1) /\ is_sint32(n).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (0 <= i) /\ (i < n).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_2, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_2, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_2)]))).
+  (* Pre-condition *)
+  Have: (r <= 1.0) /\ ((1.0/10000) <= r).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. let r_1 = of_f64(Mf64_0[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_1 <= 4.0) /\ (-4.0 <= r_1)))).
+  (* Invariant *)
+  Have: (0 <= i_1) /\ (i_1 <= n).
+  (* Invariant *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_2)]))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let r_1 = of_f64(a_1[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_1 <= 4.0) /\ (-4.0 <= r_1)))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let x_1 = 1 + i_2 in ((0 <= i_2) -> ((i_2 < i_1) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_1[shift_float64(u, i_2)]),
+                of_f64(a_1
+                         [shift_float64(u,
+                            if (x_1 = n) then (n - 1) else x_1)]), r))
+         = of_f64(a_1[shift_float64(L, i_2)])))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let a_3 = a_1[shift_float64(L, i_2)] in
+      let r_1 = of_f64(a_3) in ((0 <= i_2) -> ((i_2 < i_1) ->
+      ((r_1 <= 1601.0) /\ (-1601.0 <= r_1) /\ is_finite_f64(a_3)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r) ->
+      ((forall i_2 : Z. let r_1 = of_f64(a_1[shift_float64(u, i_2)]) in
+        ((0 <= i_2) -> ((i_2 < n) -> ((r_1 <= 2.0) /\ (-2.0 <= r_1))))) ->
+      (forall i_2 : Z. let r_1 = of_f64(a_1[shift_float64(L, i_2)]) in
+       ((0 <= i_2) -> ((i_2 < i_1) -> ((r_1 <= 401.0) /\ (-401.0 <= r_1))))))).
+  (* Else *)
+  Have: n <= i_1.
+}
+Prove: of_f64(L_fw_compute_cell(of_f64(Mf64_0
+                                         [shift_float64(u,
+                                            if (i = 0) then 0 else (i - 1))]),
+                of_f64(Mf64_0[shift_float64(u, i)]),
+                of_f64(Mf64_0
+                         [shift_float64(u,
+                            if (x = i_1) then (i_1 - 1) else x)]), r))
+         = of_f64(memcpy(Mf64_0, a, Mf64_undef_0, a, i_1)
+                    [shift_float64(L, i)]).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:33ms) (19.5s) (140140)
+
+------------------------------------------------------------
+
+Goal Establishment of Invariant (file input.c, line 92):
+Prove: true.
+Prover Qed returns Valid (5ms)
+
+------------------------------------------------------------
+
+Goal Preservation of Invariant (file input.c, line 92):
+Prove: true.
+Prover Qed returns Valid (77ms)
+
+------------------------------------------------------------
+
+Goal Establishment of Invariant (file input.c, line 93):
+Prove: true.
+Prover Qed returns Valid (4ms)
+
+------------------------------------------------------------
+
+Goal Preservation of Invariant (file input.c, line 93):
+Prove: true.
+Prover Qed returns Valid (17ms)
+
+------------------------------------------------------------
+
+Goal Establishment of Invariant (file input.c, line 94):
+Let r = of_f64(dx2_0).
+Let a = shift_float64(u, 0).
+Let a_1 = shift_float64(L, 0).
+Assume {
+  Type: is_sint32(n).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (0 <= i) /\ (i < n).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a_1, n).
+  (* Pre-condition *)
+  Have: separated(a, n, a_1, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r <= 1.0) /\ ((1.0/10000) <= r).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_1 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_1 <= 4.0) /\ (-4.0 <= r_1)))).
+}
+Prove: is_finite_f64(Mf64_0[shift_float64(u, i)]).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:8ms) (138ms) (879)
+
+------------------------------------------------------------
+
+Goal Preservation of Invariant (file input.c, line 94):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(L, i).
+Let a_3 = shift_float64(u, ip1_0).
+Let a_4 = a_1[a_3].
+Let a_5 = shift_float64(u, i).
+Let a_6 = a_1[a_5].
+Let a_7 = mul_f64(to_f64(2.0), a_6).
+Let a_8 = sub_f64(a_4, a_7).
+Let a_9 = shift_float64(u, im1_0).
+Let a_10 = a_1[a_9].
+Let a_11 = add_f64(a_8, a_10).
+Let a_12 = div_f64(a_11, dx2_0).
+Let a_13 = mul_f64(to_f64((5764607523034235.0/576460752303423488)), a_12).
+Let a_14 = a_1[a_2 <- a_13].
+Let r = of_f64(a_14[a_5]).
+Let x = 1 + i.
+Let x_1 = n - 1.
+Let r_1 = of_f64(dx2_0).
+Let r_2 = of_f64(a_13).
+Let r_3 = of_f64(a_6).
+Let r_4 = of_f64(a_10).
+Let r_5 = of_f64(a_4).
+Let a_15 = shift_float64(u, 0).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1) /\ is_sint32(x).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (0 <= i_1) /\ (i_1 < n).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_15, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_15, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_2)]))).
+  (* Pre-condition *)
+  Have: (r_1 <= 1.0) /\ ((1.0/10000) <= r_1).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. let r_6 = of_f64(Mf64_0[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_6 <= 4.0) /\ (-4.0 <= r_6)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_2)]))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let r_6 = of_f64(a_1[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_6 <= 4.0) /\ (-4.0 <= r_6)))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let x_2 = 1 + i_2 in ((0 <= i_2) -> ((i_2 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_1[shift_float64(u, i_2)]),
+                of_f64(a_1[shift_float64(u, if (x_2 = n) then x_1 else x_2)]),
+                r_1)) = of_f64(a_1[shift_float64(L, i_2)])))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let a_16 = a_1[shift_float64(L, i_2)] in
+      let r_6 = of_f64(a_16) in ((0 <= i_2) -> ((i_2 < i) ->
+      ((r_6 <= 1601.0) /\ (-1601.0 <= r_6) /\ is_finite_f64(a_16)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r_1) ->
+      ((forall i_2 : Z. let r_6 = of_f64(a_1[shift_float64(u, i_2)]) in
+        ((0 <= i_2) -> ((i_2 < n) -> ((r_6 <= 2.0) /\ (-2.0 <= r_6))))) ->
+      (forall i_2 : Z. let r_6 = of_f64(a_1[shift_float64(L, i_2)]) in
+       ((0 <= i_2) -> ((i_2 < i) -> ((r_6 <= 401.0) /\ (-401.0 <= r_6))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If x = n
+  Then { Have: ip1_0 = i. }
+  Else { Have: x = ip1_0. }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r_3 <= 4.0) /\ (r_4 <= 4.0) /\ (r_5 <= 4.0) /\ (-4.0 <= r_3) /\
+      (-4.0 <= r_4) /\ (-4.0 <= r_5) /\ is_finite_f64(a_6) /\
+      is_finite_f64(a_10) /\ is_finite_f64(a_4).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_3, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_5, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_8).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_9, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_11).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_12).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rw(Malloc_0, a_2, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_13).
+  (* Assertion 'fw_cell_equation' *)
+  Have: of_f64(L_fw_compute_cell(of_f64(a_14[a_9]), r, of_f64(a_14[a_3]),
+                 r_1)) = r_2.
+  (* Assertion 'fw_earlier_cells' *)
+  Have: forall i_2 : Z. let x_2 = 1 + i_2 in ((0 <= i_2) -> ((i_2 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_14
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_14[shift_float64(u, i_2)]),
+                of_f64(a_14[shift_float64(u, if (x_2 = n) then x_1 else x_2)]),
+                r_1)) = of_f64(a_14[shift_float64(L, i_2)])))).
+  (* Assertion 'fw_current_clamped' *)
+  Have: of_f64(L_fw_compute_cell(of_f64(a_14
+                                          [shift_float64(u,
+                                             if (i = 0) then 0 else (i - 1))]),
+                 r,
+                 of_f64(a_14[shift_float64(u, if (x = n) then x_1 else x)]),
+                 r_1)) = r_2.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: i <= 2147483646.
+  (* Invariant *)
+  Have: (-1) <= i.
+}
+Prove: is_finite_f64(a_14[shift_float64(u, i_1)]).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:198ms) (475ms) (3850)
+
+------------------------------------------------------------
+
+Goal Establishment of Invariant (file input.c, line 95):
+Prove: true.
+Prover Qed returns Valid (4ms)
+
+------------------------------------------------------------
+
+Goal Preservation of Invariant (file input.c, line 95):
+Prove: true.
+Prover Qed returns Valid (19ms)
+
+------------------------------------------------------------
+
+Goal Establishment of Invariant (file input.c, line 96):
+Let r = of_f64(dx2_0).
+Let a = shift_float64(u, 0).
+Let a_1 = shift_float64(L, 0).
+Let r_1 = of_f64(Mf64_0[shift_float64(u, i)]).
+Assume {
+  Type: is_sint32(n).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (0 <= i) /\ (i < n).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a_1, n).
+  (* Pre-condition *)
+  Have: separated(a, n, a_1, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r <= 1.0) /\ ((1.0/10000) <= r).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_2 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_2 <= 4.0) /\ (-4.0 <= r_2)))).
+}
+Prove: (r_1 <= 4.0) /\ (-4.0 <= r_1).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:10ms) (202ms) (1506)
+
+------------------------------------------------------------
+
+Goal Preservation of Invariant (file input.c, line 96):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(L, i).
+Let a_3 = shift_float64(u, ip1_0).
+Let a_4 = a_1[a_3].
+Let a_5 = shift_float64(u, i).
+Let a_6 = a_1[a_5].
+Let a_7 = mul_f64(to_f64(2.0), a_6).
+Let a_8 = sub_f64(a_4, a_7).
+Let a_9 = shift_float64(u, im1_0).
+Let a_10 = a_1[a_9].
+Let a_11 = add_f64(a_8, a_10).
+Let a_12 = div_f64(a_11, dx2_0).
+Let a_13 = mul_f64(to_f64((5764607523034235.0/576460752303423488)), a_12).
+Let a_14 = a_1[a_2 <- a_13].
+Let r = of_f64(a_14[a_5]).
+Let x = 1 + i.
+Let x_1 = n - 1.
+Let r_1 = of_f64(dx2_0).
+Let r_2 = of_f64(a_13).
+Let r_3 = of_f64(a_6).
+Let r_4 = of_f64(a_10).
+Let r_5 = of_f64(a_4).
+Let a_15 = shift_float64(u, 0).
+Let r_6 = of_f64(a_14[shift_float64(u, i_1)]).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1) /\ is_sint32(x).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (0 <= i_1) /\ (i_1 < n).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_15, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_15, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_2)]))).
+  (* Pre-condition *)
+  Have: (r_1 <= 1.0) /\ ((1.0/10000) <= r_1).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. let r_7 = of_f64(Mf64_0[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_2)]))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let r_7 = of_f64(a_1[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let x_2 = 1 + i_2 in ((0 <= i_2) -> ((i_2 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_1[shift_float64(u, i_2)]),
+                of_f64(a_1[shift_float64(u, if (x_2 = n) then x_1 else x_2)]),
+                r_1)) = of_f64(a_1[shift_float64(L, i_2)])))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let a_16 = a_1[shift_float64(L, i_2)] in
+      let r_7 = of_f64(a_16) in ((0 <= i_2) -> ((i_2 < i) ->
+      ((r_7 <= 1601.0) /\ (-1601.0 <= r_7) /\ is_finite_f64(a_16)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r_1) ->
+      ((forall i_2 : Z. let r_7 = of_f64(a_1[shift_float64(u, i_2)]) in
+        ((0 <= i_2) -> ((i_2 < n) -> ((r_7 <= 2.0) /\ (-2.0 <= r_7))))) ->
+      (forall i_2 : Z. let r_7 = of_f64(a_1[shift_float64(L, i_2)]) in
+       ((0 <= i_2) -> ((i_2 < i) -> ((r_7 <= 401.0) /\ (-401.0 <= r_7))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If x = n
+  Then { Have: ip1_0 = i. }
+  Else { Have: x = ip1_0. }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r_3 <= 4.0) /\ (r_4 <= 4.0) /\ (r_5 <= 4.0) /\ (-4.0 <= r_3) /\
+      (-4.0 <= r_4) /\ (-4.0 <= r_5) /\ is_finite_f64(a_6) /\
+      is_finite_f64(a_10) /\ is_finite_f64(a_4).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_3, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_5, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_8).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_9, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_11).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_12).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rw(Malloc_0, a_2, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_13).
+  (* Assertion 'fw_cell_equation' *)
+  Have: of_f64(L_fw_compute_cell(of_f64(a_14[a_9]), r, of_f64(a_14[a_3]),
+                 r_1)) = r_2.
+  (* Assertion 'fw_earlier_cells' *)
+  Have: forall i_2 : Z. let x_2 = 1 + i_2 in ((0 <= i_2) -> ((i_2 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_14
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_14[shift_float64(u, i_2)]),
+                of_f64(a_14[shift_float64(u, if (x_2 = n) then x_1 else x_2)]),
+                r_1)) = of_f64(a_14[shift_float64(L, i_2)])))).
+  (* Assertion 'fw_current_clamped' *)
+  Have: of_f64(L_fw_compute_cell(of_f64(a_14
+                                          [shift_float64(u,
+                                             if (i = 0) then 0 else (i - 1))]),
+                 r,
+                 of_f64(a_14[shift_float64(u, if (x = n) then x_1 else x)]),
+                 r_1)) = r_2.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: i <= 2147483646.
+  (* Invariant *)
+  Have: (-1) <= i.
+  (* Invariant *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(a_14[shift_float64(u, i_2)]))).
+}
+Prove: (r_6 <= 4.0) /\ (-4.0 <= r_6).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:216ms) (1.2s) (11600)
+
+------------------------------------------------------------
+
+Goal Establishment of Invariant (file input.c, line 97):
+Prove: true.
+Prover Qed returns Valid (1ms)
+
+------------------------------------------------------------
+
+Goal Preservation of Invariant (file input.c, line 97):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let x = 1 + im1_0.
+Let a_2 = shift_float64(L, x).
+Let a_3 = shift_float64(u, ip1_0).
+Let a_4 = a_1[a_3].
+Let a_5 = shift_float64(u, x).
+Let a_6 = a_1[a_5].
+Let a_7 = mul_f64(to_f64(2.0), a_6).
+Let a_8 = sub_f64(a_4, a_7).
+Let a_9 = shift_float64(u, im1_0).
+Let a_10 = a_1[a_9].
+Let a_11 = add_f64(a_8, a_10).
+Let a_12 = div_f64(a_11, dx2_0).
+Let a_13 = mul_f64(to_f64((5764607523034235.0/576460752303423488)), a_12).
+Let a_14 = a_1[a_2 <- a_13].
+Let r = of_f64(a_14[a_9]).
+Let r_1 = of_f64(a_14[a_5]).
+Let x_1 = 2 + im1_0.
+Let x_2 = n - 1.
+Let r_2 = of_f64(dx2_0).
+Let r_3 = of_f64(a_13).
+Let r_4 = of_f64(a_10).
+Let r_5 = of_f64(a_4).
+Let r_6 = of_f64(a_6).
+Let a_15 = shift_float64(u, 0).
+Let x_3 = 1 + i.
+Assume {
+  Type: is_sint32(im1_0) /\ is_sint32(ip1_0) /\ is_sint32(n) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1) /\ is_sint32(x) /\
+      is_sint32(x_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Residual *)
+  When: im1_0 != (-1).
+  (* Goal *)
+  When: (0 <= i) /\ (i <= x).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_15, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_15, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r_2 <= 1.0) /\ ((1.0/10000) <= r_2).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_7 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+  (* Invariant *)
+  Have: (im1_0 < n) /\ ((-1) <= im1_0).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_7 = of_f64(a_1[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x_4 = 1 + i_1 in ((0 <= i_1) ->
+      ((i_1 <= im1_0) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_1[shift_float64(u, i_1)]),
+                of_f64(a_1[shift_float64(u, if (x_4 = n) then x_2 else x_4)]),
+                r_2)) = of_f64(a_1[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_16 = a_1[shift_float64(L, i_1)] in
+      let r_7 = of_f64(a_16) in ((0 <= i_1) -> ((i_1 <= im1_0) ->
+      ((r_7 <= 1601.0) /\ (-1601.0 <= r_7) /\ is_finite_f64(a_16)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r_2) ->
+      ((forall i_1 : Z. let r_7 = of_f64(a_1[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_7 <= 2.0) /\ (-2.0 <= r_7))))) ->
+      (forall i_1 : Z. let r_7 = of_f64(a_1[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 <= im1_0) ->
+       ((r_7 <= 401.0) /\ (-401.0 <= r_7))))))).
+  (* Then *)
+  Have: x_1 <= n.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483648) <= im1_0.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If x_1 = n
+  Then { Have: x = ip1_0. }
+  Else { Have: x_1 = ip1_0. }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r_4 <= 4.0) /\ (r_5 <= 4.0) /\ (r_6 <= 4.0) /\ (-4.0 <= r_4) /\
+      (-4.0 <= r_5) /\ (-4.0 <= r_6) /\ is_finite_f64(a_10) /\
+      is_finite_f64(a_4) /\ is_finite_f64(a_6).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_3, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_5, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_8).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_9, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_11).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_12).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rw(Malloc_0, a_2, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_13).
+  (* Assertion 'fw_cell_equation' *)
+  Have: of_f64(L_fw_compute_cell(r, r_1, of_f64(a_14[a_3]), r_2)) = r_3.
+  (* Assertion 'fw_earlier_cells' *)
+  Have: forall i_1 : Z. let x_4 = 1 + i_1 in ((0 <= i_1) ->
+      ((i_1 <= im1_0) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_14
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_14[shift_float64(u, i_1)]),
+                of_f64(a_14[shift_float64(u, if (x_4 = n) then x_2 else x_4)]),
+                r_2)) = of_f64(a_14[shift_float64(L, i_1)])))).
+  (* Assertion 'fw_current_clamped' *)
+  Have: of_f64(L_fw_compute_cell(r, r_1,
+                 of_f64(a_14
+                          [shift_float64(u, if (x_1 = n) then x_2 else x_1)]),
+                 r_2)) = r_3.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: im1_0 <= 2147483645.
+  (* Invariant *)
+  Have: (-2) <= im1_0.
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_14[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_7 = of_f64(a_14[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+}
+Prove: of_f64(L_fw_compute_cell(of_f64(a_14
+                                         [shift_float64(u,
+                                            if (i = 0) then 0 else (i - 1))]),
+                of_f64(a_14[shift_float64(u, i)]),
+                of_f64(a_14[shift_float64(u, if (x_3 = n) then x_2 else x_3)]),
+                r_2)) = of_f64(a_14[shift_float64(L, i)]).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:189ms) (1.3s) (7578)
+
+------------------------------------------------------------
+
+Goal Establishment of Invariant (file input.c, line 101):
+Prove: true.
+Prover Qed returns Valid (2ms)
+
+------------------------------------------------------------
+
+Goal Preservation of Invariant (file input.c, line 101):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(L, i).
+Let a_3 = shift_float64(u, ip1_0).
+Let a_4 = a_1[a_3].
+Let a_5 = shift_float64(u, i).
+Let a_6 = a_1[a_5].
+Let a_7 = mul_f64(to_f64(2.0), a_6).
+Let a_8 = sub_f64(a_4, a_7).
+Let a_9 = shift_float64(u, im1_0).
+Let a_10 = a_1[a_9].
+Let a_11 = add_f64(a_8, a_10).
+Let a_12 = div_f64(a_11, dx2_0).
+Let a_13 = mul_f64(to_f64((5764607523034235.0/576460752303423488)), a_12).
+Let a_14 = a_1[a_2 <- a_13].
+Let x = n - 1.
+Let r = of_f64(dx2_0).
+Let r_1 = of_f64(a_14[a_5]).
+Let x_1 = 1 + i.
+Let r_2 = of_f64(a_13).
+Let r_3 = of_f64(a_6).
+Let r_4 = of_f64(a_10).
+Let r_5 = of_f64(a_4).
+Let a_15 = shift_float64(u, 0).
+Let a_16 = a_14[shift_float64(L, i_1)].
+Let r_6 = of_f64(a_16).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1) /\ is_sint32(x_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (i_1 <= i) /\ (0 <= i_1).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_15, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_15, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_2)]))).
+  (* Pre-condition *)
+  Have: (r <= 1.0) /\ ((1.0/10000) <= r).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. let r_7 = of_f64(Mf64_0[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_2)]))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let r_7 = of_f64(a_1[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let x_2 = 1 + i_2 in ((0 <= i_2) -> ((i_2 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_1[shift_float64(u, i_2)]),
+                of_f64(a_1[shift_float64(u, if (x_2 = n) then x else x_2)]),
+                r)) = of_f64(a_1[shift_float64(L, i_2)])))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let a_17 = a_1[shift_float64(L, i_2)] in
+      let r_7 = of_f64(a_17) in ((0 <= i_2) -> ((i_2 < i) ->
+      ((r_7 <= 1601.0) /\ (-1601.0 <= r_7) /\ is_finite_f64(a_17)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r) ->
+      ((forall i_2 : Z. let r_7 = of_f64(a_1[shift_float64(u, i_2)]) in
+        ((0 <= i_2) -> ((i_2 < n) -> ((r_7 <= 2.0) /\ (-2.0 <= r_7))))) ->
+      (forall i_2 : Z. let r_7 = of_f64(a_1[shift_float64(L, i_2)]) in
+       ((0 <= i_2) -> ((i_2 < i) -> ((r_7 <= 401.0) /\ (-401.0 <= r_7))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If x_1 = n
+  Then { Have: ip1_0 = i. }
+  Else { Have: x_1 = ip1_0. }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r_3 <= 4.0) /\ (r_4 <= 4.0) /\ (r_5 <= 4.0) /\ (-4.0 <= r_3) /\
+      (-4.0 <= r_4) /\ (-4.0 <= r_5) /\ is_finite_f64(a_6) /\
+      is_finite_f64(a_10) /\ is_finite_f64(a_4).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_3, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_5, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_8).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_9, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_11).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_12).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rw(Malloc_0, a_2, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_13).
+  (* Assertion 'fw_cell_equation' *)
+  Have: of_f64(L_fw_compute_cell(of_f64(a_14[a_9]), r_1, of_f64(a_14[a_3]),
+                 r)) = r_2.
+  (* Assertion 'fw_earlier_cells' *)
+  Have: forall i_2 : Z. let x_2 = 1 + i_2 in ((0 <= i_2) -> ((i_2 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_14
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_14[shift_float64(u, i_2)]),
+                of_f64(a_14[shift_float64(u, if (x_2 = n) then x else x_2)]),
+                r)) = of_f64(a_14[shift_float64(L, i_2)])))).
+  (* Assertion 'fw_current_clamped' *)
+  Have: of_f64(L_fw_compute_cell(of_f64(a_14
+                                          [shift_float64(u,
+                                             if (i = 0) then 0 else (i - 1))]),
+                 r_1,
+                 of_f64(a_14[shift_float64(u, if (x_1 = n) then x else x_1)]),
+                 r)) = r_2.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: i <= 2147483646.
+  (* Invariant *)
+  Have: (-1) <= i.
+  (* Invariant *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(a_14[shift_float64(u, i_2)]))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let r_7 = of_f64(a_14[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let x_2 = 1 + i_2 in ((i_2 <= i) -> ((0 <= i_2) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_14
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_14[shift_float64(u, i_2)]),
+                of_f64(a_14[shift_float64(u, if (x_2 = n) then x else x_2)]),
+                r)) = of_f64(a_14[shift_float64(L, i_2)])))).
+}
+Prove: (r_6 <= 1601.0) /\ (-1601.0 <= r_6) /\ is_finite_f64(a_16).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:267ms) (40.2s) (294296)
+
+------------------------------------------------------------
+
+Goal Establishment of Invariant (file input.c, line 102):
+Prove: true.
+Prover Qed returns Valid (2ms)
+
+------------------------------------------------------------
+
+Goal Preservation of Invariant (file input.c, line 102):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(L, i).
+Let a_3 = shift_float64(u, ip1_0).
+Let a_4 = a_1[a_3].
+Let a_5 = shift_float64(u, i).
+Let a_6 = a_1[a_5].
+Let a_7 = mul_f64(to_f64(2.0), a_6).
+Let a_8 = sub_f64(a_4, a_7).
+Let a_9 = shift_float64(u, im1_0).
+Let a_10 = a_1[a_9].
+Let a_11 = add_f64(a_8, a_10).
+Let a_12 = div_f64(a_11, dx2_0).
+Let a_13 = mul_f64(to_f64((5764607523034235.0/576460752303423488)), a_12).
+Let a_14 = a_1[a_2 <- a_13].
+Let x = n - 1.
+Let r = of_f64(dx2_0).
+Let r_1 = of_f64(a_14[a_5]).
+Let x_1 = 1 + i.
+Let r_2 = of_f64(a_13).
+Let r_3 = of_f64(a_6).
+Let r_4 = of_f64(a_10).
+Let r_5 = of_f64(a_4).
+Let a_15 = shift_float64(u, 0).
+Let r_6 = of_f64(a_14[shift_float64(L, i_1)]).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1) /\ is_sint32(x_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Goal *)
+  When: (i_1 <= i) /\ (0 <= i_1) /\ ((1.0/5000) <= r) /\
+      (forall i_2 : Z. let r_7 = of_f64(a_14[shift_float64(u, i_2)]) in
+       ((0 <= i_2) -> ((i_2 < n) -> ((r_7 <= 2.0) /\ (-2.0 <= r_7))))).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_15, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_15, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_2)]))).
+  (* Pre-condition *)
+  Have: (r <= 1.0) /\ ((1.0/10000) <= r).
+  (* Pre-condition *)
+  Have: forall i_2 : Z. let r_7 = of_f64(Mf64_0[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_2)]))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let r_7 = of_f64(a_1[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let x_2 = 1 + i_2 in ((0 <= i_2) -> ((i_2 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_1[shift_float64(u, i_2)]),
+                of_f64(a_1[shift_float64(u, if (x_2 = n) then x else x_2)]),
+                r)) = of_f64(a_1[shift_float64(L, i_2)])))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let a_16 = a_1[shift_float64(L, i_2)] in
+      let r_7 = of_f64(a_16) in ((0 <= i_2) -> ((i_2 < i) ->
+      ((r_7 <= 1601.0) /\ (-1601.0 <= r_7) /\ is_finite_f64(a_16)))).
+  (* Invariant *)
+  Have: ((forall i_2 : Z. let r_7 = of_f64(a_1[shift_float64(u, i_2)]) in
+          ((0 <= i_2) -> ((i_2 < n) -> ((r_7 <= 2.0) /\ (-2.0 <= r_7))))) ->
+      (forall i_2 : Z. let r_7 = of_f64(a_1[shift_float64(L, i_2)]) in
+       ((0 <= i_2) -> ((i_2 < i) -> ((r_7 <= 401.0) /\ (-401.0 <= r_7)))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If x_1 = n
+  Then { Have: ip1_0 = i. }
+  Else { Have: x_1 = ip1_0. }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r_3 <= 4.0) /\ (r_4 <= 4.0) /\ (r_5 <= 4.0) /\ (-4.0 <= r_3) /\
+      (-4.0 <= r_4) /\ (-4.0 <= r_5) /\ is_finite_f64(a_6) /\
+      is_finite_f64(a_10) /\ is_finite_f64(a_4).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_3, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_5, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_8).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_9, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_11).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_12).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rw(Malloc_0, a_2, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_13).
+  (* Assertion 'fw_cell_equation' *)
+  Have: of_f64(L_fw_compute_cell(of_f64(a_14[a_9]), r_1, of_f64(a_14[a_3]),
+                 r)) = r_2.
+  (* Assertion 'fw_earlier_cells' *)
+  Have: forall i_2 : Z. let x_2 = 1 + i_2 in ((0 <= i_2) -> ((i_2 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_14
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_14[shift_float64(u, i_2)]),
+                of_f64(a_14[shift_float64(u, if (x_2 = n) then x else x_2)]),
+                r)) = of_f64(a_14[shift_float64(L, i_2)])))).
+  (* Assertion 'fw_current_clamped' *)
+  Have: of_f64(L_fw_compute_cell(of_f64(a_14
+                                          [shift_float64(u,
+                                             if (i = 0) then 0 else (i - 1))]),
+                 r_1,
+                 of_f64(a_14[shift_float64(u, if (x_1 = n) then x else x_1)]),
+                 r)) = r_2.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: i <= 2147483646.
+  (* Invariant *)
+  Have: (-1) <= i.
+  (* Invariant *)
+  Have: forall i_2 : Z. ((0 <= i_2) -> ((i_2 < n) ->
+      is_finite_f64(a_14[shift_float64(u, i_2)]))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let r_7 = of_f64(a_14[shift_float64(u, i_2)]) in
+      ((0 <= i_2) -> ((i_2 < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let x_2 = 1 + i_2 in ((i_2 <= i) -> ((0 <= i_2) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_14
+                                         [shift_float64(u,
+                                            if (i_2 = 0) then 0
+                                            else (i_2 - 1))]),
+                of_f64(a_14[shift_float64(u, i_2)]),
+                of_f64(a_14[shift_float64(u, if (x_2 = n) then x else x_2)]),
+                r)) = of_f64(a_14[shift_float64(L, i_2)])))).
+  (* Invariant *)
+  Have: forall i_2 : Z. let a_16 = a_14[shift_float64(L, i_2)] in
+      let r_7 = of_f64(a_16) in ((i_2 <= i) -> ((0 <= i_2) ->
+      ((r_7 <= 1601.0) /\ (-1601.0 <= r_7) /\ is_finite_f64(a_16)))).
+}
+Prove: (r_6 <= 401.0) /\ (-401.0 <= r_6).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:311ms) (1') (538745)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,signed_overflow' (file input.c, line 108):
+Prove: true.
+Prover Qed returns Valid (25ms)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,signed_overflow' (file input.c, line 109):
+Prove: true.
+Prover Qed returns Valid (24ms)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,signed_overflow' (file input.c, line 109):
+Prove: true.
+Prover Qed returns Valid (10ms)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,signed_overflow' (file input.c, line 109):
+Prove: true.
+Prover Qed returns Valid (26ms)
+
+------------------------------------------------------------
+
+Goal Assertion 'fw_cell_inputs' (file input.c, line 111):
+Let r = of_f64(dx2_0).
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(u, 0).
+Let a_3 = a_1[shift_float64(u, i)].
+Let r_1 = of_f64(a_3).
+Let a_4 = a_1[shift_float64(u, im1_0)].
+Let r_2 = of_f64(a_4).
+Let a_5 = a_1[shift_float64(u, ip1_0)].
+Let r_3 = of_f64(a_5).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_2, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_2, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r <= 1.0) /\ ((1.0/10000) <= r).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_4 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x = 1 + i_1 in ((0 <= i_1) -> ((i_1 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_1[shift_float64(u, i_1)]),
+                of_f64(a_1[shift_float64(u, if (x = n) then (n - 1) else x)]),
+                r)) = of_f64(a_1[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_6 = a_1[shift_float64(L, i_1)] in
+      let r_4 = of_f64(a_6) in ((0 <= i_1) -> ((i_1 < i) ->
+      ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_6)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r) ->
+      ((forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+      (forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 < i) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If (1 + i) = n
+  Then { Have: ip1_0 = i. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: ip1_0 <= 2147483647.
+    Have: (1 + i) = ip1_0.
+  }
+}
+Prove: (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (r_3 <= 4.0) /\ (-4.0 <= r_1) /\
+    (-4.0 <= r_2) /\ (-4.0 <= r_3) /\ is_finite_f64(a_3) /\
+    is_finite_f64(a_4) /\ is_finite_f64(a_5).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:94ms) (666ms) (6329)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,is_nan_or_infinite' (file input.c, line 114):
+Let a = shift_float64(u, i).
+Let a_1 = shift_float64(u, ip1_0).
+Let a_2 = shift_float64(L, 0).
+Let a_3 = memcpy(Mf64_0, a_2, Mf64_undef_0, a_2, n).
+Let a_4 = a_3[a].
+Let r = of_f64(a_4).
+Let a_5 = a_3[shift_float64(u, im1_0)].
+Let r_1 = of_f64(a_5).
+Let a_6 = a_3[a_1].
+Let r_2 = of_f64(a_6).
+Let r_3 = of_f64(dx2_0).
+Let a_7 = shift_float64(u, 0).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_7, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a_2, n).
+  (* Pre-condition *)
+  Have: separated(a_7, n, a_2, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r_3 <= 1.0) /\ ((1.0/10000) <= r_3).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_4 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_3[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_4 = of_f64(a_3[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x = 1 + i_1 in ((0 <= i_1) -> ((i_1 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_3
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_3[shift_float64(u, i_1)]),
+                of_f64(a_3[shift_float64(u, if (x = n) then (n - 1) else x)]),
+                r_3)) = of_f64(a_3[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_8 = a_3[shift_float64(L, i_1)] in
+      let r_4 = of_f64(a_8) in ((0 <= i_1) -> ((i_1 < i) ->
+      ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_8)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r_3) ->
+      ((forall i_1 : Z. let r_4 = of_f64(a_3[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+      (forall i_1 : Z. let r_4 = of_f64(a_3[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 < i) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If (1 + i) = n
+  Then { Have: ip1_0 = i. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: ip1_0 <= 2147483647.
+    Have: (1 + i) = ip1_0.
+  }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r <= 4.0) /\ (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (-4.0 <= r) /\
+      (-4.0 <= r_1) /\ (-4.0 <= r_2) /\ is_finite_f64(a_4) /\
+      is_finite_f64(a_5) /\ is_finite_f64(a_6).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_1, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a, 1).
+}
+Prove: is_finite_f64(mul_f64(to_f64(2.0), a_4)).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:103ms) (980ms) (7049)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,is_nan_or_infinite' (file input.c, line 114):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(u, i).
+Let a_3 = a_1[a_2].
+Let a_4 = mul_f64(to_f64(2.0), a_3).
+Let a_5 = shift_float64(u, ip1_0).
+Let r = of_f64(a_3).
+Let a_6 = a_1[shift_float64(u, im1_0)].
+Let r_1 = of_f64(a_6).
+Let a_7 = a_1[a_5].
+Let r_2 = of_f64(a_7).
+Let r_3 = of_f64(dx2_0).
+Let a_8 = shift_float64(u, 0).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_8, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_8, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r_3 <= 1.0) /\ ((1.0/10000) <= r_3).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_4 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x = 1 + i_1 in ((0 <= i_1) -> ((i_1 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_1[shift_float64(u, i_1)]),
+                of_f64(a_1[shift_float64(u, if (x = n) then (n - 1) else x)]),
+                r_3)) = of_f64(a_1[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_9 = a_1[shift_float64(L, i_1)] in
+      let r_4 = of_f64(a_9) in ((0 <= i_1) -> ((i_1 < i) ->
+      ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_9)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r_3) ->
+      ((forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+      (forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 < i) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If (1 + i) = n
+  Then { Have: ip1_0 = i. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: ip1_0 <= 2147483647.
+    Have: (1 + i) = ip1_0.
+  }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r <= 4.0) /\ (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (-4.0 <= r) /\
+      (-4.0 <= r_1) /\ (-4.0 <= r_2) /\ is_finite_f64(a_3) /\
+      is_finite_f64(a_6) /\ is_finite_f64(a_7).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_5, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_2, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_4).
+}
+Prove: is_finite_f64(sub_f64(a_7, a_4)).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:117ms) (1.2s) (8407)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,is_nan_or_infinite' (file input.c, line 114):
+Let a = shift_float64(u, im1_0).
+Let a_1 = shift_float64(L, 0).
+Let a_2 = memcpy(Mf64_0, a_1, Mf64_undef_0, a_1, n).
+Let a_3 = shift_float64(u, ip1_0).
+Let a_4 = a_2[a_3].
+Let a_5 = shift_float64(u, i).
+Let a_6 = a_2[a_5].
+Let a_7 = mul_f64(to_f64(2.0), a_6).
+Let a_8 = sub_f64(a_4, a_7).
+Let r = of_f64(a_6).
+Let a_9 = a_2[a].
+Let r_1 = of_f64(a_9).
+Let r_2 = of_f64(a_4).
+Let r_3 = of_f64(dx2_0).
+Let a_10 = shift_float64(u, 0).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_10, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a_1, n).
+  (* Pre-condition *)
+  Have: separated(a_10, n, a_1, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r_3 <= 1.0) /\ ((1.0/10000) <= r_3).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_4 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_2[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_4 = of_f64(a_2[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x = 1 + i_1 in ((0 <= i_1) -> ((i_1 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_2
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_2[shift_float64(u, i_1)]),
+                of_f64(a_2[shift_float64(u, if (x = n) then (n - 1) else x)]),
+                r_3)) = of_f64(a_2[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_11 = a_2[shift_float64(L, i_1)] in
+      let r_4 = of_f64(a_11) in ((0 <= i_1) -> ((i_1 < i) ->
+      ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_11)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r_3) ->
+      ((forall i_1 : Z. let r_4 = of_f64(a_2[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+      (forall i_1 : Z. let r_4 = of_f64(a_2[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 < i) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If (1 + i) = n
+  Then { Have: ip1_0 = i. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: ip1_0 <= 2147483647.
+    Have: (1 + i) = ip1_0.
+  }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r <= 4.0) /\ (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (-4.0 <= r) /\
+      (-4.0 <= r_1) /\ (-4.0 <= r_2) /\ is_finite_f64(a_6) /\
+      is_finite_f64(a_9) /\ is_finite_f64(a_4).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_3, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_5, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_8).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a, 1).
+}
+Prove: is_finite_f64(add_f64(a_8, a_9)).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:149ms) (28.8s) (143772)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,is_nan_or_infinite' (file input.c, line 114):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(u, ip1_0).
+Let a_3 = a_1[a_2].
+Let a_4 = shift_float64(u, i).
+Let a_5 = a_1[a_4].
+Let a_6 = mul_f64(to_f64(2.0), a_5).
+Let a_7 = sub_f64(a_3, a_6).
+Let a_8 = shift_float64(u, im1_0).
+Let a_9 = a_1[a_8].
+Let a_10 = add_f64(a_7, a_9).
+Let r = of_f64(a_5).
+Let r_1 = of_f64(a_9).
+Let r_2 = of_f64(a_3).
+Let r_3 = of_f64(dx2_0).
+Let a_11 = shift_float64(u, 0).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_11, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_11, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r_3 <= 1.0) /\ ((1.0/10000) <= r_3).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_4 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x = 1 + i_1 in ((0 <= i_1) -> ((i_1 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_1[shift_float64(u, i_1)]),
+                of_f64(a_1[shift_float64(u, if (x = n) then (n - 1) else x)]),
+                r_3)) = of_f64(a_1[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_12 = a_1[shift_float64(L, i_1)] in
+      let r_4 = of_f64(a_12) in ((0 <= i_1) -> ((i_1 < i) ->
+      ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_12)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r_3) ->
+      ((forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+      (forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 < i) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If (1 + i) = n
+  Then { Have: ip1_0 = i. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: ip1_0 <= 2147483647.
+    Have: (1 + i) = ip1_0.
+  }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r <= 4.0) /\ (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (-4.0 <= r) /\
+      (-4.0 <= r_1) /\ (-4.0 <= r_2) /\ is_finite_f64(a_5) /\
+      is_finite_f64(a_9) /\ is_finite_f64(a_3).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_2, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_4, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_6).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_8, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_10).
+}
+Prove: is_finite_f64(div_f64(a_10, dx2_0)).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:130ms) (1'28s) (459995)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,mem_access' (file input.c, line 114):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = a_1[shift_float64(u, i)].
+Let r = of_f64(a_2).
+Let a_3 = a_1[shift_float64(u, im1_0)].
+Let r_1 = of_f64(a_3).
+Let a_4 = shift_float64(u, ip1_0).
+Let a_5 = a_1[a_4].
+Let r_2 = of_f64(a_5).
+Let r_3 = of_f64(dx2_0).
+Let a_6 = shift_float64(u, 0).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_6, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_6, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r_3 <= 1.0) /\ ((1.0/10000) <= r_3).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_4 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x = 1 + i_1 in ((0 <= i_1) -> ((i_1 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_1[shift_float64(u, i_1)]),
+                of_f64(a_1[shift_float64(u, if (x = n) then (n - 1) else x)]),
+                r_3)) = of_f64(a_1[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_7 = a_1[shift_float64(L, i_1)] in
+      let r_4 = of_f64(a_7) in ((0 <= i_1) -> ((i_1 < i) ->
+      ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_7)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r_3) ->
+      ((forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+      (forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 < i) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If (1 + i) = n
+  Then { Have: ip1_0 = i. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: ip1_0 <= 2147483647.
+    Have: (1 + i) = ip1_0.
+  }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r <= 4.0) /\ (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (-4.0 <= r) /\
+      (-4.0 <= r_1) /\ (-4.0 <= r_2) /\ is_finite_f64(a_2) /\
+      is_finite_f64(a_3) /\ is_finite_f64(a_5).
+}
+Prove: valid_rd(Malloc_0, a_4, 1).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:96ms) (375ms) (3511)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,mem_access' (file input.c, line 114):
+Let a = shift_float64(u, ip1_0).
+Let a_1 = shift_float64(L, 0).
+Let a_2 = memcpy(Mf64_0, a_1, Mf64_undef_0, a_1, n).
+Let a_3 = shift_float64(u, i).
+Let a_4 = a_2[a_3].
+Let r = of_f64(a_4).
+Let a_5 = a_2[shift_float64(u, im1_0)].
+Let r_1 = of_f64(a_5).
+Let a_6 = a_2[a].
+Let r_2 = of_f64(a_6).
+Let r_3 = of_f64(dx2_0).
+Let a_7 = shift_float64(u, 0).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_7, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a_1, n).
+  (* Pre-condition *)
+  Have: separated(a_7, n, a_1, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r_3 <= 1.0) /\ ((1.0/10000) <= r_3).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_4 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_2[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_4 = of_f64(a_2[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x = 1 + i_1 in ((0 <= i_1) -> ((i_1 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_2
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_2[shift_float64(u, i_1)]),
+                of_f64(a_2[shift_float64(u, if (x = n) then (n - 1) else x)]),
+                r_3)) = of_f64(a_2[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_8 = a_2[shift_float64(L, i_1)] in
+      let r_4 = of_f64(a_8) in ((0 <= i_1) -> ((i_1 < i) ->
+      ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_8)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r_3) ->
+      ((forall i_1 : Z. let r_4 = of_f64(a_2[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+      (forall i_1 : Z. let r_4 = of_f64(a_2[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 < i) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If (1 + i) = n
+  Then { Have: ip1_0 = i. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: ip1_0 <= 2147483647.
+    Have: (1 + i) = ip1_0.
+  }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r <= 4.0) /\ (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (-4.0 <= r) /\
+      (-4.0 <= r_1) /\ (-4.0 <= r_2) /\ is_finite_f64(a_4) /\
+      is_finite_f64(a_5) /\ is_finite_f64(a_6).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a, 1).
+}
+Prove: valid_rd(Malloc_0, a_3, 1).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:111ms) (321ms) (3048)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,mem_access' (file input.c, line 114):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(u, ip1_0).
+Let a_3 = a_1[a_2].
+Let a_4 = shift_float64(u, i).
+Let a_5 = a_1[a_4].
+Let a_6 = mul_f64(to_f64(2.0), a_5).
+Let r = of_f64(a_5).
+Let r_1 = of_f64(a_3).
+Let x = i - 1.
+Let a_7 = shift_float64(u, x).
+Let a_8 = a_1[a_7].
+Let r_2 = of_f64(a_8).
+Let r_3 = of_f64(dx2_0).
+Let a_9 = shift_float64(u, 0).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(ip1_0) /\ is_sint32(n) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1) /\ is_sint32(x).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Residual *)
+  When: i != 0.
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_9, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_9, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r_3 <= 1.0) /\ ((1.0/10000) <= r_3).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_4 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x_1 = 1 + i_1 in ((0 <= i_1) -> ((i_1 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_1[shift_float64(u, i_1)]),
+                of_f64(a_1
+                         [shift_float64(u,
+                            if (x_1 = n) then (n - 1) else x_1)]), r_3))
+         = of_f64(a_1[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_10 = a_1[shift_float64(L, i_1)] in
+      let r_4 = of_f64(a_10) in ((0 <= i_1) -> ((i_1 < i) ->
+      ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_10)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r_3) ->
+      ((forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+      (forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 < i) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))).
+  (* Then *)
+  Have: i < n.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= i.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If (1 + i) = n
+  Then { Have: ip1_0 = i. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: ip1_0 <= 2147483647.
+    Have: (1 + i) = ip1_0.
+  }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r <= 4.0) /\ (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (-4.0 <= r) /\
+      (-4.0 <= r_1) /\ (-4.0 <= r_2) /\ is_finite_f64(a_5) /\
+      is_finite_f64(a_3) /\ is_finite_f64(a_8).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_2, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_4, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_6).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(sub_f64(a_3, a_6)).
+}
+Prove: valid_rd(Malloc_0, a_7, 1).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:108ms) (373ms) (3203)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,is_nan_or_infinite' (file input.c, line 115):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(u, ip1_0).
+Let a_3 = a_1[a_2].
+Let a_4 = shift_float64(u, i).
+Let a_5 = a_1[a_4].
+Let a_6 = mul_f64(to_f64(2.0), a_5).
+Let a_7 = sub_f64(a_3, a_6).
+Let a_8 = shift_float64(u, im1_0).
+Let a_9 = a_1[a_8].
+Let a_10 = add_f64(a_7, a_9).
+Let a_11 = div_f64(a_10, dx2_0).
+Let r = of_f64(a_5).
+Let r_1 = of_f64(a_9).
+Let r_2 = of_f64(a_3).
+Let r_3 = of_f64(dx2_0).
+Let a_12 = shift_float64(u, 0).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_12, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_12, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r_3 <= 1.0) /\ ((1.0/10000) <= r_3).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_4 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x = 1 + i_1 in ((0 <= i_1) -> ((i_1 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_1[shift_float64(u, i_1)]),
+                of_f64(a_1[shift_float64(u, if (x = n) then (n - 1) else x)]),
+                r_3)) = of_f64(a_1[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_13 = a_1[shift_float64(L, i_1)] in
+      let r_4 = of_f64(a_13) in ((0 <= i_1) -> ((i_1 < i) ->
+      ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_13)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r_3) ->
+      ((forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+      (forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 < i) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If (1 + i) = n
+  Then { Have: ip1_0 = i. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: ip1_0 <= 2147483647.
+    Have: (1 + i) = ip1_0.
+  }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r <= 4.0) /\ (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (-4.0 <= r) /\
+      (-4.0 <= r_1) /\ (-4.0 <= r_2) /\ is_finite_f64(a_5) /\
+      is_finite_f64(a_9) /\ is_finite_f64(a_3).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_2, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_4, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_6).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_8, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_10).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_11).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rw(Malloc_0, shift_float64(L, i), 1).
+}
+Prove: is_finite_f64(mul_f64(to_f64((5764607523034235.0/576460752303423488)),
+                       a_11)).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:143ms) (2.0s) (12277)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,mem_access' (file input.c, line 115):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(u, ip1_0).
+Let a_3 = a_1[a_2].
+Let a_4 = shift_float64(u, i).
+Let a_5 = a_1[a_4].
+Let a_6 = mul_f64(to_f64(2.0), a_5).
+Let a_7 = sub_f64(a_3, a_6).
+Let a_8 = shift_float64(u, im1_0).
+Let a_9 = a_1[a_8].
+Let a_10 = add_f64(a_7, a_9).
+Let r = of_f64(a_5).
+Let r_1 = of_f64(a_9).
+Let r_2 = of_f64(a_3).
+Let r_3 = of_f64(dx2_0).
+Let a_11 = shift_float64(u, 0).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_11, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_11, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r_3 <= 1.0) /\ ((1.0/10000) <= r_3).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_4 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x = 1 + i_1 in ((0 <= i_1) -> ((i_1 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_1[shift_float64(u, i_1)]),
+                of_f64(a_1[shift_float64(u, if (x = n) then (n - 1) else x)]),
+                r_3)) = of_f64(a_1[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_12 = a_1[shift_float64(L, i_1)] in
+      let r_4 = of_f64(a_12) in ((0 <= i_1) -> ((i_1 < i) ->
+      ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_12)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r_3) ->
+      ((forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+      (forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 < i) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If (1 + i) = n
+  Then { Have: ip1_0 = i. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: ip1_0 <= 2147483647.
+    Have: (1 + i) = ip1_0.
+  }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r <= 4.0) /\ (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (-4.0 <= r) /\
+      (-4.0 <= r_1) /\ (-4.0 <= r_2) /\ is_finite_f64(a_5) /\
+      is_finite_f64(a_9) /\ is_finite_f64(a_3).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_2, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_4, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_6).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_8, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_10).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(div_f64(a_10, dx2_0)).
+}
+Prove: valid_rw(Malloc_0, shift_float64(L, i), 1).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:155ms) (379ms) (3327)
+
+------------------------------------------------------------
+
+Goal Assertion 'fw_cell_equation' (file input.c, line 116):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(u, ip1_0).
+Let a_3 = a_1[a_2].
+Let a_4 = shift_float64(u, i).
+Let a_5 = a_1[a_4].
+Let a_6 = mul_f64(to_f64(2.0), a_5).
+Let a_7 = sub_f64(a_3, a_6).
+Let a_8 = shift_float64(u, im1_0).
+Let a_9 = a_1[a_8].
+Let a_10 = add_f64(a_7, a_9).
+Let a_11 = div_f64(a_10, dx2_0).
+Let a_12 = mul_f64(to_f64((5764607523034235.0/576460752303423488)), a_11).
+Let a_13 = shift_float64(L, i).
+Let r = of_f64(a_5).
+Let r_1 = of_f64(a_9).
+Let r_2 = of_f64(a_3).
+Let r_3 = of_f64(dx2_0).
+Let a_14 = shift_float64(u, 0).
+Let a_15 = a_1[a_13 <- a_12].
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_14, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_14, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r_3 <= 1.0) /\ ((1.0/10000) <= r_3).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_4 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x = 1 + i_1 in ((0 <= i_1) -> ((i_1 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_1[shift_float64(u, i_1)]),
+                of_f64(a_1[shift_float64(u, if (x = n) then (n - 1) else x)]),
+                r_3)) = of_f64(a_1[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_16 = a_1[shift_float64(L, i_1)] in
+      let r_4 = of_f64(a_16) in ((0 <= i_1) -> ((i_1 < i) ->
+      ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_16)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r_3) ->
+      ((forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+      (forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 < i) -> ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If (1 + i) = n
+  Then { Have: ip1_0 = i. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: ip1_0 <= 2147483647.
+    Have: (1 + i) = ip1_0.
+  }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r <= 4.0) /\ (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (-4.0 <= r) /\
+      (-4.0 <= r_1) /\ (-4.0 <= r_2) /\ is_finite_f64(a_5) /\
+      is_finite_f64(a_9) /\ is_finite_f64(a_3).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_2, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_4, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_6).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_8, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_10).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_11).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rw(Malloc_0, a_13, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_12).
+}
+Prove: of_f64(L_fw_compute_cell(of_f64(a_15[a_8]), of_f64(a_15[a_4]),
+                of_f64(a_15[a_2]), r_3)) = of_f64(a_12).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:149ms) (1.3s) (11602)
+
+------------------------------------------------------------
+
+Goal Assertion 'fw_earlier_cells' (file input.c, line 117):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let x = 1 + im1_0.
+Let a_2 = shift_float64(L, x).
+Let a_3 = shift_float64(u, ip1_0).
+Let a_4 = a_1[a_3].
+Let a_5 = shift_float64(u, x).
+Let a_6 = a_1[a_5].
+Let a_7 = mul_f64(to_f64(2.0), a_6).
+Let a_8 = sub_f64(a_4, a_7).
+Let a_9 = shift_float64(u, im1_0).
+Let a_10 = a_1[a_9].
+Let a_11 = add_f64(a_8, a_10).
+Let a_12 = div_f64(a_11, dx2_0).
+Let a_13 = mul_f64(to_f64((5764607523034235.0/576460752303423488)), a_12).
+Let a_14 = a_1[a_2 <- a_13].
+Let r = of_f64(dx2_0).
+Let r_1 = of_f64(a_10).
+Let r_2 = of_f64(a_4).
+Let r_3 = of_f64(a_6).
+Let x_1 = 2 + im1_0.
+Let x_2 = n - 1.
+Let a_15 = shift_float64(u, 0).
+Let x_3 = 1 + i.
+Assume {
+  Type: is_sint32(im1_0) /\ is_sint32(ip1_0) /\ is_sint32(n) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1) /\ is_sint32(x).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Residual *)
+  When: im1_0 != (-1).
+  (* Goal *)
+  When: (0 <= i) /\ (i <= im1_0).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_15, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_15, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r <= 1.0) /\ ((1.0/10000) <= r).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_4 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: (im1_0 < n) /\ ((-1) <= im1_0).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 4.0) /\ (-4.0 <= r_4)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x_4 = 1 + i_1 in ((0 <= i_1) ->
+      ((i_1 <= im1_0) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_1[shift_float64(u, i_1)]),
+                of_f64(a_1[shift_float64(u, if (x_4 = n) then x_2 else x_4)]),
+                r)) = of_f64(a_1[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_16 = a_1[shift_float64(L, i_1)] in
+      let r_4 = of_f64(a_16) in ((0 <= i_1) -> ((i_1 <= im1_0) ->
+      ((r_4 <= 1601.0) /\ (-1601.0 <= r_4) /\ is_finite_f64(a_16)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r) ->
+      ((forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_4 <= 2.0) /\ (-2.0 <= r_4))))) ->
+      (forall i_1 : Z. let r_4 = of_f64(a_1[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 <= im1_0) ->
+       ((r_4 <= 401.0) /\ (-401.0 <= r_4))))))).
+  (* Then *)
+  Have: x_1 <= n.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483648) <= im1_0.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If x_1 = n
+  Then { Have: x = ip1_0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: ip1_0 <= 2147483647.
+    Have: x_1 = ip1_0.
+  }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r_1 <= 4.0) /\ (r_2 <= 4.0) /\ (r_3 <= 4.0) /\ (-4.0 <= r_1) /\
+      (-4.0 <= r_2) /\ (-4.0 <= r_3) /\ is_finite_f64(a_10) /\
+      is_finite_f64(a_4) /\ is_finite_f64(a_6).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_3, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_5, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_8).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_9, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_11).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_12).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rw(Malloc_0, a_2, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_13).
+  (* Assertion 'fw_cell_equation' *)
+  Have: of_f64(L_fw_compute_cell(of_f64(a_14[a_9]), of_f64(a_14[a_5]),
+                 of_f64(a_14[a_3]), r)) = of_f64(a_13).
+}
+Prove: of_f64(L_fw_compute_cell(of_f64(a_14
+                                         [shift_float64(u,
+                                            if (i = 0) then 0 else (i - 1))]),
+                of_f64(a_14[shift_float64(u, i)]),
+                of_f64(a_14[shift_float64(u, if (x_3 = n) then x_2 else x_3)]),
+                r)) = of_f64(a_14[shift_float64(L, i)]).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:129ms) (12.3s) (89162)
+
+------------------------------------------------------------
+
+Goal Assertion 'fw_current_clamped' (file input.c, line 120):
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let a_2 = shift_float64(L, i).
+Let a_3 = shift_float64(u, ip1_0).
+Let a_4 = a_1[a_3].
+Let a_5 = shift_float64(u, i).
+Let a_6 = a_1[a_5].
+Let a_7 = mul_f64(to_f64(2.0), a_6).
+Let a_8 = sub_f64(a_4, a_7).
+Let a_9 = shift_float64(u, im1_0).
+Let a_10 = a_1[a_9].
+Let a_11 = add_f64(a_8, a_10).
+Let a_12 = div_f64(a_11, dx2_0).
+Let a_13 = mul_f64(to_f64((5764607523034235.0/576460752303423488)), a_12).
+Let a_14 = a_1[a_2 <- a_13].
+Let x = n - 1.
+Let r = of_f64(dx2_0).
+Let r_1 = of_f64(a_14[a_5]).
+Let r_2 = of_f64(a_13).
+Let r_3 = of_f64(a_6).
+Let r_4 = of_f64(a_10).
+Let r_5 = of_f64(a_4).
+Let x_1 = 1 + i.
+Let a_15 = shift_float64(u, 0).
+Assume {
+  Type: is_sint32(i) /\ is_sint32(im1_0) /\ is_sint32(ip1_0) /\
+      is_sint32(n) /\ is_sint32(tmp_0) /\ is_sint32(tmp_1) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_15, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_15, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i_1)]))).
+  (* Pre-condition *)
+  Have: (r <= 1.0) /\ ((1.0/10000) <= r).
+  (* Pre-condition *)
+  Have: forall i_1 : Z. let r_6 = of_f64(Mf64_0[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_6 <= 4.0) /\ (-4.0 <= r_6)))).
+  (* Invariant *)
+  Have: (0 <= i) /\ (i <= n).
+  (* Invariant *)
+  Have: forall i_1 : Z. ((0 <= i_1) -> ((i_1 < n) ->
+      is_finite_f64(a_1[shift_float64(u, i_1)]))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let r_6 = of_f64(a_1[shift_float64(u, i_1)]) in
+      ((0 <= i_1) -> ((i_1 < n) -> ((r_6 <= 4.0) /\ (-4.0 <= r_6)))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let x_2 = 1 + i_1 in ((0 <= i_1) -> ((i_1 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_1[shift_float64(u, i_1)]),
+                of_f64(a_1[shift_float64(u, if (x_2 = n) then x else x_2)]),
+                r)) = of_f64(a_1[shift_float64(L, i_1)])))).
+  (* Invariant *)
+  Have: forall i_1 : Z. let a_16 = a_1[shift_float64(L, i_1)] in
+      let r_6 = of_f64(a_16) in ((0 <= i_1) -> ((i_1 < i) ->
+      ((r_6 <= 1601.0) /\ (-1601.0 <= r_6) /\ is_finite_f64(a_16)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r) ->
+      ((forall i_1 : Z. let r_6 = of_f64(a_1[shift_float64(u, i_1)]) in
+        ((0 <= i_1) -> ((i_1 < n) -> ((r_6 <= 2.0) /\ (-2.0 <= r_6))))) ->
+      (forall i_1 : Z. let r_6 = of_f64(a_1[shift_float64(L, i_1)]) in
+       ((0 <= i_1) -> ((i_1 < i) -> ((r_6 <= 401.0) /\ (-401.0 <= r_6))))))).
+  (* Then *)
+  Have: i < n.
+  If i = 0
+  Then { Have: im1_0 = 0. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: (-2147483648) <= im1_0.
+    Have: (1 + im1_0) = i.
+  }
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If x_1 = n
+  Then { Have: ip1_0 = i. }
+  Else {
+    (* Assertion 'rte,signed_overflow' *)
+    Have: ip1_0 <= 2147483647.
+    Have: x_1 = ip1_0.
+  }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r_3 <= 4.0) /\ (r_4 <= 4.0) /\ (r_5 <= 4.0) /\ (-4.0 <= r_3) /\
+      (-4.0 <= r_4) /\ (-4.0 <= r_5) /\ is_finite_f64(a_6) /\
+      is_finite_f64(a_10) /\ is_finite_f64(a_4).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_3, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_5, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_8).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_9, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_11).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_12).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rw(Malloc_0, a_2, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_13).
+  (* Assertion 'fw_cell_equation' *)
+  Have: of_f64(L_fw_compute_cell(of_f64(a_14[a_9]), r_1, of_f64(a_14[a_3]),
+                 r)) = r_2.
+  (* Assertion 'fw_earlier_cells' *)
+  Have: forall i_1 : Z. let x_2 = 1 + i_1 in ((0 <= i_1) -> ((i_1 < i) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_14
+                                         [shift_float64(u,
+                                            if (i_1 = 0) then 0
+                                            else (i_1 - 1))]),
+                of_f64(a_14[shift_float64(u, i_1)]),
+                of_f64(a_14[shift_float64(u, if (x_2 = n) then x else x_2)]),
+                r)) = of_f64(a_14[shift_float64(L, i_1)])))).
+}
+Prove: of_f64(L_fw_compute_cell(of_f64(a_14
+                                         [shift_float64(u,
+                                            if (i = 0) then 0 else (i - 1))]),
+                r_1,
+                of_f64(a_14[shift_float64(u, if (x_1 = n) then x else x_1)]),
+                r)) = r_2.
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:185ms) (164ms) (445)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,signed_overflow' (file input.c, line 107):
+Prove: true.
+Prover Qed returns Valid (94ms)
+
+------------------------------------------------------------
+
+Goal Loop assigns (file input.c, line 104) (1/7):
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Loop assigns (file input.c, line 104) (2/7):
+Effect at line 107
+Prove: true.
+Prover Qed returns Valid (33ms)
+
+------------------------------------------------------------
+
+Goal Loop assigns (file input.c, line 104) (3/7):
+Effect at line 108
+Prove: true.
+Prover Qed returns Valid (20ms)
+
+------------------------------------------------------------
+
+Goal Loop assigns (file input.c, line 104) (4/7):
+Effect at line 108
+Prove: true.
+Prover Qed returns Valid (26ms)
+
+------------------------------------------------------------
+
+Goal Loop assigns (file input.c, line 104) (5/7):
+Effect at line 109
+Prove: true.
+Prover Qed returns Valid (22ms)
+
+------------------------------------------------------------
+
+Goal Loop assigns (file input.c, line 104) (6/7):
+Effect at line 109
+Prove: true.
+Prover Qed returns Valid (39ms)
+
+------------------------------------------------------------
+
+Goal Loop assigns (file input.c, line 104) (7/7):
+Effect at line 115
+Let r = of_f64(dx2_0).
+Let a = shift_float64(L, 0).
+Let a_1 = memcpy(Mf64_0, a, Mf64_undef_0, a, n).
+Let x = 1 + im1_0.
+Let a_2 = shift_float64(L, x).
+Let a_3 = shift_float64(u, ip1_0).
+Let a_4 = a_1[a_3].
+Let a_5 = shift_float64(u, x).
+Let a_6 = a_1[a_5].
+Let a_7 = mul_f64(to_f64(2.0), a_6).
+Let a_8 = sub_f64(a_4, a_7).
+Let a_9 = shift_float64(u, im1_0).
+Let a_10 = a_1[a_9].
+Let a_11 = add_f64(a_8, a_10).
+Let a_12 = div_f64(a_11, dx2_0).
+Let a_13 = mul_f64(to_f64((5764607523034235.0/576460752303423488)), a_12).
+Let a_14 = a_1[a_2 <- a_13].
+Let x_1 = n - 1.
+Let r_1 = of_f64(a_14[a_9]).
+Let r_2 = of_f64(a_14[a_5]).
+Let x_2 = 2 + im1_0.
+Let r_3 = of_f64(a_13).
+Let r_4 = of_f64(a_10).
+Let r_5 = of_f64(a_4).
+Let r_6 = of_f64(a_6).
+Let a_15 = shift_float64(u, 0).
+Assume {
+  Type: is_sint32(im1_0) /\ is_sint32(ip1_0) /\ is_sint32(n) /\
+      is_sint32(tmp_0_0) /\ is_sint32(tmp_0_1) /\ is_sint32(x) /\
+      is_sint32(x_2).
+  (* Heap *)
+  Type: (region(L.base) <= 0) /\ (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Residual *)
+  When: im1_0 != (-1).
+  (* Goal *)
+  When: !invalid(Malloc_0, a_2, 1).
+  (* Pre-condition *)
+  Have: (0 < n) /\ (n <= 400).
+  (* Pre-condition *)
+  Have: valid_rd(Malloc_0, a_15, n).
+  (* Pre-condition *)
+  Have: valid_rw(Malloc_0, a, n).
+  (* Pre-condition *)
+  Have: separated(a_15, n, a, n).
+  (* Pre-condition *)
+  Have: is_finite_f64(dx2_0).
+  (* Pre-condition *)
+  Have: forall i : Z. ((0 <= i) -> ((i < n) ->
+      is_finite_f64(Mf64_0[shift_float64(u, i)]))).
+  (* Pre-condition *)
+  Have: (r <= 1.0) /\ ((1.0/10000) <= r).
+  (* Pre-condition *)
+  Have: forall i : Z. let r_7 = of_f64(Mf64_0[shift_float64(u, i)]) in
+      ((0 <= i) -> ((i < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+  (* Invariant *)
+  Have: (im1_0 < n) /\ ((-1) <= im1_0).
+  (* Invariant *)
+  Have: forall i : Z. ((0 <= i) -> ((i < n) ->
+      is_finite_f64(a_1[shift_float64(u, i)]))).
+  (* Invariant *)
+  Have: forall i : Z. let r_7 = of_f64(a_1[shift_float64(u, i)]) in
+      ((0 <= i) -> ((i < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+  (* Invariant *)
+  Have: forall i : Z. let x_3 = 1 + i in ((0 <= i) -> ((i <= im1_0) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_1
+                                         [shift_float64(u,
+                                            if (i = 0) then 0 else (i - 1))]),
+                of_f64(a_1[shift_float64(u, i)]),
+                of_f64(a_1[shift_float64(u, if (x_3 = n) then x_1 else x_3)]),
+                r)) = of_f64(a_1[shift_float64(L, i)])))).
+  (* Invariant *)
+  Have: forall i : Z. let a_16 = a_1[shift_float64(L, i)] in
+      let r_7 = of_f64(a_16) in ((0 <= i) -> ((i <= im1_0) ->
+      ((r_7 <= 1601.0) /\ (-1601.0 <= r_7) /\ is_finite_f64(a_16)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r) ->
+      ((forall i : Z. let r_7 = of_f64(a_1[shift_float64(u, i)]) in
+        ((0 <= i) -> ((i < n) -> ((r_7 <= 2.0) /\ (-2.0 <= r_7))))) ->
+      (forall i : Z. let r_7 = of_f64(a_1[shift_float64(L, i)]) in
+       ((0 <= i) -> ((i <= im1_0) -> ((r_7 <= 401.0) /\ (-401.0 <= r_7))))))).
+  (* Then *)
+  Have: x_2 <= n.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483648) <= im1_0.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: (-2147483647) <= n.
+  If x_2 = n
+  Then { Have: x = ip1_0. }
+  Else { Have: x_2 = ip1_0. }
+  (* Assertion 'fw_cell_inputs' *)
+  Have: (r_4 <= 4.0) /\ (r_5 <= 4.0) /\ (r_6 <= 4.0) /\ (-4.0 <= r_4) /\
+      (-4.0 <= r_5) /\ (-4.0 <= r_6) /\ is_finite_f64(a_10) /\
+      is_finite_f64(a_4) /\ is_finite_f64(a_6).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_3, 1).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_5, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_7).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_8).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a_9, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_11).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_12).
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rw(Malloc_0, a_2, 1).
+  (* Assertion 'rte,is_nan_or_infinite' *)
+  Have: is_finite_f64(a_13).
+  (* Assertion 'fw_cell_equation' *)
+  Have: of_f64(L_fw_compute_cell(r_1, r_2, of_f64(a_14[a_3]), r)) = r_3.
+  (* Assertion 'fw_earlier_cells' *)
+  Have: forall i : Z. let x_3 = 1 + i in ((0 <= i) -> ((i <= im1_0) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_14
+                                         [shift_float64(u,
+                                            if (i = 0) then 0 else (i - 1))]),
+                of_f64(a_14[shift_float64(u, i)]),
+                of_f64(a_14[shift_float64(u, if (x_3 = n) then x_1 else x_3)]),
+                r)) = of_f64(a_14[shift_float64(L, i)])))).
+  (* Assertion 'fw_current_clamped' *)
+  Have: of_f64(L_fw_compute_cell(r_1, r_2,
+                 of_f64(a_14
+                          [shift_float64(u, if (x_2 = n) then x_1 else x_2)]),
+                 r)) = r_3.
+  (* Assertion 'rte,signed_overflow' *)
+  Have: im1_0 <= 2147483645.
+  (* Invariant *)
+  Have: forall i : Z. ((0 <= i) -> ((i < n) ->
+      is_finite_f64(a_14[shift_float64(u, i)]))).
+  (* Invariant *)
+  Have: forall i : Z. let r_7 = of_f64(a_14[shift_float64(u, i)]) in
+      ((0 <= i) -> ((i < n) -> ((r_7 <= 4.0) /\ (-4.0 <= r_7)))).
+  (* Invariant *)
+  Have: forall i : Z. let x_3 = 1 + i in ((0 <= i) -> ((i <= x) ->
+      (of_f64(L_fw_compute_cell(of_f64(a_14
+                                         [shift_float64(u,
+                                            if (i = 0) then 0 else (i - 1))]),
+                of_f64(a_14[shift_float64(u, i)]),
+                of_f64(a_14[shift_float64(u, if (x_3 = n) then x_1 else x_3)]),
+                r)) = of_f64(a_14[shift_float64(L, i)])))).
+  (* Invariant *)
+  Have: forall i : Z. let a_16 = a_14[shift_float64(L, i)] in
+      let r_7 = of_f64(a_16) in ((0 <= i) -> ((i <= x) ->
+      ((r_7 <= 1601.0) /\ (-1601.0 <= r_7) /\ is_finite_f64(a_16)))).
+  (* Invariant *)
+  Have: (((1.0/5000) <= r) ->
+      ((forall i : Z. let r_7 = of_f64(a_14[shift_float64(u, i)]) in
+        ((0 <= i) -> ((i < n) -> ((r_7 <= 2.0) /\ (-2.0 <= r_7))))) ->
+      (forall i : Z. let r_7 = of_f64(a_14[shift_float64(L, i)]) in
+       ((0 <= i) -> ((i <= x) -> ((r_7 <= 401.0) /\ (-401.0 <= r_7))))))).
+}
+Prove: included(a_2, 1, a, n).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:355ms) (567ms) (3370)
+
+------------------------------------------------------------
+
+Goal Assigns (file input.c, line 80) in 'compute_L':
+Effect at line 107
+Prove: true.
+Prover Qed returns Valid (7ms)
+
+------------------------------------------------------------
+
+Goal Positivity of Loop variant at loop (file input.c, line 107):
+Prove: true.
+Prover Qed returns Valid (23ms)
+
+------------------------------------------------------------
+
+Goal Decreasing of Loop variant at loop (file input.c, line 107):
+Prove: true.
+Prover Qed returns Valid (20ms)
+
+------------------------------------------------------------

@@ -1,0 +1,19 @@
+{
+  "accepted": true,
+  "targets": "first_bound,second_bound,compare_average",
+  "process_exit": 0,
+  "goals": {
+    "first_range": "Valid",
+    "second_range": "Valid",
+    "decoded_average": "Valid",
+    "finite_average": "Valid"
+  },
+  "totals": [
+    [
+      "47",
+      "47"
+    ]
+  ],
+  "probe_sha256": "163e87edfd552133dd50b3ab7f3ae6398c938e2da17cdc958ef05bcb61b56669",
+  "log_sha256": "f6277dad320458e1adc89f31fc37992b79e9d9470de1edd7c0f6abfe0b7f960b"
+}

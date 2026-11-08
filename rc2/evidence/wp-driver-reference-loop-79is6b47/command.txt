@@ -1,0 +1,1 @@
+timeout 300s frama-c -machdep x86_64 -cpp-extra-args=-DIC_COSINE -wp -wp-fct driver_reference_loop -wp-model Typed+float -wp-rte -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 20 -wp-print probe.c

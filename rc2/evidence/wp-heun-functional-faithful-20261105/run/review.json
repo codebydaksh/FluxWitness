@@ -1,0 +1,13 @@
+{
+  "accepted": false,
+  "scope": "Shipped-loop functional target, WP Typed+float with RTE",
+  "native_exit": "0",
+  "summary": "Proved goals:  100 / 103",
+  "unresolved": [
+    "[wp] [Timeout] typed_heat_step_loop_invariant_3_preserved (Qed 151ms) (Alt-Ergo)",
+    "[wp] [Timeout] typed_heat_step_assert_input_bounds (Qed 325ms) (Alt-Ergo)",
+    "[wp] [Timeout] typed_heat_step_call_compute_L_requires_8 (Qed 35ms) (Alt-Ergo)"
+  ],
+  "source_sha256": "dd01f2f45e7d9d8e8784318668a02a1450f14d36eb1cc471ff6bf3f8eded3fde",
+  "log_sha256": "0c006593bcfcd9372c85284ce8687742b09b0abfdc1afdc82caa81562f209d5b"
+}

@@ -1,0 +1,1 @@
+timeout 180s frama-c -machdep x86_64 -wp -wp-fct compare_euler -wp-model Typed+float -wp-rte -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 30 -wp-print probe.c

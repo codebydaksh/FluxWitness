@@ -1,0 +1,21 @@
+{
+  "accepted": true,
+  "exit_code": 0,
+  "theorem": "FluxWitness400.model_benchmark_wide",
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "command": [
+    "C:\\Users\\Infinity\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe",
+    "-j1",
+    "-M2048",
+    "-o",
+    "WiderInitial.olean",
+    "WiderInitial.lean"
+  ],
+  "rc2_sha256": "d55c547640122ca101adba48b4fccd4d70067c2978a2a4c96983a76e5079a1b0",
+  "source_sha256": "a3a732c5ed431b573c6a78bb3a3ac4746759e30e557da26aa95d2ee9b3954045",
+  "object_sha256": "9f40faf9fd46833a3d7af93047a91c6f87bdb8df64bccd765f77e7f0cd9f9133"
+}

@@ -1,0 +1,11 @@
+{
+  "rc2": "d55c547640122ca101adba48b4fccd4d70067c2978a2a4c96983a76e5079a1b0",
+  "source": "193b7cca59ec2c5a6122d8da3580dafe4f7b298ebf65929ece610ac2df3d5405",
+  "checker": "3ebcad89dd6cc543ec86d082c045fcc28e68744b0435ed83d1df59c84e94c00d",
+  "runner": "8e452884a0d00e658c085b044c67d28eb9151a102726609590939e74ec53577b",
+  "kernel": "6.18.54.1-microsoft-standard-WSL2",
+  "machine": "x86_64",
+  "libc": "glibc 2.43",
+  "gcc": "/usr/bin/gcc",
+  "version": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0"
+}

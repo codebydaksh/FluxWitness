@@ -1,0 +1,66 @@
+[kernel] Parsing probe.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function compare_update
+[rte:annot] annotating function compare_decode
+[wp] 5 goals scheduled
+[wp] [Timeout] typed_compare_update_ensures_decoded_update (Qed 5ms) (Alt-Ergo)
+[wp] [Timeout] typed_compare_update_ensures_finite_update (Qed 4ms) (Alt-Ergo)
+[wp] Proved goals:    7 / 9
+  Terminating:       2
+  Unreachable:       2
+  Qed:               2 (1ms-2ms-5ms)
+  Alt-Ergo 2.6.4:    1 (545ms)
+  Timeout:           2
+
+Goal Post-condition 'decoded_update' in 'compare_update':
+Assume {
+  Type: is_sint32(j) /\ is_sint32(k).
+  (* Pre-condition *)
+  Have: (0 <= j) /\ (0 <= k) /\ (k <= 222) /\ (j <= 399).
+  (* Pre-condition *)
+  Have: forall i : Z. let r = L_c5_u(k, i) in ((0 <= i) -> ((i <= 399) ->
+      ((r <= 2.0) /\ (-2.0 <= r) /\ is_finite_f64(L_ref_cell(k, i))))).
+}
+Prove: of_f64(L_ref_update(k, j,
+                to_f64((5170051590165233.0/1152921504606846976)),
+                to_f64((4150517416584649.0/18446744073709551616))))
+         = L_c5_update(k, j, (5170051590165233.0/1152921504606846976)).
+Prover Alt-Ergo 2.6.4 returns Timeout (Qed:5ms) (30s)
+
+------------------------------------------------------------
+
+Goal Post-condition 'finite_update' in 'compare_update':
+Assume {
+  Type: is_sint32(j) /\ is_sint32(k).
+  (* Pre-condition *)
+  Have: (0 <= j) /\ (0 <= k) /\ (k <= 222) /\ (j <= 399).
+  (* Pre-condition *)
+  Have: forall i : Z. let r = L_c5_u(k, i) in ((0 <= i) -> ((i <= 399) ->
+      ((r <= 2.0) /\ (-2.0 <= r) /\ is_finite_f64(L_ref_cell(k, i))))).
+}
+Prove: is_finite_f64(L_ref_update(k, j,
+                       to_f64((5170051590165233.0/1152921504606846976)),
+                       to_f64((4150517416584649.0/18446744073709551616)))).
+Prover Alt-Ergo 2.6.4 returns Timeout (Qed:4ms) (30s)
+
+------------------------------------------------------------
+
+Goal Assigns nothing in 'compare_update':
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Post-condition 'reference_decode' in 'compare_decode':
+Let a = to_f64(r).
+Assume { (* Goal *) When: (L_R(r) = r) /\ (r <= 2.0) /\ (-2.0 <= r). }
+Prove: (of_f64(a) = r) /\ is_finite_f64(a).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:1ms) (545ms) (2909)
+
+------------------------------------------------------------
+
+Goal Assigns nothing in 'compare_decode':
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------

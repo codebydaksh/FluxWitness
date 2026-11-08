@@ -1,0 +1,17 @@
+{
+  "accepted": false,
+  "process_exit": 0,
+  "goals": {
+    "decoded_update": "Timeout",
+    "finite_update": "Timeout",
+    "reference_decode": "Valid"
+  },
+  "totals": [
+    [
+      "7",
+      "9"
+    ]
+  ],
+  "probe_sha256": "49f36d52f409517831760b07364ee593f638b6e48aaf5af285f695695410ccc3",
+  "log_sha256": "1833e8a93c0a9042321556207e38f2a692d4451025b1e4cdc6a6915fc58e7ac9"
+}

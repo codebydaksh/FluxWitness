@@ -1,0 +1,13 @@
+WiderInitial.lean:26:8: warning: Unused tactic linter: `(have h4 := Real.pi_lt_d4; norm_num at h4 ⊢; linarith)` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+WiderInitial.lean:27:8: warning: Unused tactic linter: `(have h6 := Real.pi_lt_d6; norm_num at h6 ⊢; linarith)` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+WiderInitial.lean:26:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+WiderInitial.lean:27:8: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+'FluxWitness400.model_benchmark_wide' depends on axioms: [propext, Classical.choice, Quot.sound]

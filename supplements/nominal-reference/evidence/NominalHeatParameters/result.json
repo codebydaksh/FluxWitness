@@ -1,0 +1,21 @@
+{
+  "accepted": true,
+  "command": [
+    "C:\\Users\\Infinity\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe",
+    "-j1",
+    "-M2048",
+    "-o",
+    "NominalHeatParameters.olean",
+    "NominalHeatParameters.lean"
+  ],
+  "timeout_seconds": 900,
+  "exit_code": 0,
+  "source_sha256": "1dcec7ff1b811acc4f9b9c00272321de5fe8f4bec05df6c84bf79be32acf22ba",
+  "seconds": 39.77,
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "object_sha256": "290fd9b4622f8397595ee04b3a998257ddc3e1436e557d33e6fc3b0707fc0490"
+}

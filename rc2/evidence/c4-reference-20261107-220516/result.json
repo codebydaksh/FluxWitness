@@ -1,0 +1,21 @@
+{
+  "accepted": true,
+  "command": [
+    "C:\\Users\\Infinity\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe",
+    "-j1",
+    "-M2048",
+    "-o",
+    "C4Reference.olean",
+    "C4Reference.lean"
+  ],
+  "timeout_seconds": 900,
+  "exit_code": 0,
+  "source_sha256": "18c3a25998ad7dded5f3280d0d51b8ba20262267284797e2213a295a4363443a",
+  "seconds": 10.78,
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "object_sha256": "560e46adf6fbcb9311c8e823d827b3ca885d717d7ffbab6ef0c43e3d70ad2df1"
+}

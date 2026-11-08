@@ -1,9 +1,11 @@
 # Publication instructions
 
-1. Import the full prepared distribution tree, including `rc2/`, `figures/`, `supplements/`, and `release-assets/`.
-2. Verify all five distribution ZIPs: `sha256sum -c docs/RELEASE_ASSET_SHA256SUMS.txt`.
-3. Review the trust ledger, proof sources, diagnostics, and provenance before making the repository public.
-4. Only after all files are present, manually run **Actions > Publish RC2 public distribution**. It creates a distinct release and refuses to overwrite existing tags.
-5. Keep wider-initialization and nominal-reference results outside the original frozen RC2 claim.
+The exact original RC2 archive is intentionally not in this public distribution because its historical path identifiers were redacted in the distributed evidence. See [provenance](DISTRIBUTION_PROVENANCE.md) for the distinction. Do not describe the public ZIP as byte-identical to the frozen original.
 
-The untouched original RC2 ZIP remains separately preserved. Repackaging is not a new proof run. A fresh source build using pinned dependencies remains an independent reproducibility check.
+1. Upload the unpacked repository tree to `codebydaksh/FluxWitness` on the main branch. Verify that the `.github/` directory is included.
+2. Check the tracked source, figures, and evidence. Run `sha256sum -c docs/RELEASE_ASSET_SHA256SUMS.txt` from repository root.
+3. Open **Actions > Publish RC2 public distribution > Run workflow**. It checks the ZIP bytes, creates the `heat-rc2-20261108-public` tag and attaches three release ZIP assets. It refuses to overwrite an existing tag.
+4. Keep the two post-RC2 supplemental archives separate from RC2 release assets. The release notes distinguish theorem scope, measured runs and trust boundaries.
+5. A separate original RC2 archive is preserved privately and can only be deposited unchanged after reviewing its historical paths against publication preferences.
+
+No new mathematical proof or independent clean-build claim is implied by repackaging or publication.

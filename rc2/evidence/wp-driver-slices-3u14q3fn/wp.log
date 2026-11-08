@@ -1,0 +1,148 @@
+[kernel] Parsing probe.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function driver_slices
+[rte:annot] annotating function driver_allocate
+[kernel:annot:missing-spec] FRAMAC_SHARE/libc/stdlib.h:626: Warning: 
+  Neither code nor explicit exits and terminates for function malloc,
+   generating default clauses. See -generated-spec-* options for more info
+[wp] FRAMAC_SHARE/libc/stdlib.h:614: Warning: 
+  Allocation, initialization and danglingness not yet implemented
+  (allocation: \fresh{Old, Here}(\at(\result,wp:post),\at(size,wp:pre)))
+[wp] FRAMAC_SHARE/libc/stdlib.h:615: Warning: \aligned not yet implemented
+[wp] probe.c:17: Warning: 
+  Cast with incompatible pointers types (source: sint8*) (target: float64*)
+[wp] 8 goals scheduled
+[wp] [Timeout] typed_driver_allocate_call_driver_slices_requires_backing (Qed 2ms) (Alt-Ergo) (Stronger, 3 warnings)
+[wp] Proved goals:    9 / 10
+  Terminating:       1
+  Unreachable:       1
+  Qed:               4 (2ms-1ms-3ms)
+  Alt-Ergo 2.6.4:    3 (21ms-26ms-35ms)
+  Timeout:           1
+
+Goal Assertion 'driver_valid_u' (file probe.c, line 9):
+Let a = shift_float64(u, 0).
+Assume {
+  (* Heap *)
+  Type: (region(u.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition 'backing' *)
+  Have: valid_rw(Malloc_0, a, 1200).
+}
+Prove: valid_rw(Malloc_0, a, 400).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:2ms) (35ms) (17)
+
+------------------------------------------------------------
+
+Goal Assertion 'driver_valid_L' (file probe.c, line 10):
+Let a = shift_float64(buf_0, 0).
+Assume {
+  (* Heap *)
+  Type: (region(buf_0.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition 'backing' *)
+  Have: valid_rw(Malloc_0, a, 1200).
+  (* Assertion 'driver_valid_u' *)
+  Have: valid_rw(Malloc_0, a, 400).
+}
+Prove: valid_rw(Malloc_0, shift_float64(buf_0, 400), 400).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:2ms) (21ms) (35)
+
+------------------------------------------------------------
+
+Goal Assertion 'driver_valid_U1' (file probe.c, line 11):
+Let a = shift_float64(buf_0, 0).
+Assume {
+  (* Heap *)
+  Type: (region(buf_0.base) <= 0) /\ linked(Malloc_0).
+  (* Pre-condition 'backing' *)
+  Have: valid_rw(Malloc_0, a, 1200).
+  (* Assertion 'driver_valid_u' *)
+  Have: valid_rw(Malloc_0, a, 400).
+  (* Assertion 'driver_valid_L' *)
+  Have: valid_rw(Malloc_0, shift_float64(buf_0, 400), 400).
+}
+Prove: valid_rw(Malloc_0, shift_float64(buf_0, 800), 400).
+Prover Alt-Ergo 2.6.4 returns Valid (Qed:3ms) (24ms) (47)
+
+------------------------------------------------------------
+
+Goal Assertion 'driver_disjoint' (file probe.c, line 13):
+Prove: true.
+Prover Qed returns Valid (1ms)
+
+------------------------------------------------------------
+
+Goal Assigns nothing in 'driver_slices':
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Termination-condition (generated) in 'driver_allocate':
+FRAMAC_SHARE/libc/stdlib.h:614: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(allocation: \fresh{Old, Here}(\at(\result,wp:post),\at(size,wp:pre)))
+FRAMAC_SHARE/libc/stdlib.h:615: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: \aligned not yet implemented
+probe.c:17: warning from Typed Model:
+ - Warning: Hide \result
+   Reason: Cast with incompatible pointers types (source: sint8*) (target: float64*)
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Exit-condition (generated) in 'driver_allocate':
+FRAMAC_SHARE/libc/stdlib.h:614: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(allocation: \fresh{Old, Here}(\at(\result,wp:post),\at(size,wp:pre)))
+FRAMAC_SHARE/libc/stdlib.h:615: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: \aligned not yet implemented
+probe.c:17: warning from Typed Model:
+ - Warning: Hide \result
+   Reason: Cast with incompatible pointers types (source: sint8*) (target: float64*)
+Prove: true.
+Prover Qed returns Valid
+
+------------------------------------------------------------
+
+Goal Instance of 'Pre-condition 'backing' in 'driver_slices'' in 'driver_allocate' at call 'driver_slices' (file probe.c, line 19)
+:
+FRAMAC_SHARE/libc/stdlib.h:614: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: Allocation, initialization and danglingness not yet implemented
+(allocation: \fresh{Old, Here}(\at(\result,wp:post),\at(size,wp:pre)))
+FRAMAC_SHARE/libc/stdlib.h:615: warning from wp:
+ - Warning: Ignored Hypothesis
+   Reason: \aligned not yet implemented
+probe.c:17: warning from Typed Model:
+ - Warning: Hide \result
+   Reason: Cast with incompatible pointers types (source: sint8*) (target: float64*)
+Assume {
+  Type: is_sint32(fc_errno_0) /\ is_sint32(fc_errno_1) /\
+      is_sint32(fc_heap_status_0).
+  (* Heap *)
+  Type: linked(Malloc_0).
+  (* Call 'malloc' *)
+  Have: ((P_is_allocable(fc_heap_status_0, 9600) ->
+         (fc_errno_1 = fc_errno_0))) /\
+      (((!P_is_allocable(fc_heap_status_0, 9600)) -> (fc_errno_1 = 12))) /\
+      (((!P_is_allocable(fc_heap_status_0, 9600)) -> (null = malloc_0))).
+  (* Else *)
+  Have: null != buf_0.
+}
+Prove: valid_rw(Malloc_0, shift_float64(buf_0, 0), 1200).
+Prover Alt-Ergo 2.6.4 returns Timeout (Qed:2ms) (15s)
+
+------------------------------------------------------------
+[wp] FRAMAC_SHARE/libc/stdlib.h:626: Warning: 
+  Memory model hypotheses for function 'malloc':
+  /*@ behavior wp_typed:
+        ensures \separated(\result, &__fc_errno); */
+  extern void *malloc(size_t size);
+[wp:pedantic-assigns] probe.c:16: Warning: 
+  No 'assigns' specification for function 'driver_allocate'.
+  Callers assumptions might be imprecise.
