@@ -1,0 +1,39 @@
+name: Publish post-RC2 supplements
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify supplement ZIP checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep 'release-assets/post-rc2/' docs/RELEASE_ASSET_SHA256SUMS.txt | sha256sum -c -
+      - name: Publish new supplement release without overwriting
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag='heat-post-rc2-20261108'
+          if gh release view "$tag" --repo "$REPOSITORY" >/dev/null 2>&1; then
+            echo "Tag exists; refusing overwrite" >&2
+            exit 1
+          fi
+          gh release create "$tag" \
+            release-assets/post-rc2/FluxWitness-Heat-Wider-Initialization.zip \
+            release-assets/post-rc2/FluxWitness-Heat-Nominal-Reference.zip \
+            --repo "$REPOSITORY" --target "$SHA" \
+            --title 'FluxWitness Heat: post-RC2 theorem supplements' \
+            --notes-file docs/POST_RC2_RESULTS.md
