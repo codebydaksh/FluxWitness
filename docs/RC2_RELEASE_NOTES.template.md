@@ -15,11 +15,11 @@ Frama-C/WP checked the shipped step body and an extracted driver under explicit 
 2. `FluxWitness-Heat-Publication-public.zip`: heat-profile and final-error figures, PDFs, generator script, without the nested original archive.
 3. `heat-rounding-figure-supplement-20261108.zip`: rounding-error figure, CSV, harness, oracle script and archived log.
 
-![Final heat profile](https://raw.githubusercontent.com/__REPOSITORY__/__TAG__/figures/heat-profile.png)
+![Final heat profile](../../blob/__TAG__/figures/heat-profile.png?raw=true)
 
-![Per-cell final absolute error and proved bound](https://raw.githubusercontent.com/__REPOSITORY__/__TAG__/figures/heat-error.png)
+![Per-cell final absolute error and proved bound](../../blob/__TAG__/figures/heat-error.png?raw=true)
 
-![C versus exact-real Heun rounding discrepancy](https://raw.githubusercontent.com/__REPOSITORY__/__TAG__/figures/heat-rounding-error.png)
+![C versus exact-real Heun rounding discrepancy](../../blob/__TAG__/figures/heat-rounding-error.png?raw=true)
 
 **Scope:** The frozen RC2 initial premise is `2.4854 × 10⁻¹⁶`, **not** the later `10⁻¹⁵` wider-premise theorem. Post-RC2 supplements are maintained separately in this repository and are not part of this release. Independent clean-dependency reproduction remains open. A path-redacted copy of the subsequently provided Lean replay log is tracked at [`docs/replay-public.log`](https://github.com/__REPOSITORY__/blob/__TAG__/docs/replay-public.log). This historical log is not a substitute for independent clean-dependency reproduction.
 
