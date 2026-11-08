@@ -1,0 +1,71 @@
+name: Repair RC2 release figures
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out pinned RC2 tag
+        uses: actions/checkout@v4
+        with:
+          ref: heat-rc2-20261108-public
+          persist-credentials: false
+      - name: Verify frozen public-distribution ZIPs and figure files
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum -c docs/RELEASE_ASSET_SHA256SUMS.txt
+          for image in heat-profile heat-error heat-rounding-error; do
+            test -s "figures/$image.png"
+          done
+      - name: Attach figure PNGs and repair release notes
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          tag='heat-rc2-20261108-public'
+          gh release view "$tag" --repo "$REPOSITORY" --json body --jq .body > "$RUNNER_TEMP/rc2-release-body.md"
+          python3 - "$RUNNER_TEMP/rc2-release-body.md" <<'PY'
+          from pathlib import Path
+          import sys
+          p = Path(sys.argv[1])
+          text = p.read_text(encoding="utf-8")
+          tag = "heat-rc2-20261108-public"
+          repo = "codebydaksh/FluxWitness"
+          images = ("heat-profile", "heat-error", "heat-rounding-error")
+          for name in images:
+              old = f"https://raw.githubusercontent.com/{repo}/{tag}/figures/{name}.png"
+              new = f"../../blob/{tag}/figures/{name}.png?raw=true"
+              if old in text:
+                  text = text.replace(old, new)
+              elif new not in text:
+                  raise SystemExit(f"Could not find expected figure reference: {name}")
+          if "**Direct figure downloads:**" not in text:
+              links = " · ".join(
+                  f"[{name}.png](https://github.com/{repo}/releases/download/{tag}/{name}.png)"
+                  for name in images
+              )
+              text = text.replace(
+                  "**Scope:**",
+                  f"**Direct figure downloads:** {links}\n\n**Scope:**",
+                  1,
+              )
+          p.write_text(text, encoding="utf-8")
+          PY
+          gh release upload "$tag" \
+            figures/heat-profile.png \
+            figures/heat-error.png \
+            figures/heat-rounding-error.png \
+            --repo "$REPOSITORY" --clobber
+          gh release edit "$tag" \
+            --repo "$REPOSITORY" \
+            --notes-file "$RUNNER_TEMP/rc2-release-body.md"
+          gh release view "$tag" --repo "$REPOSITORY" --json assets \
+            --jq '[.assets[].name]'
