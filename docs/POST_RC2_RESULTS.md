@@ -1,6 +1,6 @@
-# Post-RC2 supplementary results (do not alter the frozen RC2 release)
+# Post-RC2 supplementary results
 
-These artifacts are **after** the canonical RC2 freeze. They are included for provenance and future peer review. Do **not** describe the broader premises as frozen RC2 acceptance conditions.
+These results were recorded after the canonical RC2 freeze. They extend the benchmark under additional or revised assumptions and are documented separately from the frozen RC2 release. The original RC2 theorem, its acceptance conditions, and its archived evidence remain unchanged.
 
 ## Wider initialization: conditional benchmark extension
 
@@ -12,7 +12,7 @@ Archived Lean 4.35 results report successful checking, with exactly the standard
 | `FluxWitnessC3.driver223_of_wp_wide` | Transfers the bound to 223 driver calls under the explicit allocation, layout, call and WP-interpretation hypotheses |
 | `FluxWitnessC4.reference223_wide` | Constructs finite in-range binary64 representatives and the interpreted successor updates through step 223 |
 
-The original RC2 bound is `2.4854 × 10⁻¹⁶`. The wider result is a distinct candidate, not an RC2 rewrite. See `supplements/wider-initialization/README.md` and archived proofs.
+The original RC2 bound is `2.4854 × 10⁻¹⁶`. The wider result is a separately scoped extension of the original theorem. See `supplements/wider-initialization/README.md` and archived proofs.
 
 ## Four historical local builds
 
@@ -24,7 +24,7 @@ The nominal theorem reports the same `7.05 × 10⁻⁹` final conditional bound 
 
 ## Remaining gaps
 
-- Clean-machine installation and rebuild from a blank dependency cache; pin external revisions and retain logs.
+- An independent clean-machine rebuild from an empty dependency cache has not yet been demonstrated.
 - End-to-end verified interpretation of WP states and the uninstrumented C program's initialization, allocations, math library behavior and compilation.
 - Cross-platform evidence beyond the four WSL local build variants.
-- Version-specific DOI/deposit is not supplied; link to one only after independently publishing it.
+- No version-specific archival DOI has been registered for these supplements.
