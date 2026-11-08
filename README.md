@@ -42,4 +42,4 @@ The original frozen RC2 ZIP is preserved **outside this public repository** with
 
 `d55c547640122ca101adba48b4fccd4d70067c2978a2a4c96983a76e5079a1b0`
 
-This repository is a **path-redacted public distribution**, not an identical byte-for-byte reproduction of the original archive. A few archived machine-path strings were replaced; no theorem statements or proof commands were rewritten. See [distribution provenance](docs/DISTRIBUTION_PROVENANCE.md) for the exact modified files. **Do not confuse a public-distribution ZIP hash with the frozen original RC2 hash.** No license or DOI is asserted here.
+This repository is a **path-redacted public distribution**, not an identical byte-for-byte reproduction of the original archive. A few archived machine-path strings were replaced; no theorem statements or proof commands were rewritten. See [distribution provenance](docs/DISTRIBUTION_PROVENANCE.md) for the exact modified files. Each public-distribution ZIP has its own checksum and is distinct from the original frozen RC2 archive. No license or DOI is asserted here.
