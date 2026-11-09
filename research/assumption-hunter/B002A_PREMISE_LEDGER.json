@@ -1,0 +1,309 @@
+{
+  "schema": "assumption-hunter/B002-A/1.0",
+  "description": "Source-based audit; not a new machine-checked proof",
+  "source_commit_main": "85b8addf874ffb0bf94c5b12166063b125aca6e5",
+  "b001_checked_commit": "79a4283b01d6a3c2a3684cb0bf0af00000844a2d",
+  "b001_ci": "https://github.com/codebydaksh/FluxWitness/actions/runs/42715013631",
+  "wp_rerun_this_audit": false,
+  "artifacts_rerun_this_audit": false,
+  "archived_status_checks": [
+    {
+      "kind": "Frama-C WP",
+      "path": "rc2/evidence/wp-shipped-bounded-hy6e4sjy/goals.log",
+      "record": "103/103",
+      "scope": "heat_step under ACSL contract"
+    },
+    {
+      "kind": "Frama-C WP",
+      "path": "rc2/evidence/wp-reference-interpretation-78nqmvyb/wp.log",
+      "record": "5/5",
+      "scope": "decoded/finite Euler"
+    },
+    {
+      "kind": "Frama-C WP",
+      "path": "rc2/evidence/wp-reference-interpretation-tfsopvv2/wp.log",
+      "record": "47/47",
+      "scope": "first/second ranges; decoded/finite average"
+    },
+    {
+      "kind": "Frama-C WP",
+      "path": "rc2/evidence/wp-reference-interpretation-08zrp8uz/wp.log",
+      "record": "10/10",
+      "scope": "composition under six imported preconditions"
+    },
+    {
+      "kind": "Frama-C WP",
+      "path": "rc2/evidence/wp-driver-reference-loop-79is6b47/wp.log",
+      "record": "38/38",
+      "scope": "extracted driver under backing/reference preconditions"
+    },
+    {
+      "kind": "Frama-C WP",
+      "path": "rc2/evidence/wp-driver-slices-3u14q3fn/wp.log",
+      "record": "9/10",
+      "scope": "malloc backing extent remains open"
+    },
+    {
+      "kind": "Frama-C WP",
+      "path": "rc2/evidence/wp-reference-interpretation-_vh9ra7u/wp.log",
+      "record": "7/9",
+      "scope": "historical uncomposed update; decoded and finite timed out"
+    },
+    {
+      "kind": "Lean",
+      "path": "research/assumption-hunter/WPInterpretationBridge.lean",
+      "record": "2 B001 theorems checked",
+      "scope": "rfl expression equality and conditional driver; not C/WP semantics",
+      "link": "https://github.com/codebydaksh/FluxWitness/actions/runs/42715013631"
+    }
+  ],
+  "entries": [
+    {
+      "id": "WP-01",
+      "claim": "imported_decoded_euler",
+      "status": "separately_wp_proved_import_assumed",
+      "source": {
+        "path": "rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c",
+        "line": 42,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c#L42"
+      },
+      "recorded_evidence": "compare_euler decoded_euler Valid; 5/5",
+      "remaining_obligation": "Cross-run premise lifting not formally imported into composition; WP semantics only"
+    },
+    {
+      "id": "WP-02",
+      "claim": "imported_finite_euler",
+      "status": "separately_wp_proved_import_assumed",
+      "source": {
+        "path": "rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c",
+        "line": 45,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c#L45"
+      },
+      "recorded_evidence": "compare_euler finite_euler Valid; 5/5",
+      "remaining_obligation": "Cross-run premise lifting not formally imported into composition"
+    },
+    {
+      "id": "WP-03",
+      "claim": "imported_first_range",
+      "status": "separately_wp_proved_import_assumed",
+      "source": {
+        "path": "rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c",
+        "line": 47,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c#L47"
+      },
+      "recorded_evidence": "first_bound first_range Valid; combined run 47/47",
+      "remaining_obligation": "Cross-run premise lifting not formally imported into composition"
+    },
+    {
+      "id": "WP-04",
+      "claim": "imported_second_range",
+      "status": "separately_wp_proved_import_assumed",
+      "source": {
+        "path": "rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c",
+        "line": 50,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c#L50"
+      },
+      "recorded_evidence": "second_bound second_range Valid; combined run 47/47",
+      "remaining_obligation": "Cross-run premise lifting not formally imported into composition"
+    },
+    {
+      "id": "WP-05",
+      "claim": "imported_decoded_average",
+      "status": "separately_wp_proved_import_assumed",
+      "source": {
+        "path": "rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c",
+        "line": 53,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c#L53"
+      },
+      "recorded_evidence": "compare_average decoded_average Valid; combined run 47/47",
+      "remaining_obligation": "Cross-run premise lifting not formally imported into composition"
+    },
+    {
+      "id": "WP-06",
+      "claim": "imported_finite_average",
+      "status": "separately_wp_proved_import_assumed",
+      "source": {
+        "path": "rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c",
+        "line": 55,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c#L55"
+      },
+      "recorded_evidence": "compare_average finite_average Valid; combined run 47/47",
+      "remaining_obligation": "Cross-run premise lifting not formally imported into composition"
+    },
+    {
+      "id": "WP-07",
+      "claim": "finite reference row and |cell|<=2",
+      "status": "unproved_wp_entry_premise",
+      "source": {
+        "path": "rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c",
+        "line": 57,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c#L57"
+      },
+      "recorded_evidence": "compare_update 10/10 conditional on reference row premises",
+      "remaining_obligation": "Construct corresponding WP reference values from Lean C4 representatives and justify cross-system interpretations"
+    },
+    {
+      "id": "WP-08",
+      "claim": "WP reference-update decoded expression and finiteness",
+      "status": "wp_proved_conditional",
+      "source": {
+        "path": "rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c",
+        "line": 60,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c#L60"
+      },
+      "recorded_evidence": "compare_update 10/10; decoded_update and finite_update Valid",
+      "remaining_obligation": "Six imports and reference row preconditions; no automatically checked WP-to-Lean semantics"
+    },
+    {
+      "id": "WP-09",
+      "claim": "reference-cell symbol declared without trajectory construction",
+      "status": "unproved_wp_entry_premise",
+      "source": {
+        "path": "rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c",
+        "line": 15,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-reference-interpretation-08zrp8uz/probe.c#L15"
+      },
+      "recorded_evidence": "ACSL axiomatic DriverReference declares ref_cell; recurrence supplied elsewhere",
+      "remaining_obligation": "Tie abstract WP reference to Lean C4 reference and actual C memory states"
+    },
+    {
+      "id": "C-01",
+      "claim": "bounded separated heat_step obeys ACSL function contract",
+      "status": "wp_proved_conditional",
+      "source": {
+        "path": "rc2/evidence/wp-shipped-bounded-hy6e4sjy/input.c",
+        "line": 152,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-shipped-bounded-hy6e4sjy/input.c#L152"
+      },
+      "recorded_evidence": "shipped heat_step WP log 103/103; 57 Qed, 46 Alt-Ergo",
+      "remaining_obligation": "Requires valid separated allocated slices, bounded finite inputs, WP float semantics, runtime/compiler assumptions"
+    },
+    {
+      "id": "D-01",
+      "claim": "driver has writable 1200-double backing block",
+      "status": "unproved_wp_entry_premise",
+      "source": {
+        "path": "rc2/evidence/wp-driver-reference-loop-79is6b47/probe.c",
+        "line": 292,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-driver-reference-loop-79is6b47/probe.c#L292"
+      },
+      "recorded_evidence": "driver loop 38/38 conditional; layout allocation probe 9/10",
+      "remaining_obligation": "Initial malloc alignment/freshness and cast/writable extent not discharged by WP layout probe"
+    },
+    {
+      "id": "D-02",
+      "claim": "driver step schedule NX=400,N=223,dt stored",
+      "status": "unproved_wp_entry_premise",
+      "source": {
+        "path": "rc2/evidence/wp-driver-reference-loop-79is6b47/probe.c",
+        "line": 293,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-driver-reference-loop-79is6b47/probe.c#L293"
+      },
+      "recorded_evidence": "driver loop 38/38 conditional; separate schedule evidence in trace-premise-review",
+      "remaining_obligation": "Connect actual uninstrumented driver schedule to C/WP and Lean representation"
+    },
+    {
+      "id": "D-03",
+      "claim": "entry C cells equal abstract ref_cell(0,j)",
+      "status": "unproved_wp_entry_premise",
+      "source": {
+        "path": "rc2/evidence/wp-driver-reference-loop-79is6b47/probe.c",
+        "line": 295,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-driver-reference-loop-79is6b47/probe.c#L295"
+      },
+      "recorded_evidence": "driver loop 38/38 conditional; separate instrumented initialization checker",
+      "remaining_obligation": "Identify actual normal invocation with certified grid and Lean C4 row zero"
+    },
+    {
+      "id": "D-04",
+      "claim": "reference stays finite and in [-2,2] through 223",
+      "status": "unproved_wp_entry_premise",
+      "source": {
+        "path": "rc2/evidence/wp-driver-reference-loop-79is6b47/probe.c",
+        "line": 297,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-driver-reference-loop-79is6b47/probe.c#L297"
+      },
+      "recorded_evidence": "C4 Lean reference223 theorem under initial premises, WP driver 38/38 assumes range",
+      "remaining_obligation": "Construct WP reference and bridge finite representations"
+    },
+    {
+      "id": "D-05",
+      "claim": "WP reference obeys ref_update recurrence",
+      "status": "unproved_wp_entry_premise",
+      "source": {
+        "path": "rc2/evidence/wp-driver-reference-loop-79is6b47/probe.c",
+        "line": 299,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-driver-reference-loop-79is6b47/probe.c#L299"
+      },
+      "recorded_evidence": "driver WP 38/38 under recurrence; C4 Lean reference223 supplies interpretedStep",
+      "remaining_obligation": "Cross-tool equality of reference updates plus state mapping"
+    },
+    {
+      "id": "D-06",
+      "claim": "loop_success and final_grid",
+      "status": "wp_proved_conditional",
+      "source": {
+        "path": "rc2/evidence/wp-driver-reference-loop-79is6b47/probe.c",
+        "line": 302,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/wp-driver-reference-loop-79is6b47/probe.c#L302"
+      },
+      "recorded_evidence": "extracted driver 38/38",
+      "remaining_obligation": "Not proof of actual malloc or initial-state identification; relies on D-01 to D-05"
+    },
+    {
+      "id": "FP-01",
+      "claim": "WP nearest-even round_double and projection",
+      "status": "wp_axiom_based_model",
+      "source": {
+        "path": "rc2/evidence/c2-wp-postcondition-export-20261107/run-mUCtyS/model-cfloat.mlw",
+        "line": 61,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/evidence/c2-wp-postcondition-export-20261107/run-mUCtyS/model-cfloat.mlw#L61"
+      },
+      "recorded_evidence": "exported Cfloat model includes axiom to_f64_range_round; function round_double at line 76",
+      "remaining_obligation": "Prove shared mathematical numeric-value interpretation including finite-range conditions, not only compare copied formulas"
+    },
+    {
+      "id": "LEAN-01",
+      "claim": "interpretedStep equals Lean roundedStep on bounded finite grids",
+      "status": "lean_checked_conditional",
+      "source": {
+        "path": "rc2/lean/C2DecodedStep.lean",
+        "line": 40,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/lean/C2DecodedStep.lean#L40"
+      },
+      "recorded_evidence": "C2 decoded_step_agrees; B001 CI run #4 accepted standard Lean axiom list",
+      "remaining_obligation": "Does not establish meaning of WP round_double"
+    },
+    {
+      "id": "LEAN-02",
+      "claim": "223-step bound from an abstract C/WP call",
+      "status": "lean_checked_conditional",
+      "source": {
+        "path": "rc2/lean/C3DriverLoop.lean",
+        "line": 18,
+        "link": "https://github.com/codebydaksh/FluxWitness/blob/main/rc2/lean/C3DriverLoop.lean#L18"
+      },
+      "recorded_evidence": "C3 driver223_of_wp; B001 driver223_of_explicit_wp checks successfully",
+      "remaining_obligation": "wp_call_explicit and initial/layout premises remain hypotheses"
+    }
+  ],
+  "selected_next_obligation": {
+    "id": "FP-01",
+    "target": "Equality of projected WP RNE binary64 round_double and Lean Model.roundAt binary64 as numeric values at eligible finite rounding sites",
+    "requirements": [
+      "Pin WP/Why3 float-model version and recorded semantics, including to_f64_range_round",
+      "Provide independent checker evidence for shared floor-even rounding semantics; do not just restate mapping as hypothesis",
+      "Prove or explicitly assume finite in-range conditions for all instantiated sites",
+      "Keep signed-zero and NaN bit-level semantics out of the numeric-value theorem; specify separately",
+      "No additional axiom/sorry at the boundary"
+    ],
+    "status": "OPEN"
+  },
+  "other_open": [
+    "ACSL C state and Lean S correspondence",
+    "actual malloc and layout",
+    "normal-run initialization identity",
+    "cross-run WP premise composition",
+    "compiler/runtime semantics"
+  ]
+}
