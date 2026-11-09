@@ -2,6 +2,11 @@ name: Assumption Hunter B001 Lean check
 # Manual-only until the dependency cache and build cost are confirmed.
 # This does NOT establish C/WP-to-Lean semantic correspondence.
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'research/assumption-hunter/**'
+      - '.github/workflows/assumption-hunter-wp-bridge.yml'
   workflow_dispatch:
 
 permissions:
