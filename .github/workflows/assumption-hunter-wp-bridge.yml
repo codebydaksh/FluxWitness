@@ -1,0 +1,37 @@
+name: Assumption Hunter B001 Lean check
+# Manual-only until the dependency cache and build cost are confirmed.
+# This does NOT establish C/WP-to-Lean semantic correspondence.
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'research/assumption-hunter/**'
+      - '.github/workflows/assumption-hunter-wp-bridge.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Get pinned Mathlib precompiled cache
+        working-directory: rc2/lean
+        run: |
+          lake exe cache get
+          test -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/MeasureTheory/Integral/Lebesgue/Map.olean || {
+            echo "Pinned Mathlib binary cache unavailable; fail instead of compiling Mathlib from scratch."
+            exit 1
+          }
+      - name: Build FloatLib and project dependencies
+        working-directory: rc2/lean
+        run: lake build C3DriverLoop
+      - name: Check conditional bridge and audited axioms
+        run: bash research/assumption-hunter/run_lean.sh
