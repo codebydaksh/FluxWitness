@@ -32,6 +32,6 @@ jobs:
           }
       - name: Build FloatLib and project dependencies
         working-directory: rc2/lean
-        run: lake build -j 2 C3DriverLoop
+        run: lake build C3DriverLoop
       - name: Check conditional bridge and audited axioms
         run: bash research/assumption-hunter/run_lean.sh
