@@ -1,0 +1,26 @@
+name: Assumption Hunter B001 Lean check
+on:
+  pull_request:
+    paths:
+      - 'research/assumption-hunter/**'
+      - '.github/workflows/assumption-hunter-wp-bridge.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Build Lean library dependencies
+        working-directory: rc2/lean
+        run: lake build C3DriverLoop
+      - name: Check conditional bridge and print axioms
+        run: bash research/assumption-hunter/run_lean.sh
