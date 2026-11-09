@@ -18,5 +18,5 @@ for term in ("logic real c5_e(", "logic real c5_update(", "logic integer c5_l(",
     assert term in wp, f"missing WP source term: {term}"
 for term in ("theorem wpUpdate_eq_interpretedStep", "theorem driver223_of_explicit_wp", "#print axioms AssumptionHunterBridge.driver223_of_explicit_wp"):
     assert term in proof, f"missing Lean term: {term}"
-assert not re.search(r"(?m)^\\s*(sorry|admit|axiom)\\b", proof)
+assert not re.search(r"(?m)^\s*(sorry|admit|axiom)\b", proof)
 print(json.dumps({"source_sha256":actual,"lean_sha256":hashlib.sha256(lean.read_bytes()).hexdigest(),"result":"PINNED_SOURCE_CHECK_PASSED", "limits":"No statement about semantic equivalence of ACSL and Lean"}))
