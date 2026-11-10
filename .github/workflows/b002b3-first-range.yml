@@ -74,7 +74,7 @@ jobs:
                 -wp-print /source/rc2/evidence/wp-reference-interpretation-tfsopvv2/probe.c \
                 2>&1 | tee /results/range-control.log
               grep -Eq "\[wp\] Proved goals:[[:space:]]*47[[:space:]]*/[[:space:]]*47" /results/range-control.log
-              grep -Fq "Goal Post-condition 'first_range'" /results/range-control.log
+              grep -Eq "^Goal Post-condition .first_range. in .first_bound.:" /results/range-control.log
               grep -Fq "Prover Alt-Ergo 2.6.4 returns Valid" /results/range-control.log
               ! grep -Eq "\[Timeout\]|returns Timeout|returns Unknown|returns Failed" /results/range-control.log
               echo "ARCHIVED_RANGE_CONTROL_REPRODUCED_47_OF_47"

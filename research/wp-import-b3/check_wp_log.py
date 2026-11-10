@@ -18,8 +18,11 @@ assert (proved,total)==(17,17), f"Expected 17/17; got {proved}/{total}"
 assert "Alt-Ergo 2.6.4" in log and "Prover Alt-Ergo 2.5.4" not in log
 for name in ("imported_decoded_euler","imported_finite_euler","imported_first_range"):
     assert f"Pre-condition '{name}'" not in log, f"Removed property still treated as caller assumption: {name}"
-for name in ("imported_second_range","imported_decoded_average","imported_finite_average"):
-    assert f"Pre-condition '{name}'" in log, f"Expected retained assumption not visible: {name}"
+# Retained preconditions are checked by check_source.py against exact ACSL text.
+# WP does not necessarily print them by label in generated VCs: in B002-B2,
+# imported_first_range and imported_second_range were present in ACSL source
+# but absent from WP's printed goal sections. Do not treat absence from logs
+# as the absence of source hypotheses.
 
 def ensure_valid(title):
     target=re.search(r"(?m)^Goal "+re.escape(title)+r"[^\n]*:\s*$",log)
