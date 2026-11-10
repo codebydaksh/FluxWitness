@@ -49,3 +49,11 @@ for goal in baseline stage_left stage_center stage_right; do
     find "/results/$goal-vcs" -type f | sort | sed "s@/results/@@g" > "/results/$goal-files.txt"
   fi
 done
+
+# A host runner cannot traverse the image user's private WP generated folders.
+# Preserve their exact bytes in a readable archive; do not change or remove VCs.
+tar -czf /results/generated-vcs.tgz -C /results \
+  baseline-vcs stage_left-vcs stage_center-vcs stage_right-vcs
+chmod 644 /results/generated-vcs.tgz
+chmod -R a+rX /results
+
