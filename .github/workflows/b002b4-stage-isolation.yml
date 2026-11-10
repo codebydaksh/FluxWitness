@@ -65,5 +65,5 @@ jobs:
             ${{ runner.temp }}/b002b4-stage/*.txt
             ${{ runner.temp }}/b002b4-stage/*.json
             ${{ runner.temp }}/b002b4-stage/*.exit
-            ${{ runner.temp }}/b002b4-stage/*-vcs/**
+            ${{ runner.temp }}/b002b4-stage/generated-vcs.tgz
           if-no-files-found: warn
