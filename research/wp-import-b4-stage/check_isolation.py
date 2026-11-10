@@ -15,10 +15,7 @@ for stage in ("baseline","stage_left","stage_center","stage_right"):
     if stage!="baseline":
         expected="Goal Assertion '"+stage+"'"
         outcome["goal_present"]=expected in s
-        m=re.search(r"(?m)^Goal Assertion '"+re.escape(stage)+r"'\b?[^\n]*:",s)
-        # The \b after closing quote may not match; fall back to exact prefix.
-        if m is None:
-            m=re.search(r"(?m)^Goal Assertion '"+re.escape(stage)+r"'[^\n]*:",s)
+        m=re.search(r"(?m)^Goal Assertion '"+re.escape(stage)+r"'[^\n]*:",s)
         if m:
             sec=s[m.end():]
             boundary=re.search(r"\n-{8,}\s*\n",sec)
