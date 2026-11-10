@@ -1,0 +1,51 @@
+name: B002-B1 WP Euler lemma integration
+
+on:
+  pull_request:
+    paths:
+      - 'research/wp-import-b1/**'
+      - '.github/workflows/b002b1-wp-euler.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  wp:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 24
+    container:
+      image: framac/frama-c:32.1
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record tool versions and verify pinned source replacement
+        shell: bash
+        run: |
+          set -euo pipefail
+          frama-c -version | tee /tmp/b002b1_frama_version.txt
+          alt-ergo --version | tee /tmp/b002b1_alt_ergo_version.txt
+          python3 research/wp-import-b1/check_source.py | tee /tmp/b002b1_source_check.txt
+      - name: Prove new lemma and composition together, no new requires
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 480s frama-c -machdep x86_64 \
+            -wp -wp-model Typed+float -wp-rte \
+            -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 60 \
+            -wp-print research/wp-import-b1/probe_b002b1.c \
+            2>&1 | tee /tmp/b002b1_wp.log
+      - name: Fail closed on missing lemma, imports, or unresolved goals
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 research/wp-import-b1/check_wp_log.py /tmp/b002b1_wp.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B002-B1-WP-log-and-verification
+          path: |
+            /tmp/b002b1_wp.log
+            /tmp/b002b1_result.json
+            /tmp/b002b1_source_check.txt
+            /tmp/b002b1_frama_version.txt
+            /tmp/b002b1_alt_ergo_version.txt
+          if-no-files-found: warn
