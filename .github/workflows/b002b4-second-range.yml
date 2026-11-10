@@ -46,7 +46,7 @@ jobs:
           timeout 540s docker run --rm \
             -v "$GITHUB_WORKSPACE:/source:ro" \
             -v "$RUNNER_TEMP/b002b4/alt-ergo:/usr/local/bin/alt-ergo:ro" \
-            -v "$RUNNER_TEMP/b002b3-split:/results" \
+            -v "$RUNNER_TEMP/b002b4:/results" \
             -w /tmp "$WP_IMAGE" bash -ec '
               set -o pipefail
               export PATH="/usr/local/bin:$PATH"
