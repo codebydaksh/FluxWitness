@@ -15,6 +15,7 @@ jobs:
     timeout-minutes: 24
     container:
       image: framac/frama-c:32.1
+      options: --user 0
     steps:
       - uses: actions/checkout@v4
       - name: Record tool versions and verify pinned source replacement
