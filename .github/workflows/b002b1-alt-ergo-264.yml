@@ -1,0 +1,75 @@
+name: B002-B1 Alt-Ergo 2.6.4 controlled verification
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/b002b1-alt-ergo-264.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  alt-ergo-264-control:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 24
+    env:
+      WP_IMAGE: framac/frama-c@sha256:4f0b7a2bd600c4daabfdcdfa393a3c18301e0db18f3b2739f1d9650193462d36
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check pinned source before running any prover
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 research/wp-import-b1/check_source.py
+          printf '%s  %s\n' \
+            'd496e05d50e8c6f04304b134e8a613e9934957aa8f81954b20650bd422eac9ef' \
+            'rc2/evidence/wp-reference-interpretation-78nqmvyb/probe.c' | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/b002b1-v264"
+          chmod 777 "$RUNNER_TEMP/b002b1-v264"
+      - name: Reproduce original Euler control then check the global lemma
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker pull "$WP_IMAGE"
+          # Bounded build: abort if the 2.6.4 toolchain cannot be established.
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/source:ro" \
+            -v "$RUNNER_TEMP/b002b1-v264:/results" \
+            -w /tmp "$WP_IMAGE" bash -ec '
+              set -o pipefail
+              echo "FRAMA_BEFORE=$(frama-c -version)" | tee /results/versions.txt
+              echo "ALT_BEFORE=$(alt-ergo --version)" | tee -a /results/versions.txt
+              timeout 180s opam update -y
+              timeout 720s opam install -y alt-ergo.2.6.4
+              echo "FRAMA_AFTER=$(frama-c -version)" | tee -a /results/versions.txt
+              actual=$(alt-ergo --version)
+              echo "ALT_AFTER=$actual" | tee -a /results/versions.txt
+              echo "$actual" | grep -Eq "(^|[^0-9])2[.]6[.]4([^0-9]|$)"
+              why3 config detect || true
+              echo "PROVING_ARCHIVED_EULER_CONTROL"
+              timeout 180s frama-c -machdep x86_64 -wp -wp-fct compare_euler \
+                -wp-model Typed+float -wp-rte -wp-prover qed,alt-ergo \
+                -wp-par 1 -wp-timeout 60 -wp-print \
+                /source/rc2/evidence/wp-reference-interpretation-78nqmvyb/probe.c \
+                2>&1 | tee /results/control.log
+              grep -Eq "\\[wp\\] Proved goals:[[:space:]]*5[[:space:]]*/[[:space:]]*5" /results/control.log
+              ! grep -Eq "\\[Timeout\\]|returns Timeout|returns Unknown|returns Failed" /results/control.log
+              echo "CONTROL_REPRODUCED_5_OF_5"
+              echo "PROVING_B002_B1_GLOBAL_LEMMA"
+              timeout 240s frama-c -machdep x86_64 -wp -wp-model Typed+float -wp-rte \
+                -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 60 -wp-print \
+                /source/research/wp-import-b1/probe_b002b1.c \
+                2>&1 | tee /results/integration.log
+            ' 2>&1 | tee "$RUNNER_TEMP/b002b1-v264/driver.log"
+      - name: Reject unproved lemma or remaining proof failures
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 research/wp-import-b1/check_wp_log.py "$RUNNER_TEMP/b002b1-v264/integration.log"
+          cp /tmp/b002b1_result.json "$RUNNER_TEMP/b002b1-v264/result.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B002-B1-Alt-Ergo-264-control
+          path: ${{ runner.temp }}/b002b1-v264/
+          if-no-files-found: warn

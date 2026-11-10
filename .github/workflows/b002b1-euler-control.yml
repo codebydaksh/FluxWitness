@@ -1,0 +1,63 @@
+name: B002-B1 Euler proof control (archived source)
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/b002b1-euler-control.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  archived-euler-control:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 12
+    env:
+      WP_IMAGE: framac/frama-c@sha256:4f0b7a2bd600c4daabfdcdfa393a3c18301e0db18f3b2739f1d9650193462d36
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify archived input SHA and tool version
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          p=Path("rc2/evidence/wp-reference-interpretation-78nqmvyb/probe.c")
+          b=p.read_bytes()
+          print("archived_probe_sha256:", hashlib.sha256(b).hexdigest())
+          assert b.decode("utf-8").count("ensures decoded_euler:")==1
+          assert b.decode("utf-8").count("ensures finite_euler:")==1
+          PY
+          docker pull "$WP_IMAGE"
+          docker run --rm "$WP_IMAGE" frama-c -version | tee "$RUNNER_TEMP/frama-version.txt"
+          docker run --rm "$WP_IMAGE" alt-ergo --version | tee "$RUNNER_TEMP/alt-ergo-version.txt"
+      - name: Recheck archived Euler function postcondition with current prover
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 180s docker run --rm \
+            -v "$GITHUB_WORKSPACE:/source:ro" -w /tmp "$WP_IMAGE" \
+            frama-c -machdep x86_64 -wp -wp-fct compare_euler \
+            -wp-model Typed+float -wp-rte -wp-prover qed,alt-ergo \
+            -wp-par 1 -wp-timeout 60 -wp-print \
+            /source/rc2/evidence/wp-reference-interpretation-78nqmvyb/probe.c \
+            2>&1 | tee "$RUNNER_TEMP/euler-control.log"
+      - name: Fail closed if the archived Euler proof does not reproduce
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Eq '\[wp\] Proved goals:[[:space:]]*5[[:space:]]*/[[:space:]]*5' "$RUNNER_TEMP/euler-control.log"
+          grep -Fq "Goal Post-condition 'decoded_euler'" "$RUNNER_TEMP/euler-control.log"
+          grep -Fq "Goal Post-condition 'finite_euler'" "$RUNNER_TEMP/euler-control.log"
+          ! grep -Eq '\[Timeout\]|returns Timeout|returns Unknown|returns Failed' "$RUNNER_TEMP/euler-control.log"
+          echo "ARCHIVED_EULER_CONTROL_REPRODUCED"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B002-B1-Euler-control-log
+          path: |
+            ${{ runner.temp }}/euler-control.log
+            ${{ runner.temp }}/frama-version.txt
+            ${{ runner.temp }}/alt-ergo-version.txt
+          if-no-files-found: warn
