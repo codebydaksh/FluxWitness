@@ -13,40 +13,51 @@ jobs:
   wp:
     runs-on: ubuntu-22.04
     timeout-minutes: 24
-    container:
-      image: framac/frama-c:32.1
-      options: --user 0
+    env:
+      # Exact content-addressed Docker image observed in previous run.
+      WP_IMAGE: framac/frama-c@sha256:4f0b7a2bd600c4daabfdcdfa393a3c18301e0db18f3b2739f1d9650193462d36
     steps:
       - uses: actions/checkout@v4
-      - name: Record tool versions and verify pinned source replacement
+      - name: Check source and resolve official container environment
         shell: bash
         run: |
           set -euo pipefail
-          frama-c -version | tee /tmp/b002b1_frama_version.txt
-          alt-ergo --version | tee /tmp/b002b1_alt_ergo_version.txt
-          python3 research/wp-import-b1/check_source.py | tee /tmp/b002b1_source_check.txt
-      - name: Prove new lemma and composition together, no new requires
+          python3 research/wp-import-b1/check_source.py | tee "$RUNNER_TEMP/b002b1_source_check.txt"
+          docker pull "$WP_IMAGE"
+          docker image inspect "$WP_IMAGE" --format 'User={{json .Config.User}} Entrypoint={{json .Config.Entrypoint}} Cmd={{json .Config.Cmd}}' |
+            tee "$RUNNER_TEMP/b002b1_image_info.txt"
+          # docker run keeps the image's opam-exec entrypoint and its default user.
+          docker run --rm "$WP_IMAGE" frama-c -version |
+            tee "$RUNNER_TEMP/b002b1_frama_version.txt"
+          docker run --rm "$WP_IMAGE" alt-ergo --version |
+            tee "$RUNNER_TEMP/b002b1_alt_ergo_version.txt"
+      - name: Prove lemma and composition with pinned Frama-C image
         shell: bash
         run: |
           set -euo pipefail
-          timeout 480s frama-c -machdep x86_64 \
-            -wp -wp-model Typed+float -wp-rte \
-            -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 60 \
-            -wp-print research/wp-import-b1/probe_b002b1.c \
-            2>&1 | tee /tmp/b002b1_wp.log
-      - name: Fail closed on missing lemma, imports, or unresolved goals
+          # Read-only checkout; WP may write its temporary proof files in /tmp.
+          timeout 480s docker run --rm \
+            -v "$GITHUB_WORKSPACE:/source:ro" -w /tmp "$WP_IMAGE" \
+            frama-c -machdep x86_64 \
+              -wp -wp-model Typed+float -wp-rte \
+              -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 60 \
+              -wp-print /source/research/wp-import-b1/probe_b002b1.c \
+            2>&1 | tee "$RUNNER_TEMP/b002b1_wp.log"
+      - name: Reject missing lemma, invalid goals, or new assumptions
         shell: bash
         run: |
           set -euo pipefail
-          python3 research/wp-import-b1/check_wp_log.py /tmp/b002b1_wp.log
+          python3 research/wp-import-b1/check_wp_log.py "$RUNNER_TEMP/b002b1_wp.log"
+          cp /tmp/b002b1_result.json "$RUNNER_TEMP/b002b1_result.json"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: B002-B1-WP-log-and-verification
           path: |
-            /tmp/b002b1_wp.log
-            /tmp/b002b1_result.json
-            /tmp/b002b1_source_check.txt
-            /tmp/b002b1_frama_version.txt
-            /tmp/b002b1_alt_ergo_version.txt
+            ${{ runner.temp }}/b002b1_wp.log
+            ${{ runner.temp }}/b002b1_result.json
+            ${{ runner.temp }}/b002b1_source_check.txt
+            ${{ runner.temp }}/b002b1_frama_version.txt
+            ${{ runner.temp }}/b002b1_alt_ergo_version.txt
+            ${{ runner.temp }}/b002b1_image_info.txt
           if-no-files-found: warn
