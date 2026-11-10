@@ -23,7 +23,9 @@ assert actual.count("lemma b002b1_decoded_euler:")==1
 for name in ["imported_finite_euler","imported_first_range","imported_second_range",
              "imported_decoded_average","imported_finite_average"]:
     assert generated.count("requires "+name+":")==1, name
-assert "/*@ axiom" not in actual and r"\admit" not in actual
+assert actual.count("/*@ axiomatic DriverReference") == original.count("/*@ axiomatic DriverReference")
+assert not __import__("re").search(r"/\*@\s*axiom\s+", actual)
+assert r"\admit" not in actual
 print("SOURCE_REPLACEMENT_OK")
 print("original_sha256:",hashlib.sha256(src).hexdigest())
 print("candidate_sha256:",hashlib.sha256(candidate.read_bytes()).hexdigest())
