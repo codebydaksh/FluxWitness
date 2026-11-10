@@ -1,0 +1,102 @@
+name: B002-B3 proved first-stage range WP lemma (3 imports)
+
+on:
+  pull_request:
+    paths:
+      - 'research/wp-import-b3/**'
+      - '.github/workflows/b002b3-first-range.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  b002b3-wp-proof:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    env:
+      WP_IMAGE: framac/frama-c@sha256:4f0b7a2bd600c4daabfdcdfa393a3c18301e0db18f3b2739f1d9650193462d36
+      ALT_URL: https://github.com/OCamlPro/alt-ergo/releases/download/v2.6.4/alt-ergo-v2.6.4-x86_64-linux-musl
+      ALT_SHA256: 80d41dd9cf4b024be7412e499f81960ddc63978f5d78a29311a05aaab125681a
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source provenance and exact single-premise transformation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 research/wp-import-b1/check_source.py
+          python3 research/wp-import-b2/check_source.py
+          python3 research/wp-import-b3/check_source.py
+          printf '%s  %s\n' \
+            'd496e05d50e8c6f04304b134e8a613e9934957aa8f81954b20650bd422eac9ef' \
+            'rc2/evidence/wp-reference-interpretation-78nqmvyb/probe.c' | sha256sum -c -
+      - name: Fetch and verify pinned prover and Frama-C image
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/b002b3"
+          chmod 777 "$RUNNER_TEMP/b002b3"
+          curl -fLsS --retry 2 --connect-timeout 20 --max-time 120 \
+            "$ALT_URL" -o "$RUNNER_TEMP/b002b3/alt-ergo"
+          printf '%s  %s\n' "$ALT_SHA256" "$RUNNER_TEMP/b002b3/alt-ergo" | sha256sum -c -
+          chmod 755 "$RUNNER_TEMP/b002b3/alt-ergo"
+          docker pull "$WP_IMAGE"
+      - name: Replay archived Euler control and prove three experimental lemmas
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 480s docker run --rm \
+            -v "$GITHUB_WORKSPACE:/source:ro" \
+            -v "$RUNNER_TEMP/b002b3/alt-ergo:/usr/local/bin/alt-ergo:ro" \
+            -v "$RUNNER_TEMP/b002b2:/results" \
+            -w /tmp "$WP_IMAGE" bash -ec '
+              set -o pipefail
+              export PATH="/usr/local/bin:$PATH"
+              frama-c -version | tee /results/frama-version.txt
+              alt-ergo --version | tee /results/prover-version.txt
+              test "$(alt-ergo --version)" = "v2.6.4"
+              why3 config detect
+              why3 config list-provers | tee /results/why3-provers.txt
+              echo "CONTROL: UNMODIFIED ARCHIVED SCALAR EULER"
+              timeout 180s frama-c -machdep x86_64 \
+                -wp -wp-fct compare_euler -wp-model Typed+float -wp-rte \
+                -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 60 \
+                -wp-print /source/rc2/evidence/wp-reference-interpretation-78nqmvyb/probe.c \
+                2>&1 | tee /results/control.log
+              grep -Eq "\[wp\] Proved goals:[[:space:]]*5[[:space:]]*/[[:space:]]*5" /results/control.log
+              grep -Fq "Prover Alt-Ergo 2.6.4 returns Valid" /results/control.log
+              ! grep -Eq "\[Timeout\]|returns Timeout|returns Unknown|returns Failed" /results/control.log
+              echo "CONTROL_REPRODUCED_5_OF_5"
+                            echo "CONTROL: UNMODIFIED ARCHIVED FIRST-STAGE RANGE"
+              timeout 210s frama-c -machdep x86_64 \
+                -wp -wp-model Typed+float -wp-rte \
+                -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 60 \
+                -wp-print /source/rc2/evidence/wp-reference-interpretation-tfsopvv2/probe.c \
+                2>&1 | tee /results/range-control.log
+              grep -Eq "\[wp\] Proved goals:[[:space:]]*47[[:space:]]*/[[:space:]]*47" /results/range-control.log
+              grep -Fq "Goal Post-condition 'first_range'" /results/range-control.log
+              grep -Fq "Prover Alt-Ergo 2.6.4 returns Valid" /results/range-control.log
+              ! grep -Eq "\[Timeout\]|returns Timeout|returns Unknown|returns Failed" /results/range-control.log
+              echo "ARCHIVED_RANGE_CONTROL_REPRODUCED_47_OF_47"
+              echo "B002-B3: THREE GLOBAL LEMMAS AND COMPOSITION"
+              timeout 240s frama-c -machdep x86_64 \
+                -wp -wp-model Typed+float -wp-rte \
+                -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 60 \
+                -wp-print /source/research/wp-import-b3/probe_b002b3.c \
+                2>&1 | tee /results/b002b3.log
+              ! grep -Fq "Prover Alt-Ergo 2.5.4" /results/b002b3.log
+            '
+      - name: Reject any missing proof, timeout, new or equivalent assumption
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 research/wp-import-b3/check_wp_log.py \
+            "$RUNNER_TEMP/b002b3/b002b3.log" "$RUNNER_TEMP/b002b3/result.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B002-B3-first-range-verified-evidence
+          path: |
+            ${{ runner.temp }}/b002b3/*.txt
+            ${{ runner.temp }}/b002b3/*.log
+            ${{ runner.temp }}/b002b3/*.json
+          if-no-files-found: warn
