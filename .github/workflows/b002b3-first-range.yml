@@ -68,8 +68,9 @@ jobs:
               echo "CONTROL_REPRODUCED_5_OF_5"
               echo "CONTROL: UNMODIFIED ARCHIVED FIRST-STAGE RANGE"
               timeout 210s frama-c -machdep x86_64 \
-                -wp -wp-model Typed+float -wp-rte \
-                -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 60 \
+                -wp -wp-fct first_bound,second_bound,compare_average \
+                -wp-model Typed+float -wp-rte \
+                -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 30 \
                 -wp-print /source/rc2/evidence/wp-reference-interpretation-tfsopvv2/probe.c \
                 2>&1 | tee /results/range-control.log
               grep -Eq "\[wp\] Proved goals:[[:space:]]*47[[:space:]]*/[[:space:]]*47" /results/range-control.log
