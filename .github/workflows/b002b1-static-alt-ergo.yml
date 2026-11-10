@@ -1,0 +1,88 @@
+name: B002-B1 pinned Alt-Ergo 2.6.4 binary control
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/b002b1-static-alt-ergo.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-prover-control:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 16
+    env:
+      WP_IMAGE: framac/frama-c@sha256:4f0b7a2bd600c4daabfdcdfa393a3c18301e0db18f3b2739f1d9650193462d36
+      ALT_URL: https://github.com/OCamlPro/alt-ergo/releases/download/v2.6.4/alt-ergo-v2.6.4-x86_64-linux-musl
+      ALT_SHA256: 80d41dd9cf4b024be7412e499f81960ddc63978f5d78a29311a05aaab125681a
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify archived source and download hash-pinned official prover binary
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 research/wp-import-b1/check_source.py
+          printf '%s  %s\n' \
+            'd496e05d50e8c6f04304b134e8a613e9934957aa8f81954b20650bd422eac9ef' \
+            'rc2/evidence/wp-reference-interpretation-78nqmvyb/probe.c' | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/b002b1-static"
+          chmod 777 "$RUNNER_TEMP/b002b1-static"
+          curl -fLsS --retry 2 --connect-timeout 20 --max-time 120 \
+            "$ALT_URL" -o "$RUNNER_TEMP/b002b1-static/alt-ergo"
+          printf '%s  %s\n' "$ALT_SHA256" "$RUNNER_TEMP/b002b1-static/alt-ergo" | sha256sum -c -
+          chmod 755 "$RUNNER_TEMP/b002b1-static/alt-ergo"
+          docker pull "$WP_IMAGE"
+      - name: Prove unchanged Euler control, then conditionally attempt B002-B1 lemma
+        shell: bash
+        run: |
+          set -euo pipefail
+          # The original image and source tree are read-only. This only overlays one
+          # sha256-verified executable in a disposable container; no opam changes.
+          timeout 480s docker run --rm \
+            -v "$GITHUB_WORKSPACE:/source:ro" \
+            -v "$RUNNER_TEMP/b002b1-static/alt-ergo:/usr/local/bin/alt-ergo:ro" \
+            -v "$RUNNER_TEMP/b002b1-static:/results" \
+            -w /tmp "$WP_IMAGE" bash -ec '
+              set -o pipefail
+              export PATH="/usr/local/bin:$PATH"
+              frama-c -version | tee /results/frama-version.txt
+              alt-ergo --version | tee /results/prover-version.txt
+              test "$(alt-ergo --version)" = "v2.6.4"
+              command -v why3
+              why3 config detect
+              why3 config list-provers | tee /results/why3-provers.txt
+              echo "RUNNING_UNMODIFIED_ARCHIVED_EULER_CONTROL"
+              timeout 180s frama-c -machdep x86_64 \
+                -wp -wp-fct compare_euler -wp-model Typed+float -wp-rte \
+                -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 60 \
+                -wp-print /source/rc2/evidence/wp-reference-interpretation-78nqmvyb/probe.c \
+                2>&1 | tee /results/control.log
+              grep -Eq "\[wp\] Proved goals:[[:space:]]*5[[:space:]]*/[[:space:]]*5" /results/control.log
+              grep -Fq "Prover Alt-Ergo 2.6.4 returns Valid" /results/control.log
+              ! grep -Eq "\[Timeout\]|returns Timeout|returns Unknown|returns Failed|Prover Alt-Ergo 2[.]5[.]4" /results/control.log
+              echo "CONTROL_REPRODUCED_5_OF_5"
+              echo "RUNNING_GLOBAL_LEMMA"
+              timeout 240s frama-c -machdep x86_64 \
+                -wp -wp-model Typed+float -wp-rte \
+                -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 60 \
+                -wp-print /source/research/wp-import-b1/probe_b002b1.c \
+                2>&1 | tee /results/integration.log
+              grep -Fq "Prover Alt-Ergo 2.6.4 returns Valid" /results/integration.log
+              ! grep -Fq "Prover Alt-Ergo 2.5.4" /results/integration.log
+            ' 2>&1 | tee "$RUNNER_TEMP/b002b1-static/driver.log"
+      - name: Check lemma, conditional composition, and absence of unproved goals
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 research/wp-import-b1/check_wp_log.py "$RUNNER_TEMP/b002b1-static/integration.log"
+          cp /tmp/b002b1_result.json "$RUNNER_TEMP/b002b1-static/result.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B002-B1-Alt-Ergo-2-6-4-static-control
+          path: |
+            ${{ runner.temp }}/b002b1-static/*.txt
+            ${{ runner.temp }}/b002b1-static/*.log
+            ${{ runner.temp }}/b002b1-static/*.json
+          if-no-files-found: warn
