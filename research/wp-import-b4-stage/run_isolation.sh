@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Diagnostic only: isolate original WP stage goals without changing probe source.
 set -euo pipefail
+export PATH="/usr/local/bin:$PATH"
 
 mkdir -p /results
 frama-c -version | tee /results/frama-version.txt
