@@ -1,0 +1,81 @@
+name: B002-B4 stage assertions with split conjunctions
+
+on:
+  pull_request:
+    paths:
+      - 'research/wp-import-b4-conj/**'
+      - '.github/workflows/b002b4-stage-split-conj.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  split-conj:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 12
+    env:
+      WP_IMAGE: framac/frama-c@sha256:4f0b7a2bd600c4daabfdcdfa393a3c18301e0db18f3b2739f1d9650193462d36
+      ALT_URL: https://github.com/OCamlPro/alt-ergo/releases/download/v2.6.4/alt-ergo-v2.6.4-x86_64-linux-musl
+      ALT_SHA256: 80d41dd9cf4b024be7412e499f81960ddc63978f5d78a29311a05aaab125681a
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify immutable source lineage
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 research/wp-import-b1/check_source.py
+          python3 research/wp-import-b2/check_source.py
+          python3 research/wp-import-b3/check_source.py
+          python3 research/wp-import-b3-split/check_source.py
+          python3 research/wp-import-b4/check_source.py
+          python3 research/wp-import-b4-cut/check_source.py
+      - name: Verify pinned prover binary and image
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/b002b4-conj"
+          chmod 777 "$RUNNER_TEMP/b002b4-conj"
+          curl -fLsS --retry 2 --connect-timeout 20 --max-time 120 \
+            "$ALT_URL" -o "$RUNNER_TEMP/b002b4-conj/alt-ergo"
+          printf '%s  %s\n' "$ALT_SHA256" "$RUNNER_TEMP/b002b4-conj/alt-ergo" | sha256sum -c -
+          chmod 755 "$RUNNER_TEMP/b002b4-conj/alt-ergo"
+          docker pull "$WP_IMAGE"
+      - name: Prove all three stage conjunctions with exact original source
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 420s docker run --rm \
+            -v "$GITHUB_WORKSPACE:/source:ro" \
+            -v "$RUNNER_TEMP/b002b4-conj/alt-ergo:/usr/local/bin/alt-ergo:ro" \
+            -v "$RUNNER_TEMP/b002b4-conj:/results" \
+            -w /tmp "$WP_IMAGE" bash -ec '
+              set -o pipefail
+              export PATH="/usr/local/bin:$PATH"
+              frama-c -version | tee /results/frama-version.txt
+              alt-ergo --version | tee /results/prover-version.txt
+              test "$(alt-ergo --version)" = "v2.6.4"
+              why3 config detect
+              timeout 380s frama-c -machdep x86_64 \
+                -wp -wp-fct compare_update \
+                -wp-prop stage_left,stage_center,stage_right \
+                -wp-model Typed+float -wp-rte -wp-split-conj \
+                -wp-prover qed,alt-ergo -wp-par 1 -wp-timeout 60 -wp-print \
+                /source/research/wp-import-b4-cut/probe_b002b4_cut.c \
+                2>&1 | tee /results/split-conj.log
+            '
+      - name: Fail if any selected stage part lacks an independent Valid result
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 research/wp-import-b4-conj/check_split.py \
+            "$RUNNER_TEMP/b002b4-conj/split-conj.log" \
+            "$RUNNER_TEMP/b002b4-conj/result.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B002-B4-stage-conjunction-evidence
+          path: |
+            ${{ runner.temp }}/b002b4-conj/*.log
+            ${{ runner.temp }}/b002b4-conj/*.json
+            ${{ runner.temp }}/b002b4-conj/*.txt
+          if-no-files-found: warn
